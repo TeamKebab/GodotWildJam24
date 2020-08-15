@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/sprites/hero.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/characters/Player.gd" type="Script" id=2]
@@ -9,9 +9,469 @@
 radius = 3.0
 height = 2.0
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 7.76764
 height = 10.2329
+
+[sub_resource type="Animation" id=20]
+resource_name = "Adult"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.4, -1.506 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DetectionBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -7.8, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DetectionBox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 144, 0, 72, 24 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BabySprite:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BabySprite:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 32, 0, 16, 16 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BabySprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -4.88864, -11.4568 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "Elder"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.4, -1.506 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DetectionBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -21, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DetectionBox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 72, 0, 72, 24 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BabySprite:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 16, 0, 16, 16 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BabySprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5.11136, -10.4568 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BabySprite:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.491787, -1.50637 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DetectionBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DetectionBox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 72, 24 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BabySprite:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 16, 16 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BabySprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6.88864, -10.4568 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BabySprite:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Teen"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.4, -1.506 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DetectionBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -7.8, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DetectionBox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 216, 0, 72, 24 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BabySprite:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 48, 0, 16, 16 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BabySprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10.4568 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BabySprite:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeAdd2" id=23]
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "Adult"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "Elder"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "Teen"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachine" id=31]
+states/Adult/node = SubResource( 25 )
+states/Adult/position = Vector2( 569, 53 )
+states/Elder/node = SubResource( 26 )
+states/Elder/position = Vector2( 771, 162 )
+states/Teen/node = SubResource( 27 )
+states/Teen/position = Vector2( 379, 162 )
+transitions = [ "Teen", "Adult", SubResource( 28 ), "Adult", "Elder", SubResource( 29 ), "Elder", "Teen", SubResource( 30 ) ]
+start_node = "Teen"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "Down"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "Right"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "Up"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "Left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=24]
+blend_point_0/node = SubResource( 34 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 35 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 36 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 37 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeBlendTree" id=32]
+graph_offset = Vector2( 0, 153.5 )
+nodes/Add2/node = SubResource( 23 )
+nodes/Add2/position = Vector2( 660, 100 )
+nodes/Age/node = SubResource( 31 )
+nodes/Age/position = Vector2( 380, 60 )
+nodes/Direction/node = SubResource( 24 )
+nodes/Direction/position = Vector2( 380, 200 )
+nodes/output/position = Vector2( 880, 100 )
+node_connections = [ "output", 0, "Add2", "Add2", 0, "Age", "Add2", 1, "Direction" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -0.111362, 5.45676 )
@@ -20,30 +480,54 @@ collision_mask = 31
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.491787, -1.50637 )
+position = Vector2( -1.4, -1.506 )
 rotation = 1.5708
 shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -2.88864, -10.4568 )
-texture = ExtResource( 1 )
-hframes = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.888638, -10.4568 )
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1
+region_enabled = true
+region_rect = Rect2( 216, 0, 72, 24 )
+
+[node name="BabySprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -10.4568 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 16, 16 )
+
 [node name="DetectionBox" parent="." instance=ExtResource( 3 )]
+position = Vector2( -7.8, -20 )
+rotation = 1.5708
 collision_mask = 10
 
 [node name="CollisionShape2D" parent="DetectionBox" index="0"]
 modulate = Color( 1, 1, 1, 0.372549 )
 position = Vector2( 8.11136, -6.45676 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
-[node name="BabySprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( -6.88864, -10.4568 )
-texture = ExtResource( 4 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Adult = SubResource( 20 )
+anims/Down = SubResource( 8 )
+anims/Elder = SubResource( 21 )
+anims/Left = SubResource( 13 )
+anims/Right = SubResource( 14 )
+anims/Teen = SubResource( 22 )
+anims/Up = SubResource( 19 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 32 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Add2/add_amount = 1.0
+parameters/Age/playback = SubResource( 33 )
+parameters/Direction/blend_position = Vector2( 0, -1 )
 
 [editable path="DetectionBox"]

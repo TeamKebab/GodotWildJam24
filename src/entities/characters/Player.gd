@@ -23,6 +23,11 @@ enum State {
 const ADULT_AGE = int(Game.END_OF_DAY * 0.3)
 const ELDER_AGE = int(Game.END_OF_DAY * 0.8)
 
+const AGE_ANIMATIONS = {
+	Age.Teen: "Teen",
+	Age.Adult: "Adult",
+	Age.Elder: "Elder"
+}
 
 export var acceleration: float = 200
 export var max_speed: float = 100
@@ -42,6 +47,10 @@ var parent = ""
 onready var sprite : Sprite = $Sprite
 onready var baby_sprite : Sprite = $BabySprite
 onready var detection : Area2D = $DetectionBox
+
+onready var animationTree = $AnimationTree
+onready var animationAge = animationTree.get("parameters/Age/playback")
+
 onready var narrator = find_parent("Level").find_node("GUI")
 
 
@@ -96,12 +105,10 @@ func grow_old(time_of_day):
 	match age:
 		Age.Teen:
 			if time_of_day >= ADULT_AGE:
-				age = Age.Adult
-				_update_sprite_frame()
+				_grow_up(Age.Adult)
 		Age.Adult:
 			if time_of_day >= ELDER_AGE:
-				age = Age.Elder
-				_update_sprite_frame()
+				_grow_up(Age.Elder)
 	
 	
 func die():
@@ -114,9 +121,10 @@ func die():
 func _move(delta):	
 	var input = _get_input()
 	
-	motion = motion.move_toward(input * max_speed, acceleration * delta)
+	if input != Vector2.ZERO:
+		animationTree.set("parameters/Direction/blend_position", input)
 	
-	# todo set current direction
+	motion = motion.move_toward(input * max_speed, acceleration * delta)
 		
 	move_and_slide(motion)
 
@@ -173,14 +181,14 @@ func _grow_up_baby():
 	parent = _baby.parent
 	# todo: set other baby attributes
 	
-	age = Age.Teen
-	_update_sprite_frame()
+	_grow_up(Age.Teen)
 	baby_sprite.hide()
 	_baby = null
 
 
-func _update_sprite_frame():
-	sprite.frame = current_direction * 4 + age
+func _grow_up(new_age):
+	age = new_age	
+	animationAge.travel(AGE_ANIMATIONS[age])
 
 
 func _on_detection_body_entered(body):
