@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/resources/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/gui/GUI.gd" type="Script" id=2]
+
+[node name="GUI" type="CanvasLayer"]
+pause_mode = 1
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NarratorBox" type="PanelContainer" parent="Control"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -38.0
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NarratorBox"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 313.0
+margin_bottom = 45.0
+
+[node name="Narrator" type="RichTextLabel" parent="Control/NarratorBox/VBoxContainer"]
+margin_right = 306.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+text = "Test tex"
+fit_content_height = true
+scroll_active = false
+
+[node name="Buttons" type="HBoxContainer" parent="Control/NarratorBox/VBoxContainer"]
+margin_top = 24.0
+margin_right = 306.0
+margin_bottom = 24.0
+custom_constants/separation = 20
+alignment = 2
