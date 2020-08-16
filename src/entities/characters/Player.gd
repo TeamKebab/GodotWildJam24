@@ -46,6 +46,7 @@ onready var baby_sprite : Sprite = $BabySprite
 
 onready var animationTree = $AnimationTree
 onready var animationAge = animationTree.get("parameters/Age/playback")
+onready var animationState = animationTree.get("parameters/Action/playback")
 
 onready var narrator = find_parent("Level").find_node("GUI")
 
@@ -66,10 +67,11 @@ func _physics_process(delta):
 			_move(delta)
 			
 			if Input.is_action_just_pressed("ui_accept"):
-				_start_interaction()
-				
-			if Input.is_action_just_pressed("ui_attack"):
-				 _attack()
+				var bodies = detection.get_overlapping_bodies()
+				if not bodies.empty():
+					_start_interaction(bodies[0])
+				elif Input.is_action_just_pressed("ui_attack"):
+				 _start_attack()
 				
 		State.Interact:
 			if Input.is_action_just_pressed("ui_accept"):
@@ -120,8 +122,14 @@ func die():
 		_grow_up_baby()	
 	
 	
-func _attack():
-	pass
+func _start_attack():
+	state = State.Attack
+	animationState.travel("Attack")
+	
+
+func _end_attack():
+	state = State.Move
+	animationState.travel("Idle")
 	
 		
 func _move(delta):	
@@ -146,13 +154,7 @@ func _get_input() -> Vector2:
 	return input.normalized()
 
 
-func _start_interaction():
-	var bodies = detection.get_overlapping_bodies()
-	if bodies.empty():
-		return
-	
-	var body = bodies[0]
-	
+func _start_interaction(body):
 	state = State.Interact
 	
 	if has_child():

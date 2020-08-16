@@ -7,10 +7,14 @@ signal attacked(targets)
 
 export(Shape2D) var shape: Shape2D setget _set_shape
 
+
+export var disabled: bool setget _set_disabled
+
 export var damage: int = 1
 export var single_hit: bool = true
 export var area_attack: bool = false
 export var attack_cooldown: float = 3
+
 
 onready var cooldown_timer : Timer = $Cooldown
 
@@ -68,3 +72,12 @@ func _on_attack_triggered(targets):
 func _set_shape(new_shape):
 	shape = new_shape
 	$CollisionShape2D.set_shape(shape)
+
+
+func _set_disabled(new_disabled):
+	if disabled == new_disabled:
+		return
+		
+	$CollisionShape2D.disabled = new_disabled
+	
+	disabled = new_disabled
