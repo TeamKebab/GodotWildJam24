@@ -2,7 +2,7 @@ extends StaticBody2D
 
 
 export var id: String = "baby mama"
-export var help: String = "Press [SPACE] to talk"
+export var help: String = "Press [C] to talk"
 
 onready var help_label: Label = $Label
 

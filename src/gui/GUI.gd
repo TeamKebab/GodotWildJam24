@@ -6,8 +6,8 @@ const LINES = {
 	"has_baby": "What's wrong with you? you can't go having kids with everyone! This is not Game of Thrones."
 }
 
-const SHOW_BUTTONS = ["Ok [ENTER]"]
-const ASK_BUTTONS = ["Ok [ENTER]", "Nope [ESC]"]
+const SHOW_BUTTONS = ["Ok [C]"]
+const ASK_BUTTONS = ["Ok [C]", "Nope [X]"]
 
 
 onready var text_label : RichTextLabel = find_node("Narrator")

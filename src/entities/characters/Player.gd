@@ -68,6 +68,9 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("ui_accept"):
 				_start_interaction()
 				
+			if Input.is_action_just_pressed("ui_attack"):
+				 _attack()
+				
 		State.Interact:
 			if Input.is_action_just_pressed("ui_accept"):
 				_end_interaction(true)
@@ -116,6 +119,9 @@ func die():
 		# todo: return monsters to starting places
 		_grow_up_baby()	
 	
+	
+func _attack():
+	pass
 	
 		
 func _move(delta):	
