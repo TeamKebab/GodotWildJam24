@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 
+signal player_hp_changed(hp)
+
+
 const HP = preload("res://src/components/HP.gd")
 
 
@@ -59,8 +62,11 @@ func _ready():
 	detection.connect("body_exited", self, "_on_detection_body_exited")
 	
 	hp.connect("died", self, "_on_hp_died")
+	hp.connect("hp_changed", self, "_on_hp_changed")
 	
-	
+	emit_signal("player_hp_changed", max_hp)
+
+
 func _physics_process(delta):
 	match state:
 		State.Move:
@@ -115,10 +121,11 @@ func grow_old(time_of_day):
 	
 	
 func die():
+	Game.add_hero_to_dynasty(self)
+	
 	if _baby == null:
-		Game.game_over(self)
+		Game.game_over()
 	else:
-		# todo: return monsters to starting places
 		_grow_up_baby()	
 	
 	
@@ -189,6 +196,11 @@ func _grow_up_baby():
 	parent = _baby.parent
 	# todo: set other baby attributes
 	
+	hp = HP.new(max_hp)
+	hp.connect("hp_changed", self, "_on_hp_changed")
+	
+	emit_signal("player_hp_changed", hp.hp)
+	
 	_grow_up(Age.Teen)
 	baby_sprite.hide()
 	_baby = null
@@ -208,4 +220,8 @@ func _on_detection_body_exited(body):
 
 
 func _on_hp_died():
-	die()
+	Game.end_day()
+
+
+func _on_hp_changed(new_hp):
+	emit_signal("player_hp_changed", new_hp)

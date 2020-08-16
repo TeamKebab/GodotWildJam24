@@ -15,6 +15,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TopBar" type="HBoxContainer" parent="Control"]
+anchor_right = 1.0
+size_flags_horizontal = 3
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="HBoxContainer" parent="Control/TopBar"]
+margin_right = 227.0
+margin_bottom = 13.0
+size_flags_horizontal = 3
+
+[node name="HP" type="Label" parent="Control/TopBar/Health"]
+margin_right = 106.0
+margin_bottom = 13.0
+text = "PLÑAYER HEALTH HERE"
+
+[node name="TimeOfDay" type="Label" parent="Control/TopBar"]
+margin_left = 231.0
+margin_right = 320.0
+margin_bottom = 13.0
+text = "TIME OF DAY HERE"
+
 [node name="NarratorBox" type="PanelContainer" parent="Control"]
 visible = false
 anchor_top = 1.0

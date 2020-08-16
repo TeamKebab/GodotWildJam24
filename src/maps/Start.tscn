@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/resources/hill_autotile.tres" type="TileSet" id=1]
 [ext_resource path="res://src/entities/characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/entities/characters/Companion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/gui/GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/entities/monsters/Monster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/maps/Level.gd" type="Script" id=6]
 
 [node name="Level" type="Node"]
+script = ExtResource( 6 )
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

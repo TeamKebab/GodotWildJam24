@@ -9,11 +9,24 @@ const LINES = {
 const SHOW_BUTTONS = ["Ok [C]"]
 const ASK_BUTTONS = ["Ok [C]", "Nope [X]"]
 
-
+onready var hp_label : Label = find_node("HP")
+onready var time_of_day: Label = find_node("TimeOfDay")
 onready var text_label : RichTextLabel = find_node("Narrator")
 onready var narrator_box : Control = find_node("NarratorBox")
 onready var buttons: Container = find_node("Buttons")
 
+
+onready var player = find_parent("Level").find_node("Player")
+
+
+func _ready():
+	Game.connect("time_passes", self, "_on_time_passes")
+	Game.connect("day_ended", self, "_on_day_ended")
+	
+	player.connect("player_hp_changed", self, "_on_player_hp_changed")
+	
+	hp_label.text = str(player.max_hp)
+	time_of_day.text = str(Game.time_of_day)
 	
 func close():
 	narrator_box.hide()		
@@ -48,3 +61,14 @@ func _ask(key, actions):
 
 	narrator_box.show()		
 
+
+func _on_time_passes(time):
+	time_of_day.text = str(time)
+
+
+func _on_day_ended():
+	time_of_day.text = str(0)
+
+
+func _on_player_hp_changed(hp):
+	hp_label.text = str(hp)

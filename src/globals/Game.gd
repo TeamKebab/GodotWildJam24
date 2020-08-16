@@ -5,16 +5,20 @@ signal time_passes
 signal day_ended
 
 
-const END_OF_DAY = 5
+const END_OF_DAY = 30
+
 
 var hero_dynasty = [
 
 ]
 
+
 var time_of_day: int = 0
+
 
 onready var timer : Timer = $Timer
 onready var scene_loader = $SceneLoader
+
 
 func _ready():
 	timer.connect("timeout", self, "_timer_timeout")
@@ -23,16 +27,30 @@ func _ready():
 
 func restart():
 	timer.stop()
-	time_of_day = 0
-	timer.start()
+	start_day()
 	scene_loader.load_level("start")
 	
 
-func game_over(player):
-	hero_dynasty.append(player.get_info())
+func add_hero_to_dynasty(hero):
+	hero_dynasty.append(hero.get_info())
+	
+
+func end_day():
+	# todo: return monsters to starting places
+	emit_signal("day_ended")
+	timer.stop()
+	start_day()
+
+
+func start_day():
+	time_of_day = 0
+	timer.start()
+
+
+func game_over():	
 	scene_loader.gameover_screen()
 	
-	
+		
 func _timer_timeout():
 	time_of_day += 1
 	
