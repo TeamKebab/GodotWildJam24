@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/sprites/hero.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/characters/Player.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/components/overlap/HurtBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/components/Attack.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sprites/hero_attack.png" type="Texture" id=7]
+[ext_resource path="res://src/resources/Blend2DSpace.tres" type="AnimationNodeBlendSpace2D" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
@@ -778,40 +779,17 @@ start_node = "Teen"
 
 [sub_resource type="AnimationNodeAdd2" id=23]
 
-[sub_resource type="AnimationNodeAnimation" id=24]
-animation = "Down"
-
-[sub_resource type="AnimationNodeAnimation" id=25]
-animation = "Right"
-
-[sub_resource type="AnimationNodeAnimation" id=26]
-animation = "Up"
-
-[sub_resource type="AnimationNodeAnimation" id=27]
-animation = "Left"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=28]
-blend_point_0/node = SubResource( 24 )
-blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 25 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 26 )
-blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 27 )
-blend_point_3/pos = Vector2( -1, 0 )
-blend_mode = 1
-
 [sub_resource type="AnimationNodeAdd2" id=29]
 
 [sub_resource type="AnimationNodeBlendTree" id=30]
-graph_offset = Vector2( 0, 163.5 )
+graph_offset = Vector2( 0, 100 )
 nodes/Action/node = SubResource( 15 )
 nodes/Action/position = Vector2( 260, 60 )
 nodes/Age/node = SubResource( 22 )
 nodes/Age/position = Vector2( 480, 240 )
 nodes/All/node = SubResource( 23 )
 nodes/All/position = Vector2( 760, 140 )
-nodes/Direction/node = SubResource( 28 )
+nodes/Direction/node = ExtResource( 8 )
 nodes/Direction/position = Vector2( 260, 200 )
 nodes/DirectionAction/node = SubResource( 29 )
 nodes/DirectionAction/position = Vector2( 480, 40 )

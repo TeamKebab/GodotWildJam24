@@ -1,0 +1,28 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=8 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Pursue"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=3]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+
+[resource]
+states/Idle/node = SubResource( 1 )
+states/Idle/position = Vector2( 411, 157 )
+states/Pursue/node = SubResource( 2 )
+states/Pursue/position = Vector2( 651, 157 )
+states/Return/node = SubResource( 4 )
+states/Return/position = Vector2( 651, 249 )
+transitions = [ "Idle", "Pursue", SubResource( 3 ), "Pursue", "Return", SubResource( 5 ), "Return", "Pursue", SubResource( 6 ), "Return", "Idle", SubResource( 7 ) ]
+start_node = "Idle"

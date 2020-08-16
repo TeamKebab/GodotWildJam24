@@ -1,106 +1,57 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/sprites/monster.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/monsters/Monster.gd" type="Script" id=2]
 [ext_resource path="res://src/components/overlap/HurtBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/components/Attack.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
 height = 3.0
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 6.0
-height = 10.0
-
-[sub_resource type="CapsuleShape2D" id=13]
 radius = 4.5
 height = 12.0
 
-[sub_resource type="AnimationNodeAnimation" id=4]
-animation = "Down"
-
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "Up"
-
-[sub_resource type="AnimationNodeAnimation" id=6]
-animation = "Right"
-
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Left"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=8]
-blend_point_0/node = SubResource( 4 )
-blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 5 )
-blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 6 )
-blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 7 )
-blend_point_3/pos = Vector2( -1, 0 )
-blend_mode = 1
-
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 resource_name = "Down"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("MeleeAttack:position")
+tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:region_rect")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Rect2( 32, 0, 16, 24 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id=5]
 resource_name = "Left"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("MeleeAttack:position")
+tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -5, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:region_rect")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Rect2( 16, 0, 16, 24 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=6]
 resource_name = "Right"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("MeleeAttack:position")
+tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -109,22 +60,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 7, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:region_rect")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ Rect2( 0, 0, 16, 24 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=7]
 resource_name = "Up"
 loop = true
 tracks/0/type = "value"
@@ -139,24 +78,12 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Rect2( 48, 0, 16, 24 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("MeleeAttack:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -5 ) ]
-}
 
 [node name=" Monster" type="KinematicBody2D"]
 collision_layer = 16
 collision_mask = 31
 script = ExtResource( 2 )
-facing_direction = Vector2( -1, 0 )
+facing_direction = Vector2( 0, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, 9 )
@@ -166,30 +93,20 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 16, 0, 16, 24 )
-
-[node name="MeleeAttack" parent="." instance=ExtResource( 5 )]
-position = Vector2( -5, 1 )
-collision_layer = 0
-collision_mask = 2147483680
-shape = SubResource( 2 )
-single_hit = false
-attack_cooldown = 3.0
+region_rect = Rect2( 32, 0, 16, 24 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]
 modulate = Color( 1, 1, 1, 0.282353 )
 collision_layer = 128
 collision_mask = 0
-shape = SubResource( 13 )
+shape = SubResource( 2 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 8 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/blend_position = Vector2( -1, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Down = SubResource( 9 )
-anims/Left = SubResource( 10 )
-anims/Right = SubResource( 11 )
-anims/Up = SubResource( 12 )
+anims/Down = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/Left = SubResource( 5 )
+anims/Right = SubResource( 6 )
+anims/Up = SubResource( 7 )

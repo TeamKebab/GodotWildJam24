@@ -1,0 +1,384 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/entities/monsters/Monster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/components/Attack.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/entities/monsters/SwordSoldier.gd" type="Script" id=3]
+[ext_resource path="res://src/components/overlap/DetectionBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/resources/Blend2DSpace.tres" type="AnimationNodeBlendSpace2D" id=5]
+[ext_resource path="res://src/resources/PursueAndAttackStateMachine.tres" type="AnimationNodeStateMachine" id=6]
+
+[sub_resource type="AnimationNodeAdd2" id=1]
+
+[sub_resource type="AnimationNodeBlendTree" id=2]
+nodes/Action/node = ExtResource( 6 )
+nodes/Action/position = Vector2( 380, 140 )
+nodes/Add2/node = SubResource( 1 )
+nodes/Add2/position = Vector2( 660, 60 )
+nodes/Direction/node = ExtResource( 5 )
+nodes/Direction/position = Vector2( 380, -20 )
+nodes/output/position = Vector2( 880, 60 )
+node_connections = [ "output", 0, "Add2", "Add2", 0, "Direction", "Add2", 1, "Action" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 32, 0, 16, 24 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeleeAttack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DetectionBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 39 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DetectionBox:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OuterDetectionBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 39 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OuterDetectionBox:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+[sub_resource type="Animation" id=6]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 16, 0, 16, 24 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeleeAttack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DetectionBox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DetectionBox:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -42, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OuterDetectionBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -42, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OuterDetectionBox:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Pursue"
+
+[sub_resource type="Animation" id=8]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 16, 24 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeleeAttack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 7, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DetectionBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 42, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DetectionBox:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OuterDetectionBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 42, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OuterDetectionBox:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 48, 0, 16, 24 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeleeAttack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DetectionBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -38 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DetectionBox:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OuterDetectionBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -38 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OuterDetectionBox:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 6.0
+height = 10.0
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 40, 50 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 40, 50 )
+
+[node name="SwordSoldier" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+facing_direction = Vector2( 1, 0 )
+min_turn_around_time = 1.0
+max_turn_around_time = 3.0
+
+[node name="Sprite" parent="." index="1"]
+region_rect = Rect2( 0, 0, 16, 24 )
+
+[node name="AnimationTree" parent="." index="3"]
+tree_root = SubResource( 2 )
+active = true
+parameters/Action/playback = SubResource( 3 )
+parameters/Add2/add_amount = 1.0
+parameters/Direction/blend_position = Vector2( 1, 0 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/Down = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Left = SubResource( 6 )
+anims/Pursue = SubResource( 7 )
+anims/Right = SubResource( 8 )
+anims/Up = SubResource( 9 )
+
+[node name="MeleeAttack" parent="." index="5" instance=ExtResource( 2 )]
+position = Vector2( 7, 1 )
+collision_layer = 0
+collision_mask = 32
+shape = SubResource( 10 )
+single_hit = false
+attack_cooldown = 3.0
+
+[node name="DetectionBox" parent="." index="6" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 42, 0 )
+rotation = 1.5708
+collision_mask = 32
+shape = SubResource( 11 )
+
+[node name="OuterDetectionBox" parent="." index="7" instance=ExtResource( 4 )]
+position = Vector2( 42, 0 )
+rotation = 1.5708
+collision_mask = 32
+shape = SubResource( 12 )
+
+[node name="TurnAroundTimer" type="Timer" parent="." index="8"]

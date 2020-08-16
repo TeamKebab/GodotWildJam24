@@ -1,4 +1,4 @@
-
+tool
 extends "res://src/components/overlap/DetectionBox.gd"
 
 
