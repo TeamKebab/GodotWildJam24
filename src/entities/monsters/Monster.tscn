@@ -13,7 +13,7 @@ height = 3.0
 radius = 6.0
 height = 10.0
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=13]
 radius = 4.5
 height = 12.0
 
@@ -180,10 +180,7 @@ attack_cooldown = 3.0
 modulate = Color( 1, 1, 1, 0.282353 )
 collision_layer = 128
 collision_mask = 0
-
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2( 0.5, 1 )
-shape = SubResource( 3 )
+shape = SubResource( 13 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 8 )
@@ -196,5 +193,3 @@ anims/Down = SubResource( 9 )
 anims/Left = SubResource( 10 )
 anims/Right = SubResource( 11 )
 anims/Up = SubResource( 12 )
-
-[editable path="HurtBox"]

@@ -1,14 +1,9 @@
-tool
-extends Area2D
+
+extends "res://src/components/overlap/DetectionBox.gd"
 
 
 signal attacked(targets)
 
-
-export(Shape2D) var shape: Shape2D setget _set_shape
-
-
-export var disabled: bool setget _set_disabled
 
 export var damage: int = 1
 export var single_hit: bool = true
@@ -68,16 +63,3 @@ func _on_cooldown_timeout():
 func _on_attack_triggered(targets):
 	cooldown_timer.start(attack_cooldown)		
 
-
-func _set_shape(new_shape):
-	shape = new_shape
-	$CollisionShape2D.set_shape(shape)
-
-
-func _set_disabled(new_disabled):
-	if disabled == new_disabled:
-		return
-		
-	$CollisionShape2D.disabled = new_disabled
-	
-	disabled = new_disabled
