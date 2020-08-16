@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/resources/hill_autotile.tres" type="TileSet" id=1]
 [ext_resource path="res://src/entities/characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/entities/characters/Companion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/gui/GUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/entities/monsters/Monster.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node"]
 
 [node name="Ground" type="TileMap" parent="."]
+visible = false
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 0
@@ -29,5 +31,8 @@ position = Vector2( 273.65, 20.5061 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 188.086, 59.2148 )
+
+[node name=" Monster" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 180.582, 6.79807 )
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]

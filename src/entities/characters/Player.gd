@@ -1,17 +1,13 @@
 extends KinematicBody2D
 
 
+const HP = preload("res://src/components/HP.gd")
+
+
 enum Age {
 	Teen,
 	Adult,
 	Elder,
-}
-
-enum Direction {
-	Right,
-	Left,
-	Up,
-	Down,
 }
 
 enum State {
@@ -31,10 +27,9 @@ const AGE_ANIMATIONS = {
 
 export var acceleration: float = 200
 export var max_speed: float = 100
-
+export var max_hp: int = 2
 
 var motion: Vector2 = Vector2.ZERO
-var current_direction = Direction.Right
 
 var state = State.Move
 var companion = null
@@ -43,10 +38,11 @@ var _baby = null
 
 var parent = ""
 
+onready var hp = HP.new(max_hp)
 
+onready var detection : Area2D = $DetectionBox
 onready var sprite : Sprite = $Sprite
 onready var baby_sprite : Sprite = $BabySprite
-onready var detection : Area2D = $DetectionBox
 
 onready var animationTree = $AnimationTree
 onready var animationAge = animationTree.get("parameters/Age/playback")
@@ -60,6 +56,8 @@ func _ready():
 	
 	detection.connect("body_entered", self, "_on_detection_body_entered")
 	detection.connect("body_exited", self, "_on_detection_body_exited")
+	
+	hp.connect("died", self, "_on_hp_died")
 	
 	
 func _physics_process(delta):
@@ -115,7 +113,9 @@ func die():
 	if _baby == null:
 		Game.game_over(self)
 	else:
-		_grow_up_baby()
+		# todo: return monsters to starting places
+		_grow_up_baby()	
+	
 	
 		
 func _move(delta):	
@@ -197,3 +197,7 @@ func _on_detection_body_entered(body):
 
 func _on_detection_body_exited(body):
 	body.hide_help()
+
+
+func _on_hp_died():
+	die()
