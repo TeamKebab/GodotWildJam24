@@ -5,7 +5,7 @@
 [ext_resource path="res://src/components/overlap/DetectionBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/baby.png" type="Texture" id=4]
 [ext_resource path="res://src/components/overlap/HurtBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/components/Attack.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/components/MeleeAttack.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sprites/hero_attack.png" type="Texture" id=7]
 [ext_resource path="res://src/resources/Blend2DSpace.tres" type="AnimationNodeBlendSpace2D" id=8]
 
@@ -797,7 +797,6 @@ smoothing_enabled = true
 position = Vector2( 0.5, -10 )
 texture = ExtResource( 1 )
 hframes = 3
-frame = 1
 region_enabled = true
 region_rect = Rect2( 216, 0, 72, 24 )
 
