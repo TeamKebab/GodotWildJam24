@@ -21,12 +21,13 @@ _global_script_class_icons={
 [application]
 
 config/name="GodotWildJam24"
-run/main_scene="res://src/maps/Start.tscn"
+run/main_scene="res://src/gui/Start.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Game="*res://src/globals/Game.tscn"
+Narrator="*res://src/globals/Narrator.gd"
 
 [display]
 
@@ -72,6 +73,7 @@ ui_attack={
 2d_physics/layer_6="player hurtbox"
 2d_physics/layer_7="npc hurtbox"
 2d_physics/layer_8="enemy hurtbox"
+2d_physics/layer_9="item hurtbox"
 
 [rendering]
 

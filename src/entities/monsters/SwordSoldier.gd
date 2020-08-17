@@ -12,6 +12,7 @@ var target = null
 onready var turn_around_timer = $TurnAroundTimer
 onready var detection = $DetectionBox
 onready var outer_detection = $OuterDetectionBox
+onready var melee_attack = $MeleeAttack
 
 onready var animationAction = $AnimationTree.get("parameters/Action/playback")
 onready var navigation = find_parent("Level").find_node("Navigation2D")
@@ -21,7 +22,7 @@ func _ready():
 	turn_around_timer.connect("timeout", self, "_on_TurnAroundTimer_timeout")
 	detection.connect("area_entered", self, "_on_detection_area_entered")
 	outer_detection.connect("area_exited", self, "_on_outer_detection_area_exited")
-	
+	melee_attack.connect("attacked", self, "_on_target_attacked")
 	start_idle()
 
 
@@ -29,15 +30,18 @@ func _physics_process(delta):
 	if Engine.editor_hint:
 		return
 	
-	match animationAction.get_current_node():
-		"Idle":
-			pass
-		"Attack":
-			pass
-		"Pursue":
-			pursue(delta)
-		"Return":
-			return_to_start(delta)
+	if motion == Vector2.ZERO:
+		match animationAction.get_current_node():
+			"Idle":
+				pass
+			"Attack":
+				pass
+			"Pursue":
+				pursue(delta)
+			"Return":
+				return_to_start(delta)
+	else:
+		move(delta)
 
 	
 func restart():
@@ -50,7 +54,8 @@ func pursue(delta):
 		start_returning()
 		return
 	
-	_move_to_point(target.position, delta)
+	if not melee_attack.overlaps_area(target):
+		_move_to_point(target.get_parent().position, delta)
 	
 
 func return_to_start(delta):
@@ -80,8 +85,7 @@ func start_idle():
 	animationAction.travel("Idle")
 
 
-func start_pursuing(player):
-	target = player
+func start_pursuing():
 	animationAction.travel("Pursue")
 	
 
@@ -118,11 +122,14 @@ func _on_TurnAroundTimer_timeout():
 
 
 func _on_detection_area_entered(area):
-	start_pursuing(area.get_parent())
+	target = area
+	start_pursuing()
 	
 
 func _on_outer_detection_area_exited(area):
-	var body = area.get_parent()
-	
-	if body == target:
+	if area == target:
 		start_returning()
+
+
+func _on_target_attacked(_targets):
+	animationAction.travel("Attack")

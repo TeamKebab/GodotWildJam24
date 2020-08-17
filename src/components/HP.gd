@@ -5,7 +5,7 @@ signal hp_changed(new_hp)
 signal died()
 
 
-var max_hp: int = 1 
+var max_hp: int = 1 setget _set_max_hp
 var hp : int setget _set_hp
 
 
@@ -40,5 +40,7 @@ func _set_hp(new_hp):
 		emit_signal("died")
 		
 
-
+func _set_max_hp(new_max_hp):
+	max_hp = new_max_hp
+	_set_hp(new_max_hp)
 

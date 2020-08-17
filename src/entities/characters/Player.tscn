@@ -81,6 +81,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("Attack")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "do_effect"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.1
@@ -779,10 +793,10 @@ start_node = "Teen"
 
 [sub_resource type="AnimationNodeAdd2" id=23]
 
-[sub_resource type="AnimationNodeAdd2" id=29]
+[sub_resource type="AnimationNodeAdd2" id=24]
 
-[sub_resource type="AnimationNodeBlendTree" id=30]
-graph_offset = Vector2( 0, 100 )
+[sub_resource type="AnimationNodeBlendTree" id=25]
+graph_offset = Vector2( 0, 63.5 )
 nodes/Action/node = SubResource( 15 )
 nodes/Action/position = Vector2( 260, 60 )
 nodes/Age/node = SubResource( 22 )
@@ -791,24 +805,24 @@ nodes/All/node = SubResource( 23 )
 nodes/All/position = Vector2( 760, 140 )
 nodes/Direction/node = ExtResource( 8 )
 nodes/Direction/position = Vector2( 260, 200 )
-nodes/DirectionAction/node = SubResource( 29 )
+nodes/DirectionAction/node = SubResource( 24 )
 nodes/DirectionAction/position = Vector2( 480, 40 )
 nodes/output/position = Vector2( 960, 140 )
-node_connections = [ "output", 0, "All", "DirectionAction", 0, "Action", "DirectionAction", 1, "Direction", "All", 0, "DirectionAction", "All", 1, "Age" ]
+node_connections = [ "output", 0, "All", "All", 0, "DirectionAction", "All", 1, "Age", "DirectionAction", 0, "Action", "DirectionAction", 1, "Direction" ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=31]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
-[sub_resource type="CapsuleShape2D" id=33]
+[sub_resource type="CapsuleShape2D" id=28]
 radius = 7.7
 height = 10.2
 
-[sub_resource type="CapsuleShape2D" id=36]
+[sub_resource type="CapsuleShape2D" id=29]
 radius = 3.5
 height = 8.0
 
-[sub_resource type="CapsuleShape2D" id=35]
+[sub_resource type="CapsuleShape2D" id=30]
 radius = 7.7
 height = 10.2
 
@@ -831,6 +845,7 @@ smoothing_enabled = true
 position = Vector2( -0.888638, -10.4568 )
 texture = ExtResource( 1 )
 hframes = 3
+frame = 1
 region_enabled = true
 region_rect = Rect2( 144, 0, 72, 24 )
 
@@ -863,11 +878,11 @@ anims/Teen = SubResource( 9 )
 anims/Up = SubResource( 10 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 30 )
+tree_root = SubResource( 25 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/Action/playback = SubResource( 31 )
-parameters/Age/playback = SubResource( 32 )
+parameters/Action/playback = SubResource( 26 )
+parameters/Age/playback = SubResource( 27 )
 parameters/All/add_amount = 1.0
 parameters/Direction/blend_position = Vector2( 0, 0 )
 parameters/DirectionAction/add_amount = 1.0
@@ -875,19 +890,20 @@ parameters/DirectionAction/add_amount = 1.0
 [node name="DetectionBox" parent="." instance=ExtResource( 3 )]
 position = Vector2( -1, 2 )
 rotation = 1.5708
-collision_mask = 10
-shape = SubResource( 33 )
+collision_mask = 320
+shape = SubResource( 28 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, -6 )
 collision_layer = 32
 collision_mask = 0
-shape = SubResource( 36 )
+shape = SubResource( 29 )
 
 [node name="Attack" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1.5, 7.54324 )
 rotation = 1.5708
 collision_layer = 0
 collision_mask = 128
-shape = SubResource( 35 )
+shape = SubResource( 30 )
 disabled = true
+knockback_strength = 50

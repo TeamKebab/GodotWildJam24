@@ -1,12 +1,12 @@
 extends Node
 
 
-const LEVELS = {
-	"start_screen": "res://src/maps/Start.tscn",
-	"win_screen": "res://src/maps/Start.tscn",
+const SCREENS = {
+	"start_screen": "res://src/maps/TestLevel.tscn",
+	"win_screen": "res://src/maps/TestLevel.tscn",
 	"gameover": "res://src/gui/GameOver.tscn",
-	"start": "res://src/maps/Start.tscn",
 }
+
 
 var current_scene
 
@@ -16,40 +16,46 @@ func _ready():
 	
 
 func start_screen():
-	load_level("start_screen")
+	call_deferred("_deferred_load_screen", "start_screen")
 
 
 func win_screen():
-	load_level("win_screen")
+	call_deferred("_deferred_load_screen", "win_screen")
 
 
 func gameover_screen():
-	load_level("gameover")
+	call_deferred("_deferred_load_screen", "gameover")
 
-
+	
 func set_current_scene():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
 
 
-func load_level(name):
-	call_deferred("_deferred_load_level", LEVELS[name])
+func load_level(path, player, entry, map_state):
+	call_deferred("_deferred_load_level", path, player, entry, map_state)
 
 
-func _deferred_load_level(path):
-	# It is now safe to remove the current scene
+func _deferred_load_level(path, player, entry, map_state):
 	current_scene.free()
-	
-	# Load the new scene.
+		
 	var s = ResourceLoader.load(path)
-
-	# Instance the new scene.
 	current_scene = s.instance()
 
-	# Add it to the active scene, as child of root.
+	if map_state.has(path):
+		current_scene.set_state(map_state[path])
+	
+	current_scene.set_player(player, entry)
+		
 	get_tree().get_root().add_child(current_scene)
-
-	# Optionally, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
 	
-	
+
+func _deferred_load_screen(name):
+	current_scene.free()
+		
+	var s = ResourceLoader.load(SCREENS[name])
+	current_scene = s.instance()
+
+	get_tree().get_root().add_child(current_scene)
+	get_tree().set_current_scene(current_scene)

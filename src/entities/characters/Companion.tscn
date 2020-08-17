@@ -1,15 +1,16 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/sprites/companion.png" type="Texture" id=1]
+[ext_resource path="res://src/components/Interaction.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/entities/characters/Companion.gd" type="Script" id=2]
-[ext_resource path="res://assets/fonts/Retro2.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/sprites/companion.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 3.0
-height = 3.0
+radius = 4.0
+height = 2.0
 
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 3 )
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.0
+height = 3.0
 
 [node name="Companion" type="StaticBody2D"]
 collision_layer = 8
@@ -23,22 +24,9 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.396851, -10.0205 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -54.0
-margin_top = 0.0850143
-margin_right = 54.0
-margin_bottom = 14.085
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Press [SPACE] to talk"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Interaction" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -5 )
+collision_layer = 64
+shape = SubResource( 2 )
