@@ -1,0 +1,85 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/entities/monsters/Monster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/resources/animations/ElfArcher/Idle.tres" type="Animation" id=2]
+[ext_resource path="res://src/resources/animations/ElfArcher/Down.tres" type="Animation" id=3]
+[ext_resource path="res://src/resources/animations/ElfArcher/Left.tres" type="Animation" id=4]
+[ext_resource path="res://src/resources/animations/ElfArcher/Up.tres" type="Animation" id=5]
+[ext_resource path="res://src/resources/animations/ElfArcher/Right.tres" type="Animation" id=6]
+[ext_resource path="res://assets/sprites/elf.png" type="Texture" id=7]
+[ext_resource path="res://src/resources/PursueAndAttackTree.tres" type="AnimationNodeBlendTree" id=8]
+[ext_resource path="res://src/resources/animations/ElfArcher/Attack.tres" type="Animation" id=9]
+[ext_resource path="res://src/resources/animations/ElfArcher/Pursue.tres" type="Animation" id=10]
+[ext_resource path="res://src/components/RangedAttack.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/entities/Arrow.tscn" type="PackedScene" id=12]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.0
+height = 1.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.0
+height = 15.0
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 80, 120 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 50, 80 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 50, 50 )
+
+[node name="ElfArcher" instance=ExtResource( 1 )]
+facing_direction = Vector2( 0, -1 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, 2 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2( 0, -6 )
+texture = ExtResource( 7 )
+region_rect = Rect2( 96, 0, 24, 24 )
+
+[node name="HurtBox" parent="." index="2"]
+position = Vector2( 0, -6 )
+shape = SubResource( 2 )
+
+[node name="AnimationTree" parent="." index="3"]
+tree_root = ExtResource( 8 )
+active = true
+parameters/Action/playback = SubResource( 3 )
+parameters/Add2/add_amount = 1.0
+parameters/Direction/blend_position = Vector2( -1, 0 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/Attack = ExtResource( 9 )
+anims/Down = ExtResource( 3 )
+anims/Idle = ExtResource( 2 )
+anims/Left = ExtResource( 4 )
+anims/Pursue = ExtResource( 10 )
+anims/Right = ExtResource( 6 )
+anims/Up = ExtResource( 5 )
+
+[node name="OuterDetectionBox" parent="." index="7"]
+position = Vector2( -50, -10 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="DetectionBox" parent="." index="8"]
+position = Vector2( -50, -10 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="RangedAttack" parent="." index="9" instance=ExtResource( 11 )]
+position = Vector2( -50, -10 )
+rotation = 1.5708
+collision_layer = 0
+collision_mask = 32
+shape = SubResource( 6 )
+single_hit = false
+Projectile = ExtResource( 12 )

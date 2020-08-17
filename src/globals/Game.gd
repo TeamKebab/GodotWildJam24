@@ -11,7 +11,7 @@ const Player = preload("res://src/entities/characters/Player.tscn")
 
 const START_MAP = "res://src/maps/TestLevel.tscn"
 
-const END_OF_DAY = 30
+const END_OF_DAY = 300
 const ADULT_AGE = int(END_OF_DAY * 0.3)
 const ELDER_AGE = int(END_OF_DAY * 0.8)
 
@@ -22,7 +22,7 @@ var map_state = {}
 
 
 var time_of_day: int = 0
-var max_hp: int = 2
+var max_hp: int = 20
 var hp: int setget , get_hp
 
 onready var timer : Timer = $Timer

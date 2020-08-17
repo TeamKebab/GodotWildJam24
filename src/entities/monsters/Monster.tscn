@@ -1,83 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/resources/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/entities/monsters/Monster.gd" type="Script" id=2]
 [ext_resource path="res://src/components/overlap/HurtBox.tscn" type="PackedScene" id=4]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 3.0
-height = 3.0
-
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 4.5
-height = 12.0
-
-[sub_resource type="Animation" id=3]
-resource_name = "Down"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 32, 0, 16, 24 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "Idle"
-
-[sub_resource type="Animation" id=5]
-resource_name = "Left"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 16, 0, 16, 24 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "Right"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 0, 0, 16, 24 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "Up"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 48, 0, 16, 24 ) ]
-}
+[ext_resource path="res://src/components/overlap/DetectionBox.tscn" type="PackedScene" id=6]
 
 [node name=" Monster" type="KinematicBody2D"]
 collision_layer = 16
@@ -86,29 +12,20 @@ script = ExtResource( 2 )
 facing_direction = Vector2( 0, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 9 )
-rotation = 1.5708
-shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 region_enabled = true
-region_rect = Rect2( 32, 0, 16, 24 )
+region_rect = Rect2( 48, 0, 16, 24 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]
 modulate = Color( 1, 1, 1, 0.282353 )
 collision_layer = 128
 collision_mask = 0
-shape = SubResource( 2 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Down = SubResource( 3 )
-anims/Idle = SubResource( 4 )
-anims/Left = SubResource( 5 )
-anims/Right = SubResource( 6 )
-anims/Up = SubResource( 7 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -20.0
@@ -121,3 +38,15 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TurnAroundTimer" type="Timer" parent="."]
+
+[node name="OuterDetectionBox" parent="." instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0.105882 )
+position = Vector2( 0, 39 )
+collision_mask = 32
+
+[node name="DetectionBox" parent="." instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 0, 39 )
+collision_mask = 32

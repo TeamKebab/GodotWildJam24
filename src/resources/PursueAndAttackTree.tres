@@ -1,0 +1,17 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=4 format=2]
+
+[ext_resource path="res://src/resources/Blend2DSpace.tres" type="AnimationNodeBlendSpace2D" id=1]
+[ext_resource path="res://src/resources/PursueAndAttackStateMachine.tres" type="AnimationNodeStateMachine" id=2]
+
+[sub_resource type="AnimationNodeAdd2" id=1]
+
+[resource]
+graph_offset = Vector2( 0, -63.5 )
+nodes/Action/node = ExtResource( 2 )
+nodes/Action/position = Vector2( 380, 140 )
+nodes/Add2/node = SubResource( 1 )
+nodes/Add2/position = Vector2( 660, 60 )
+nodes/Direction/node = ExtResource( 1 )
+nodes/Direction/position = Vector2( 380, -20 )
+nodes/output/position = Vector2( 880, 60 )
+node_connections = [ "output", 0, "Add2", "Add2", 0, "Direction", "Add2", 1, "Action" ]

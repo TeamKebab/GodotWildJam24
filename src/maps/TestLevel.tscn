@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/maps/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/resources/hill_autotile.tres" type="TileSet" id=2]
 [ext_resource path="res://src/entities/Gateway.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/entities/Shrine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/entities/monsters/SwordSoldier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/entities/monsters/ElfArcher.tscn" type="PackedScene" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 890.746, 239.173, 452.294, 246.733, 149.126, 143.289, 138.435, -50.0361, 399.469, 49.7445, 912.165, 391.623, 1051.08, 456.484, -171.633, 456.484, 45.3392, 418.082, 390.558, 279.49, 233.067, 284.53, 801.264, 54.199, 801.264, -46.4725, 1052.67, -141.311, -171.633, -138.854, 396.796, -44.6908, -66.4713, 140.616, -64.6895, -45.5816 )
@@ -31,24 +32,39 @@ navpoly = SubResource( 1 )
 position = Vector2( 248, 72 )
 
 [node name="Gateway" parent="YSort/Shrine" index="2"]
+disabled = false
 map_path = "res://src/maps/TestShrine.tscn"
+entry_name = "Default"
+immediate = true
+question = "ask_next_map"
 
 [node name="Gateway" parent="YSort" index="1" instance=ExtResource( 3 )]
 position = Vector2( 1040, 160 )
 shape = SubResource( 2 )
+disabled = false
+help = "Press [C] to talk"
 map_path = "res://src/maps/TestLevel2.tscn"
+entry_name = "Default"
 automatic = true
 immediate = false
+question = "ask_next_map"
 
 [node name="Gateway2" parent="YSort" index="2" instance=ExtResource( 3 )]
 position = Vector2( -160, 152 )
 shape = SubResource( 2 )
+disabled = false
+help = "Press [C] to talk"
 map_path = "res://src/maps/TestLevel2.tscn"
+entry_name = "Default"
 automatic = true
 immediate = false
+question = "ask_next_map"
 
 [node name="SwordSoldier" parent="YSort" index="3" instance=ExtResource( 5 )]
-position = Vector2( 168, 112 )
+position = Vector2( 536, 72 )
+
+[node name="ElfArcher" parent="YSort" index="4" instance=ExtResource( 6 )]
+position = Vector2( 200, 200 )
 
 [node name="Default" parent="Entries" index="0"]
 position = Vector2( -128, 192 )

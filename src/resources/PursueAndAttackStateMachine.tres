@@ -7,7 +7,7 @@ animation = "Attack"
 animation = "Idle"
 
 [sub_resource type="AnimationNodeAnimation" id=3]
-animation = "Idle"
+animation = "Pursue"
 
 [sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Pursue"
@@ -22,17 +22,18 @@ animation = "Pursue"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=9]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
 
 [resource]
 states/Attack/node = SubResource( 1 )
-states/Attack/position = Vector2( 854, 157 )
+states/Attack/position = Vector2( 855, 157 )
 states/Idle/node = SubResource( 2 )
 states/Idle/position = Vector2( 411, 157 )
 states/Pursue/node = SubResource( 3 )
 states/Pursue/position = Vector2( 651, 157 )
 states/Return/node = SubResource( 4 )
-states/Return/position = Vector2( 651, 249 )
-transitions = [ "Idle", "Pursue", SubResource( 5 ), "Pursue", "Return", SubResource( 6 ), "Return", "Pursue", SubResource( 7 ), "Return", "Idle", SubResource( 8 ), "Pursue", "Attack", SubResource( 9 ), "Attack", "Pursue", SubResource( 10 ) ]
+states/Return/position = Vector2( 651, 295 )
+transitions = [ "Idle", "Pursue", SubResource( 5 ), "Pursue", "Return", SubResource( 6 ), "Return", "Pursue", SubResource( 7 ), "Return", "Idle", SubResource( 8 ), "Pursue", "Attack", SubResource( 9 ), "Attack", "Pursue", SubResource( 13 ) ]
 start_node = "Idle"
-graph_offset = Vector2( 163.753, 0 )
+graph_offset = Vector2( 163.753, 92.2932 )

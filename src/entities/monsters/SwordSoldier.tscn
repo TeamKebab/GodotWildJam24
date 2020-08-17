@@ -1,413 +1,48 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/entities/monsters/Monster.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/components/Attack.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/components/MeleeAttack.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/entities/monsters/SwordSoldier.gd" type="Script" id=3]
-[ext_resource path="res://src/components/overlap/DetectionBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/resources/Blend2DSpace.tres" type="AnimationNodeBlendSpace2D" id=5]
-[ext_resource path="res://src/resources/PursueAndAttackStateMachine.tres" type="AnimationNodeStateMachine" id=6]
+[ext_resource path="res://src/resources/animations/SwordSoldier/Down.tres" type="Animation" id=4]
+[ext_resource path="res://src/resources/PursueAndAttackTree.tres" type="AnimationNodeBlendTree" id=5]
 [ext_resource path="res://assets/sprites/monster.png" type="Texture" id=7]
+[ext_resource path="res://src/resources/animations/SwordSoldier/Idle.tres" type="Animation" id=8]
+[ext_resource path="res://src/resources/animations/SwordSoldier/Left.tres" type="Animation" id=9]
+[ext_resource path="res://src/resources/animations/SwordSoldier/Pursue.tres" type="Animation" id=10]
+[ext_resource path="res://src/resources/animations/SwordSoldier/Right.tres" type="Animation" id=11]
+[ext_resource path="res://src/resources/animations/SwordSoldier/Up.tres" type="Animation" id=12]
+[ext_resource path="res://src/resources/animations/SwordSoldier/Attack.tres" type="Animation" id=14]
 
-[sub_resource type="AnimationNodeAdd2" id=1]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.0
+height = 3.0
 
-[sub_resource type="AnimationNodeBlendTree" id=2]
-nodes/Action/node = ExtResource( 6 )
-nodes/Action/position = Vector2( 380, 140 )
-nodes/Add2/node = SubResource( 1 )
-nodes/Add2/position = Vector2( 660, 60 )
-nodes/Direction/node = ExtResource( 5 )
-nodes/Direction/position = Vector2( 380, -20 )
-nodes/output/position = Vector2( 880, 60 )
-node_connections = [ "output", 0, "Add2", "Add2", 0, "Direction", "Add2", 1, "Action" ]
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 4.5
+height = 12.0
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
-[sub_resource type="Animation" id=4]
-resource_name = "Attack"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "start_pursuing"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("MeleeAttack")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "do_effect"
-} ]
-}
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 60, 75 )
 
-[sub_resource type="Animation" id=5]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 0, 64, 128, 32 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("MeleeAttack:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 5 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("DetectionBox:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 39 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("DetectionBox:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("OuterDetectionBox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 39 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("OuterDetectionBox:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 40, 50 )
 
-[sub_resource type="Animation" id=6]
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=7]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 0, 32, 128, 32 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("MeleeAttack:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -5, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("DetectionBox:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 90.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("DetectionBox:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -42, 0 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("OuterDetectionBox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -42, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("OuterDetectionBox:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 90.0 ]
-}
-
-[sub_resource type="Animation" id=8]
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=9]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 0, 0, 128, 32 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("MeleeAttack:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 7, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("DetectionBox:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 42, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("DetectionBox:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 90.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("OuterDetectionBox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 42, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("OuterDetectionBox:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 90.0 ]
-}
-
-[sub_resource type="Animation" id=10]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 0, 96, 128, 32 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("MeleeAttack:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -5 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("DetectionBox:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -38 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("DetectionBox:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("OuterDetectionBox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -38 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("OuterDetectionBox:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-
-[sub_resource type="CapsuleShape2D" id=11]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 6.0
 height = 10.0
 
-[sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 40, 50 )
-
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 60, 75 )
-
 [node name="SwordSoldier" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+facing_direction = Vector2( 0, 1 )
 min_turn_around_time = 1.0
 max_turn_around_time = 3.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0.5, 9 )
+rotation = 1.5708
+shape = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
 position = Vector2( 0, -2 )
@@ -415,39 +50,35 @@ texture = ExtResource( 7 )
 hframes = 4
 region_rect = Rect2( 0, 64, 128, 32 )
 
+[node name="HurtBox" parent="." index="2"]
+position = Vector2( 0, 1 )
+shape = SubResource( 2 )
+
 [node name="AnimationTree" parent="." index="3"]
-tree_root = SubResource( 2 )
+tree_root = ExtResource( 5 )
 active = true
 parameters/Action/playback = SubResource( 3 )
 parameters/Add2/add_amount = 1.0
 parameters/Direction/blend_position = Vector2( 0, 0 )
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/Attack = SubResource( 4 )
-anims/Down = SubResource( 5 )
-anims/Idle = SubResource( 6 )
-anims/Left = SubResource( 7 )
-anims/Pursue = SubResource( 8 )
-anims/Right = SubResource( 9 )
-anims/Up = SubResource( 10 )
+anims/Attack = ExtResource( 14 )
+anims/Down = ExtResource( 4 )
+anims/Idle = ExtResource( 8 )
+anims/Left = ExtResource( 9 )
+anims/Pursue = ExtResource( 10 )
+anims/Right = ExtResource( 11 )
+anims/Up = ExtResource( 12 )
 
-[node name="MeleeAttack" parent="." index="5" instance=ExtResource( 2 )]
+[node name="OuterDetectionBox" parent="." index="7"]
+shape = SubResource( 4 )
+
+[node name="DetectionBox" parent="." index="8"]
+shape = SubResource( 5 )
+
+[node name="Attack" parent="." index="9" instance=ExtResource( 2 )]
 position = Vector2( 1, 5 )
 collision_layer = 0
 collision_mask = 32
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 single_hit = false
-
-[node name="DetectionBox" parent="." index="6" instance=ExtResource( 4 )]
-modulate = Color( 1, 1, 1, 0.156863 )
-position = Vector2( 0, 39 )
-collision_mask = 32
-shape = SubResource( 12 )
-
-[node name="OuterDetectionBox" parent="." index="7" instance=ExtResource( 4 )]
-modulate = Color( 1, 1, 1, 0.105882 )
-position = Vector2( 0, 39 )
-collision_mask = 32
-shape = SubResource( 13 )
-
-[node name="TurnAroundTimer" type="Timer" parent="." index="8"]

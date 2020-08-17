@@ -1,6 +1,6 @@
 tool
 extends "res://src/components/overlap/DetectionBox.gd"
-
+class_name Attack
 
 signal attacked(targets)
 
@@ -22,8 +22,7 @@ func _ready():
 	connect("area_entered", self, "_on_area_entered")
 	connect("attacked", self, "_on_attack_triggered")
 	
-	if not single_hit:
-		cooldown_timer.connect("timeout", self, "_on_cooldown_timeout")
+	cooldown_timer.connect("timeout", self, "_on_cooldown_timeout")
 		
 
 func is_valid_target(target):
@@ -36,18 +35,10 @@ func do_effect():
 	attacked_targets = []
 
 
-func do_target_effect(target):
-	target.hp.damage(damage)	
+func do_target_effect(target_hurtbox):
+	pass
 	
-	var parent_position = get_parent().position
-	var knockback_direction = parent_position.direction_to(target.position)
-	
-	if knockback_direction == Vector2.ZERO:
-		print("overlapping")
-		
-	target.knockback(knockback_direction * knockback_strength)
-	
-	
+
 func _trigger_attack():
 	var areas = get_overlapping_areas()
 	
@@ -59,7 +50,7 @@ func _trigger_attack():
 	for area in areas:
 		var target = area.get_parent()
 		if is_valid_target(target):
-			attacked_targets.append(target)
+			attacked_targets.append(area)
 			
 			if not area_attack:
 				break
@@ -69,15 +60,16 @@ func _trigger_attack():
 
 
 func _on_area_entered(_area):
-	if cooldown_timer.is_stopped():
-		_trigger_attack()
+	_trigger_attack()
 
 
 func _on_cooldown_timeout():
-	_trigger_attack()
+	disabled = false
 	
 
 func _on_attack_triggered(_targets):
+	disabled = true
+	
 	if not single_hit:
 		cooldown_timer.start(attack_cooldown)		
 

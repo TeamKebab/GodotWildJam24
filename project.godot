@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://src/components/Attack.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Monster",
 "language": "GDScript",
 "path": "res://src/entities/monsters/Monster.gd"
 } ]
 _global_script_class_icons={
+"Attack": "",
 "Monster": ""
 }
 
