@@ -24,8 +24,8 @@ const AGE_ANIMATIONS = {
 	Age.Elder: "Elder"
 }
 
-export var acceleration: float = 200
-export var max_speed: float = 100
+var acceleration: float = 300
+var max_speed: float = 100
 
 var motion: Vector2 = Vector2.ZERO
 
