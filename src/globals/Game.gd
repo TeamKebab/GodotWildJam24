@@ -11,7 +11,7 @@ const Player = preload("res://src/entities/characters/Player.tscn")
 
 const START_MAP = "res://src/maps/TestLevel.tscn"
 
-const END_OF_DAY = 300
+const END_OF_DAY = 30
 const ADULT_AGE = int(END_OF_DAY * 0.3)
 const ELDER_AGE = int(END_OF_DAY * 0.8)
 
