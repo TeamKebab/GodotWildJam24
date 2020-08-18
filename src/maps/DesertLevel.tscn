@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/maps/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/entities/Gateway.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/entities/monsters/ElfArcher.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/resources/hill_autotile.tres" type="TileSet" id=6]
 [ext_resource path="res://src/resources/desert_autotile.tres" type="TileSet" id=7]
+[ext_resource path="res://src/entities/monsters/BombGnome.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 50 )
@@ -96,19 +97,9 @@ speed = 50
 
 [node name="ElfArcher" parent="YSort" index="9" instance=ExtResource( 5 )]
 position = Vector2( 86, 129 )
-max_hp = 1
-acceleration = 50
-min_turn_around_time = 0.5
-max_turn_around_time = 2.0
-speed = 50
 
 [node name="ElfArcher2" parent="YSort" index="10" instance=ExtResource( 5 )]
 position = Vector2( 179, 128 )
-max_hp = 1
-acceleration = 50
-min_turn_around_time = 0.5
-max_turn_around_time = 2.0
-speed = 50
 
 [node name="MAGO" type="Node2D" parent="YSort" index="11"]
 position = Vector2( 400, -182 )
@@ -119,23 +110,23 @@ position = Vector2( 290, -188 )
 [node name="MAGO3" type="Node2D" parent="YSort" index="13"]
 position = Vector2( 286, -501 )
 
-[node name="GNOMO BOMBAS" type="Node2D" parent="YSort" index="14"]
-position = Vector2( 336, -237 )
-
-[node name="GNOMO BOMBAS2" type="Node2D" parent="YSort" index="15"]
-position = Vector2( 361, -375 )
-
-[node name="GNOMO BOMBAS3" type="Node2D" parent="YSort" index="16"]
-position = Vector2( 250, -420 )
-
-[node name="MEGA KNIGHT" type="Node2D" parent="YSort" index="17"]
+[node name="MEGA KNIGHT" type="Node2D" parent="YSort" index="14"]
 position = Vector2( -85, -480 )
 
-[node name="SWITCH" type="Node2D" parent="YSort" index="18"]
+[node name="SWITCH" type="Node2D" parent="YSort" index="15"]
 position = Vector2( 27, -582 )
 
-[node name="ARCHMAGE" type="Node2D" parent="YSort" index="19"]
+[node name="ARCHMAGE" type="Node2D" parent="YSort" index="16"]
 position = Vector2( 322, -741 )
+
+[node name="BombGnome" parent="YSort" index="17" instance=ExtResource( 8 )]
+position = Vector2( 337, -235 )
+
+[node name="BombGnome2" parent="YSort" index="18" instance=ExtResource( 8 )]
+position = Vector2( 362, -373 )
+
+[node name="BombGnome3" parent="YSort" index="19" instance=ExtResource( 8 )]
+position = Vector2( 251, -417 )
 
 [node name="Default" parent="Entries" index="0"]
 position = Vector2( 40, 96 )
