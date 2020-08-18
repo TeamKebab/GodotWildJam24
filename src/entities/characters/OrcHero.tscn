@@ -21,6 +21,7 @@ height = 10.2
 
 [node name="Player" instance=ExtResource( 1 )]
 facing_direction = "Up"
+age = "Teen"
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
@@ -48,13 +49,13 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Action/playback = SubResource( 1 )
 parameters/Age/playback = SubResource( 2 )
-parameters/All/add_amount = 0
+parameters/All/add_amount = 1.0
 parameters/Direction/blend_position = Vector2( 0, 0 )
-parameters/Direction/0/Add2/add_amount = 0
-parameters/Direction/1/Add2/add_amount = 0
-parameters/Direction/2/Add2/add_amount = 0
-parameters/Direction/3/Add2/add_amount = 0
-parameters/DirectionAction/add_amount = 0
+parameters/Direction/0/UpAdd/add_amount = 1.0
+parameters/Direction/1/AddDown/add_amount = 1.0
+parameters/Direction/2/LeftAdd/add_amount = 1.0
+parameters/Direction/3/AddDown/add_amount = 1.0
+parameters/DirectionAction/add_amount = 1.0
 
 [node name="DetectionBox" parent="." index="7"]
 visible = false

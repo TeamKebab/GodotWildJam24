@@ -47,7 +47,7 @@ animation = "Left"
 [sub_resource type="AnimationNodeAdd2" id=11]
 
 [sub_resource type="AnimationNodeBlendTree" id=12]
-graph_offset = Vector2( 0, -63.5 )
+graph_offset = Vector2( 0, 63.5 )
 nodes/ExtraLeft/node = SubResource( 9 )
 nodes/ExtraLeft/position = Vector2( 520, 160 )
 nodes/Left/node = SubResource( 10 )
@@ -66,7 +66,7 @@ animation = "Down"
 animation = "ExtraDown"
 
 [sub_resource type="AnimationNodeBlendTree" id=16]
-graph_offset = Vector2( 0, -1 )
+graph_offset = Vector2( 0, -64.5 )
 nodes/AddDown/node = SubResource( 13 )
 nodes/AddDown/position = Vector2( 560, 40 )
 nodes/Down/node = SubResource( 14 )
