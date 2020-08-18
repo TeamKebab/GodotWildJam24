@@ -41,8 +41,8 @@ func set_state(entities_state):
 					entity.set_state(entities_state[entity.name])
 			else:
 				entity.queue_free()
-				
-				
+
+
 func set_player(player, entry):
 	var entities_container = find_node("YSort")
 	var entries_container = find_node("Entries")

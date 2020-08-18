@@ -63,4 +63,4 @@ nodes/Direction/position = Vector2( 260, 200 )
 nodes/DirectionAction/node = SubResource( 14 )
 nodes/DirectionAction/position = Vector2( 480, 40 )
 nodes/output/position = Vector2( 960, 140 )
-node_connections = [ "output", 0, "All", "DirectionAction", 0, "Action", "DirectionAction", 1, "Direction", "All", 0, "DirectionAction", "All", 1, "Age" ]
+node_connections = [ "output", 0, "All", "All", 0, "DirectionAction", "All", 1, "Age", "DirectionAction", 0, "Action", "DirectionAction", 1, "Direction" ]

@@ -26,8 +26,8 @@ export(String, "Teen", "Adult", "Elder") var age = "Teen" setget _set_age
 
 export var max_hp = 10 setget _set_max_hp
 
-var acceleration: float = 300
-var max_speed: float = 100
+var acceleration: float = 400
+var max_speed: float = 80
 
 var motion: Vector2 = Vector2.ZERO
 
