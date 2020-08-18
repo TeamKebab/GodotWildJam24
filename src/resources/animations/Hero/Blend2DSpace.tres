@@ -1,0 +1,88 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=17 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "ExtraUp"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Up"
+
+[sub_resource type="AnimationNodeAdd2" id=3]
+
+[sub_resource type="AnimationNodeBlendTree" id=4]
+graph_offset = Vector2( 0, -1 )
+nodes/ExtraUp/node = SubResource( 1 )
+nodes/ExtraUp/position = Vector2( 380, 160 )
+nodes/Up/node = SubResource( 2 )
+nodes/Up/position = Vector2( 380, 20 )
+nodes/UpAdd/node = SubResource( 3 )
+nodes/UpAdd/position = Vector2( 560, 40 )
+nodes/output/position = Vector2( 820, 40 )
+node_connections = [ "output", 0, "UpAdd", "UpAdd", 0, "Up", "UpAdd", 1, "ExtraUp" ]
+
+[sub_resource type="AnimationNodeAdd2" id=5]
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "ExtraRight"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Right"
+
+[sub_resource type="AnimationNodeBlendTree" id=8]
+graph_offset = Vector2( 0, 4.25 )
+nodes/AddDown/node = SubResource( 5 )
+nodes/AddDown/position = Vector2( 560, 40 )
+nodes/ExtraRight/node = SubResource( 6 )
+nodes/ExtraRight/position = Vector2( 380, 160 )
+nodes/Right/node = SubResource( 7 )
+nodes/Right/position = Vector2( 380, 40 )
+nodes/output/position = Vector2( 820, 40 )
+node_connections = [ "output", 0, "AddDown", "AddDown", 0, "Right", "AddDown", 1, "ExtraRight" ]
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "ExtraLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Left"
+
+[sub_resource type="AnimationNodeAdd2" id=11]
+
+[sub_resource type="AnimationNodeBlendTree" id=12]
+graph_offset = Vector2( 0, -63.5 )
+nodes/ExtraLeft/node = SubResource( 9 )
+nodes/ExtraLeft/position = Vector2( 520, 160 )
+nodes/Left/node = SubResource( 10 )
+nodes/Left/position = Vector2( 520, 20 )
+nodes/LeftAdd/node = SubResource( 11 )
+nodes/LeftAdd/position = Vector2( 740, 20 )
+nodes/output/position = Vector2( 920, 20 )
+node_connections = [ "output", 0, "LeftAdd", "LeftAdd", 0, "Left", "LeftAdd", 1, "ExtraLeft" ]
+
+[sub_resource type="AnimationNodeAdd2" id=13]
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Down"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "ExtraDown"
+
+[sub_resource type="AnimationNodeBlendTree" id=16]
+graph_offset = Vector2( 0, -1 )
+nodes/AddDown/node = SubResource( 13 )
+nodes/AddDown/position = Vector2( 560, 40 )
+nodes/Down/node = SubResource( 14 )
+nodes/Down/position = Vector2( 380, 40 )
+nodes/ExtraDown/node = SubResource( 15 )
+nodes/ExtraDown/position = Vector2( 360, 160 )
+nodes/output/position = Vector2( 820, 40 )
+node_connections = [ "output", 0, "AddDown", "AddDown", 0, "Down", "AddDown", 1, "ExtraDown" ]
+
+[resource]
+blend_point_0/node = SubResource( 4 )
+blend_point_0/pos = Vector2( 0, -1 )
+blend_point_1/node = SubResource( 8 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 12 )
+blend_point_2/pos = Vector2( -1, 0 )
+blend_point_3/node = SubResource( 16 )
+blend_point_3/pos = Vector2( 0, 1 )
+blend_mode = 1
