@@ -1,6 +1,9 @@
 extends Node
 
 
+signal map_loaded(path)
+
+
 const SCREENS = {
 	"start_screen": "res://src/maps/TestLevel.tscn",
 	"win_screen": "res://src/maps/TestLevel.tscn",
@@ -49,6 +52,8 @@ func _deferred_load_level(path, player, entry, map_state):
 		
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene(current_scene)
+	
+	emit_signal("map_loaded", path)
 	
 
 func _deferred_load_screen(name):

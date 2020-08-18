@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/entities/characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/hero.png" type="Texture" id=2]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="Player" instance=ExtResource( 1 )]
+max_hp = 3
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 2 )
+
+[node name="AnimationTree" parent="." index="6"]
+parameters/Action/playback = SubResource( 1 )
+parameters/Age/playback = SubResource( 2 )
+
+[node name="DetectionBox" parent="." index="7"]
+modulate = Color( 1, 1, 1, 0.419608 )

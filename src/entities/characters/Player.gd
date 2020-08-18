@@ -25,6 +25,7 @@ enum State {
 export(String, "Right", "Left", "Up", "Down") var facing_direction = "Down" setget _set_facing_direction
 export(String, "Teen", "Adult", "Elder") var age = "Teen" setget _set_age
 
+export var max_hp = 10 setget _set_max_hp
 
 var acceleration: float = 300
 var max_speed: float = 100
@@ -34,8 +35,8 @@ var motion: Vector2 = Vector2.ZERO
 var interacting_item = null
 var state = State.Move
 
-var hp = HP.new(Game.max_hp)
-var _baby = null
+var hp = HP.new(max_hp)
+var baby = null
 
 var parent = ""
 var race = "human"
@@ -49,16 +50,23 @@ onready var animationAge = animationTree.get("parameters/Age/playback")
 onready var animationState = animationTree.get("parameters/Action/playback")
 
 
+func init(from_parent):
+	if Engine.editor_hint:
+		return
+	
+	parent = from_parent			
+
+
 func _ready():
 	if Engine.editor_hint:
 		return
 		
 	Game.connect("time_passes", self, "_on_time_passes")
-	Game.connect("day_ended", self, "_on_day_ended")
 	
 	detection.connect("body_entered", self, "_on_detection_body_entered")
 	detection.connect("body_exited", self, "_on_detection_body_exited")
 
+	baby_sprite.hide()
 	set_sprite_sheet()
 	
 
@@ -97,45 +105,22 @@ func get_info():
 	return "a basic hero"
 	
 	
-func have_child(baby):
-	if _baby != null:
+func have_child(new_baby):
+	if has_child():
 		return
 	
-	_baby = baby
+	baby = new_baby
 	baby_sprite.set_texture(RACE_TEXTURES[baby.race])
 	baby_sprite.show()
 
 
 func has_child():
-	return _baby != null
+	return baby != null
 
 
 func is_in_reproductive_age():
 	return age == "Adult" or age == "Elder"
-		
-	
-func die():
-	Game.add_hero_to_dynasty(self)
-	
-	if _baby == null:
-		Game.game_over()
-	else:
-		grow_up_baby()	
-
-
-func grow_up_baby():
-	parent = _baby.parent
-	race = _baby.race
-	# todo: set other baby attributes
-	
-	hp.max_hp = Game.max_hp
-	
-	animationAge.travel("Teen")
-	sprite.set_texture(RACE_TEXTURES[race])
-	
-	baby_sprite.hide()
-	_baby = null
-	
+			
 	
 func interact(item):
 	state = State.Interact	
@@ -200,10 +185,11 @@ func _on_time_passes(time_of_day):
 				animationAge.travel("Elder")
 
 
-func _on_day_ended():
-	die()
-
-
+func _set_max_hp(new_max_hp):
+	max_hp = new_max_hp
+	hp.max_hp = max_hp
+	
+	
 func _set_age(new_age):
 	if new_age == "" or new_age == age:
 		return

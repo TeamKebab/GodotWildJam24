@@ -5,12 +5,9 @@ class_name Attack
 signal attacked(targets)
 
 
-export var damage: int = 1
-export var knockback_strength: int = 150
 export var single_hit: bool = true
 export var area_attack: bool = false
 export var attack_cooldown: float = 1
-
 
 var attacked_targets = []
 

@@ -6,7 +6,11 @@ signal day_ended
 signal player_hp_changed(hp)
 
 
-const Player = preload("res://src/entities/characters/Player.tscn")
+const PLAYER_RACES = {
+	"human": preload("res://src/entities/characters/HumanHero.tscn"),
+	"orc": preload("res://src/entities/characters/OrcHero.tscn"),
+	
+}
 
 
 const START_MAP = "res://src/maps/TestLevel.tscn"
@@ -22,7 +26,6 @@ var map_state = {}
 
 
 var time_of_day: int = 0
-var max_hp: int = 20
 var hp: int setget , get_hp
 
 onready var timer : Timer = $Timer
@@ -34,13 +37,11 @@ func _ready():
 
 
 func start():
-	time_of_day = 0
+	time_of_day = ADULT_AGE - 2
 	hero_dynasty = []
 	map_state = {}
 	
-	player = Player.instance()
-	player.hp.connect("hp_changed", self, "_on_player_hp_changed")
-	player.hp.connect("died", self, "_on_player_hp_died")
+	player = create_player()
 	
 	go_to_map(START_MAP, "Default")
 
@@ -54,13 +55,9 @@ func game_over():
 	scene_loader.gameover_screen()
 	
 
-func add_hero_to_dynasty(hero):
-	hero_dynasty.append(hero.get_info())
-
-
 func get_hp():
 	if player == null or player.hp == null:
-		return max_hp
+		return 0
 	
 	return player.hp.hp
 
@@ -86,11 +83,49 @@ func start_day():
 	
 
 func end_day():
-	emit_signal("day_ended")
 	timer.stop()
+	emit_signal("day_ended")
+	
+	hero_dynasty.append(player.get_info())
+	
+	if player.has_child():
+		grow_baby()		
+	else:
+		game_over()
+	
 	start_day()
 
 
+func grow_baby():
+	var baby = player.baby
+	
+	var new_player = create_player(baby.parent, baby.race)
+	new_player.position = player.position
+	new_player.facing_direction = player.facing_direction
+	
+	var container = player.get_parent()
+	var position = player.get_position_in_parent()
+	container.remove_child(player)
+		
+	player = new_player
+	
+	container.add_child(player)
+	container.move_child(player, position)
+	
+
+func create_player(parent = "", race = "human"):
+	var new_player = PLAYER_RACES[race].instance()
+	
+	new_player.init(parent)
+	
+	new_player.hp.connect("hp_changed", self, "_on_player_hp_changed")
+	new_player.hp.connect("died", self, "_on_player_hp_died")
+	
+	emit_signal("player_hp_changed", new_player.hp.max_hp)
+	
+	return new_player
+	
+		
 func go_to_map(map_path, entry_name):	
 	timer.stop()
 	
@@ -104,8 +139,7 @@ func _timer_timeout():
 	time_of_day += 1
 	
 	if (time_of_day >= END_OF_DAY):
-		time_of_day = 0
-		emit_signal("day_ended")
+		end_day()
 	else:
 		emit_signal("time_passes", time_of_day)
 

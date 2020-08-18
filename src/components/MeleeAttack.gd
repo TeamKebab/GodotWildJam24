@@ -2,10 +2,16 @@ tool
 extends Attack
 
 
+export var damage: int = 1
+export var knockback_strength: int = 150
+
+export(String, "Normal", "Whomping", "Fire") var attack_type = "Normal"
+
+
 func do_target_effect(target_hurtbox):
 	var target = target_hurtbox.get_parent()
 	
-	target.hp.damage(damage, "normal")	
+	target.hp.damage(damage, attack_type)	
 	
 	var parent_position = get_parent().position
 	var knockback_direction = parent_position.direction_to(target.position)
