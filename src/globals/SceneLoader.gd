@@ -5,7 +5,7 @@ signal map_loaded(path)
 
 
 const SCREENS = {
-	"start_screen": "res://src/maps/TestLevel.tscn",
+	"start_screen": "res://src/maps/Start.tscn",
 	"win_screen": "res://src/maps/TestLevel.tscn",
 	"gameover": "res://src/gui/GameOver.tscn",
 }

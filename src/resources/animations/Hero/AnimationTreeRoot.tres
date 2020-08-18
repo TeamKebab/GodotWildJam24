@@ -1,0 +1,66 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=16 format=2]
+
+[ext_resource path="res://src/resources/animations/Hero/Blend2DSpace.tres" type="AnimationNodeBlendSpace2D" id=1]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=3]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=4]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=5]
+states/Attack/node = SubResource( 1 )
+states/Attack/position = Vector2( 682, 149 )
+states/Idle/node = SubResource( 2 )
+states/Idle/position = Vector2( 393, 149 )
+transitions = [ "Idle", "Attack", SubResource( 3 ), "Attack", "Idle", SubResource( 4 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Adult"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Elder"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Teen"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/Adult/node = SubResource( 6 )
+states/Adult/position = Vector2( 569, 53 )
+states/Elder/node = SubResource( 7 )
+states/Elder/position = Vector2( 771, 162 )
+states/Teen/node = SubResource( 8 )
+states/Teen/position = Vector2( 379, 162 )
+transitions = [ "Teen", "Adult", SubResource( 9 ), "Adult", "Elder", SubResource( 10 ), "Elder", "Teen", SubResource( 11 ) ]
+start_node = "Teen"
+
+[sub_resource type="AnimationNodeAdd2" id=13]
+
+[sub_resource type="AnimationNodeAdd2" id=14]
+
+[resource]
+graph_offset = Vector2( 0, 127 )
+nodes/Action/node = SubResource( 5 )
+nodes/Action/position = Vector2( 260, 60 )
+nodes/Age/node = SubResource( 12 )
+nodes/Age/position = Vector2( 480, 240 )
+nodes/All/node = SubResource( 13 )
+nodes/All/position = Vector2( 760, 140 )
+nodes/Direction/node = ExtResource( 1 )
+nodes/Direction/position = Vector2( 260, 200 )
+nodes/DirectionAction/node = SubResource( 14 )
+nodes/DirectionAction/position = Vector2( 480, 40 )
+nodes/output/position = Vector2( 960, 140 )
+node_connections = [ "output", 0, "All", "DirectionAction", 0, "Action", "DirectionAction", 1, "Direction", "All", 0, "DirectionAction", "All", 1, "Age" ]

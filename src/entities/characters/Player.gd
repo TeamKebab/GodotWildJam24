@@ -1,4 +1,3 @@
-tool
 extends KinematicBody2D
 
 
@@ -53,22 +52,24 @@ onready var animationState = animationTree.get("parameters/Action/playback")
 func init(from_parent):
 	if Engine.editor_hint:
 		return
-	
+
 	parent = from_parent			
 
 
 func _ready():
 	if Engine.editor_hint:
 		return
-		
+	
 	Game.connect("time_passes", self, "_on_time_passes")
 	
 	detection.connect("body_entered", self, "_on_detection_body_entered")
 	detection.connect("body_exited", self, "_on_detection_body_exited")
 
 	baby_sprite.hide()
+	
 	set_sprite_sheet()
 	
+	animationTree.active = true
 
 func _physics_process(delta):
 	if Engine.editor_hint:
@@ -202,8 +203,9 @@ func _set_facing_direction(new_direction):
 	if new_direction == "" or facing_direction == new_direction:
 		return
 	facing_direction = new_direction
-	set_sprite_sheet()
 	
+	set_sprite_sheet()
+
 	
 func set_sprite_sheet():
 	if find_node("Sprite") == null:
