@@ -1,7 +1,19 @@
+tool
 extends KinematicBody2D
 
 
+const RACE_TEXTURES = {
+	"human": preload("res://assets/sprites/hero.png"),
+	"orc": preload("res://assets/sprites/orc.png"),
+	"elf": preload("res://assets/sprites/elf.png"),
+}
+
 const HP = preload("res://src/components/HP.gd")
+
+
+const SPRITE_WIDTH = 24
+const SPRITE_HEIGHT = 24
+const FRAMES = 1
 
 
 enum State {
@@ -9,6 +21,9 @@ enum State {
 	Interact,
 	Attack,
 }
+
+export(String, "Right", "Left", "Up", "Down") var facing_direction = "Down" setget _set_facing_direction
+export(String, "Teen", "Adult", "Elder") var age = "Teen" setget _set_age
 
 
 var acceleration: float = 300
@@ -32,14 +47,22 @@ onready var animationState = animationTree.get("parameters/Action/playback")
 
 
 func _ready():
+	if Engine.editor_hint:
+		return
+		
 	Game.connect("time_passes", self, "_on_time_passes")
 	Game.connect("day_ended", self, "_on_day_ended")
 	
 	detection.connect("body_entered", self, "_on_detection_body_entered")
 	detection.connect("body_exited", self, "_on_detection_body_exited")
 
+	set_sprite_sheet()
+	
 
 func _physics_process(delta):
+	if Engine.editor_hint:
+		return
+	
 	match state:
 		State.Move:
 			_move(delta)
@@ -76,6 +99,7 @@ func have_child(baby):
 		return
 	
 	_baby = baby
+	baby_sprite.set_texture(RACE_TEXTURES[baby.race])
 	baby_sprite.show()
 
 
@@ -84,7 +108,6 @@ func has_child():
 
 
 func is_in_reproductive_age():
-	var age = animationAge.get_current_node()
 	return age == "Adult" or age == "Elder"
 		
 	
@@ -161,8 +184,8 @@ func _get_input() -> Vector2:
 
 		
 func _on_time_passes(time_of_day):
-	var age = animationAge.get_current_node()
-	match age:
+	var current_age = animationAge.get_current_node()
+	match current_age:
 		"Teen":
 			if time_of_day >= Game.ADULT_AGE:
 				animationAge.travel("Adult")
@@ -175,6 +198,38 @@ func _on_day_ended():
 	die()
 
 
+func _set_age(new_age):
+	if new_age == "" or new_age == age:
+		return
+	
+	age = new_age
+	set_sprite_sheet()
+	
+
+func _set_facing_direction(new_direction):
+	if new_direction == "" or facing_direction == new_direction:
+		return
+	facing_direction = new_direction
+	set_sprite_sheet()
+	
+	
+func set_sprite_sheet():
+	if find_node("Sprite") == null:
+		return
+		
+	var size = Vector2(SPRITE_WIDTH, SPRITE_HEIGHT * FRAMES)
+	
+	var ages = ["Baby", "Teen", "Adult", "Elder"]
+	var age_index = ages.find(age)
+	var age_offset = age_index * size.x
+	
+	var directions = ["Right", "Left", "Down", "Up"]
+	var direction_index = directions.find(facing_direction)
+	var direction_offset = size.x * 4 * direction_index
+		
+	var pos = Vector2(age_offset + direction_offset, 0)
+	
+	find_node("Sprite").region_rect = Rect2(pos, size)
 
 
 

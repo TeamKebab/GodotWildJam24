@@ -2,6 +2,8 @@ extends StaticBody2D
 
 
 export var id: String = "baby mama"
+export var want_baby_text: String = "want_baby"
+export var race: String = "human"
 
 var can_have_baby = false
 
@@ -22,7 +24,7 @@ func start_interaction(player):
 	elif is_baby_parent(player):
 		Narrator.show("is_parent")
 	else:
-		Narrator.ask("want_baby")
+		Narrator.ask(want_baby_text)
 		can_have_baby = true
 
 
@@ -39,7 +41,8 @@ func is_baby_parent(baby):
 
 func get_baby():
 	return {
-		"parent": id
+		"parent": id,
+		"race": race
 	}
 
 

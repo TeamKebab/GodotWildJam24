@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/entities/characters/Companion.tscn" type="PackedScene" id=1]
+
+[node name="OrcCompanion" instance=ExtResource( 1 )]
+id = "orc_companion"
+want_baby_text = "want_baby_orc"
+race = "orc"
+
+[node name="Sprite" parent="." index="1"]
+modulate = Color( 0.368627, 0.509804, 0.356863, 1 )
+
+[node name="Interaction" parent="." index="2"]
+disabled = false
+help = "Press [C] to talk"

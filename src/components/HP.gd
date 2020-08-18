@@ -10,8 +10,8 @@ var hp : int setget _set_hp
 var invulnerable_to = []
 var vulnerable_to = []
 
-func _init(max_hp):
-	self.max_hp = max_hp
+func _init(start_max_hp):
+	max_hp = start_max_hp
 	hp = max_hp
 
 
