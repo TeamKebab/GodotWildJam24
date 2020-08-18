@@ -36,10 +36,13 @@ var state = State.Move
 
 var hp = HP.new(Game.max_hp)
 var _baby = null
+
 var parent = ""
+var race = "human"
 
 onready var detection : Area2D = $DetectionBox
 onready var baby_sprite : Sprite = $BabySprite
+onready var sprite: Sprite = $Sprite
 
 onready var animationTree = $AnimationTree
 onready var animationAge = animationTree.get("parameters/Age/playback")
@@ -122,11 +125,14 @@ func die():
 
 func grow_up_baby():
 	parent = _baby.parent
+	race = _baby.race
 	# todo: set other baby attributes
 	
 	hp.max_hp = Game.max_hp
 	
 	animationAge.travel("Teen")
+	sprite.set_texture(RACE_TEXTURES[race])
+	
 	baby_sprite.hide()
 	_baby = null
 	
