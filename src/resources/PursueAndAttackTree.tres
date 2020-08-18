@@ -6,7 +6,6 @@
 [sub_resource type="AnimationNodeAdd2" id=1]
 
 [resource]
-graph_offset = Vector2( 0, -63.5 )
 nodes/Action/node = ExtResource( 2 )
 nodes/Action/position = Vector2( 380, 140 )
 nodes/Add2/node = SubResource( 1 )

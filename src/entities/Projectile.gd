@@ -9,6 +9,8 @@ export var speed: int = 100
 export var destroy_on_connect : bool = true
 export var distance: float = 100
 
+export(String, "Normal", "Whomping", "Fire") var damage_type = "Normal"
+ 
 
 var start_position : Vector2
 var motion : Vector2
@@ -19,6 +21,9 @@ func _ready():
 	
 
 func _physics_process(delta):
+	if motion == Vector2.ZERO:
+		return
+	
 	move(delta)
 	
 	if position.distance_squared_to(start_position) > pow(distance, 2):
@@ -37,7 +42,7 @@ func shot(target_hurtbox, start_position):
 	
 	var direction = start_position.direction_to(target_position)
 	
-	collision_mask = target_collision_layer
+	collision_mask &= target_collision_layer
 	position = start_position
 	rotation = direction.angle()
 	motion = direction * speed
@@ -48,11 +53,11 @@ func destroy():
 	
 	
 func is_valid_target(target):
-	return target.hp != null and target.has_method("knockback")
+	return target.get("hp") != null and target.has_method("knockback")
 
 
 func do_target_effect(target):
-	target.hp.damage(damage, "Normal")			
+	target.hp.damage(damage, damage_type)			
 	target.knockback(motion.normalized() * knockback_strength)
 
 

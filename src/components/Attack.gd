@@ -23,7 +23,7 @@ func _ready():
 		
 
 func is_valid_target(target):
-	return target.hp != null and target.has_method("knockback")
+	return target.get("hp") != null  and target.has_method("knockback")
 
 
 func do_effect():
