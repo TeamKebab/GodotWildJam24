@@ -90,10 +90,9 @@ func end_day():
 	
 	if player.has_child():
 		grow_baby()		
+		start_day()
 	else:
 		game_over()
-	
-	start_day()
 
 
 func grow_baby():
