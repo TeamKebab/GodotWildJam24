@@ -7,7 +7,8 @@ signal died()
 
 var max_hp: int = 1 setget _set_max_hp
 var hp : int setget _set_hp
-
+var invulnerable_to = []
+var vulnerable_to = []
 
 func _init(max_hp):
 	self.max_hp = max_hp
@@ -18,8 +19,9 @@ func heal(healing):
 	_set_hp(hp + healing)
 	
 
-func damage(damage):
-	_set_hp(hp - damage)
+func damage(damage, type):
+	if not invulnerable_to.has(type) or vulnerable_to.has(type):
+		_set_hp(hp - damage)
 
 
 func _set_hp(new_hp):

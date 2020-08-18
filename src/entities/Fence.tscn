@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/entities/Breakable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/tilesets/fence.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 10 )
+
+[node name="Fence" instance=ExtResource( 1 )]
+collision_layer = 2
+vulnerable_to = [ "Whomping" ]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="HurtBox" parent="." index="1"]
+position = Vector2( 0, -3 )
+collision_layer = 128
+collision_mask = 2147483648
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="." index="2"]
+position = Vector2( 0, -5 )
+texture = ExtResource( 2 )

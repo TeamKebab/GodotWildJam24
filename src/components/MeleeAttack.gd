@@ -5,7 +5,7 @@ extends Attack
 func do_target_effect(target_hurtbox):
 	var target = target_hurtbox.get_parent()
 	
-	target.hp.damage(damage)	
+	target.hp.damage(damage, "normal")	
 	
 	var parent_position = get_parent().position
 	var knockback_direction = parent_position.direction_to(target.position)

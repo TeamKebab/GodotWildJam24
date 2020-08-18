@@ -52,7 +52,7 @@ func is_valid_target(target):
 
 
 func do_target_effect(target):
-	target.hp.damage(damage)			
+	target.hp.damage(damage, "normal")			
 	target.knockback(motion.normalized() * knockback_strength)
 
 
