@@ -8,12 +8,10 @@
 [node name="Gateway" parent="YSort" index="0"]
 disabled = false
 help = "Press [C] to exit"
-map_path = "res://src/maps/ForestLevel.tscn"
+map_path = "res://src/maps/SwampLevel.tscn"
 entry_name = "Shrine"
 immediate = true
 question = "ask_next_map"
 
 [node name="OrcCompanion" parent="YSort" index="1" instance=ExtResource( 3 )]
 position = Vector2( 159, 85 )
-id = "human_companion"
-race = "human"
