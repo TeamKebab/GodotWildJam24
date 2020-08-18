@@ -4,12 +4,6 @@ extends KinematicBody2D
 const HP = preload("res://src/components/HP.gd")
 
 
-enum Age {
-	Teen,
-	Adult,
-	Elder,
-}
-
 enum State {
 	Move,
 	Interact,
@@ -17,22 +11,13 @@ enum State {
 }
 
 
-
-const AGE_ANIMATIONS = {
-	Age.Teen: "Teen",
-	Age.Adult: "Adult",
-	Age.Elder: "Elder"
-}
-
 var acceleration: float = 300
 var max_speed: float = 100
 
 var motion: Vector2 = Vector2.ZERO
 
 var interacting_item = null
-
 var state = State.Move
-var age = Age.Teen
 
 var hp = HP.new(Game.max_hp)
 var _baby = null
@@ -99,18 +84,9 @@ func has_child():
 
 
 func is_in_reproductive_age():
-	return age == Age.Adult or age == Age.Elder
-	
-	
-func grow_old(time_of_day):
-	match age:
-		Age.Teen:
-			if time_of_day >= Game.ADULT_AGE:
-				_grow_up(Age.Adult)
-		Age.Adult:
-			if time_of_day >= Game.ELDER_AGE:
-				_grow_up(Age.Elder)
-	
+	var age = animationAge.get_current_node()
+	return age == "Adult" or age == "Elder"
+		
 	
 func die():
 	Game.add_hero_to_dynasty(self)
@@ -118,9 +94,20 @@ func die():
 	if _baby == null:
 		Game.game_over()
 	else:
-		_grow_up_baby()	
+		grow_up_baby()	
 
 
+func grow_up_baby():
+	parent = _baby.parent
+	# todo: set other baby attributes
+	
+	hp.max_hp = Game.max_hp
+	
+	animationAge.travel("Teen")
+	baby_sprite.hide()
+	_baby = null
+	
+	
 func interact(item):
 	state = State.Interact	
 	interacting_item = item
@@ -139,6 +126,7 @@ func knockback(strength):
 
 func face(direction):
 	find_node("AnimationTree").set("parameters/Direction/blend_position", direction)	
+
 	
 func _start_attack():
 	state = State.Attack
@@ -173,26 +161,20 @@ func _get_input() -> Vector2:
 
 		
 func _on_time_passes(time_of_day):
-	grow_old(time_of_day)
+	var age = animationAge.get_current_node()
+	match age:
+		"Teen":
+			if time_of_day >= Game.ADULT_AGE:
+				animationAge.travel("Adult")
+		"Adult":
+			if time_of_day >= Game.ELDER_AGE:
+				animationAge.travel("Elder")
 
 
 func _on_day_ended():
 	die()
 
 
-func _grow_up_baby():
-	parent = _baby.parent
-	# todo: set other baby attributes
-	
-	hp.max_hp = Game.max_hp
-	
-	_grow_up(Age.Teen)
-	baby_sprite.hide()
-	_baby = null
 
-
-func _grow_up(new_age):
-	age = new_age	
-	animationAge.travel(AGE_ANIMATIONS[age])
 
 
