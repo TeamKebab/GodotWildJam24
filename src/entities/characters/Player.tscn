@@ -1,17 +1,14 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/sprites/hero.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/components/overlap/DetectionBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/components/overlap/HurtBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/components/MeleeAttack.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sprites/hero_attack.png" type="Texture" id=7]
 [ext_resource path="res://src/resources/Blend2DSpace.tres" type="AnimationNodeBlendSpace2D" id=8]
 [ext_resource path="res://src/resources/animations/Hero/Adult.tres" type="Animation" id=31]
-[ext_resource path="res://src/resources/animations/Hero/Attack.tres" type="Animation" id=32]
 [ext_resource path="res://src/resources/animations/Hero/Down.tres" type="Animation" id=33]
 [ext_resource path="res://src/resources/animations/Hero/Elder.tres" type="Animation" id=34]
-[ext_resource path="res://src/resources/animations/Hero/Idle.tres" type="Animation" id=35]
 [ext_resource path="res://src/resources/animations/Hero/Left.tres" type="Animation" id=36]
 [ext_resource path="res://src/resources/animations/Hero/Right.tres" type="Animation" id=37]
 [ext_resource path="res://src/resources/animations/Hero/Teen.tres" type="Animation" id=38]
@@ -96,16 +93,13 @@ height = 10.2
 radius = 4.5
 height = 8.0
 
-[sub_resource type="CapsuleShape2D" id=21]
-radius = 7.7
-height = 10.2
-
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -0.111362, 5.45676 )
 collision_layer = 4
 collision_mask = 31
 script = ExtResource( 2 )
 facing_direction = "Right"
+age = "Adult"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.111362, -1.45676 )
@@ -119,7 +113,7 @@ smoothing_enabled = true
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.5, -10 )
 region_enabled = true
-region_rect = Rect2( 24, 0, 24, 24 )
+region_rect = Rect2( 48, 0, 24, 24 )
 
 [node name="BabySprite" type="Sprite" parent="."]
 visible = false
@@ -133,16 +127,13 @@ visible = false
 position = Vector2( 12.1114, -12.4568 )
 texture = ExtResource( 7 )
 vframes = 3
-frame = 2
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Adult = ExtResource( 31 )
-anims/Attack = ExtResource( 32 )
 anims/Down = ExtResource( 33 )
 anims/Elder = ExtResource( 34 )
-anims/Idle = ExtResource( 35 )
 anims/Left = ExtResource( 36 )
 anims/Right = ExtResource( 37 )
 anims/Teen = ExtResource( 38 )
@@ -168,11 +159,3 @@ position = Vector2( 0.111362, -6.45676 )
 collision_layer = 32
 collision_mask = 0
 shape = SubResource( 20 )
-
-[node name="Attack" parent="." instance=ExtResource( 6 )]
-position = Vector2( 8.11136, -6.45676 )
-collision_layer = 0
-collision_mask = 128
-shape = SubResource( 21 )
-disabled = true
-knockback_strength = 50
