@@ -9,17 +9,15 @@ const RACE_TEXTURES = {
 
 const HP = preload("res://src/components/HP.gd")
 
-
-const SPRITE_WIDTH = 32
-const SPRITE_HEIGHT = 32
-const FRAMES = 10
-
-
 enum State {
 	Move,
 	Interact,
 	Attack,
 }
+
+export var sprite_width = 32
+export var sprite_height = 32
+export var total_frames = 10
 
 export(String, "Right", "Left", "Up", "Down") var facing_direction = "Down" setget _set_facing_direction
 export(String, "Teen", "Adult", "Elder") var age = "Teen" setget _set_age
@@ -214,7 +212,7 @@ func set_sprite_sheet():
 	if find_node("Sprite") == null:
 		return
 		
-	var size = Vector2(SPRITE_WIDTH * FRAMES, SPRITE_HEIGHT)
+	var size = Vector2(sprite_width * total_frames, sprite_height)
 	
 	var ages = ["Teen", "Adult", "Elder"]
 	var age_index = ages.find(age)
@@ -228,5 +226,9 @@ func set_sprite_sheet():
 	
 	find_node("Sprite").region_rect = Rect2(pos, size)
 
+	var baby_pos = Vector2(0, direction_offset)
+	var baby_size = Vector2(sprite_width, sprite_height)
+	
+	find_node("BabySprite").region_rect = Rect2(baby_pos, baby_size)
 
 

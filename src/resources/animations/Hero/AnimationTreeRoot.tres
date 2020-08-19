@@ -8,69 +8,69 @@ animation = "Attack"
 [sub_resource type="AnimationNodeAnimation" id=2]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=3]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=4]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
 
-[sub_resource type="AnimationNodeStateMachine" id=5]
+[sub_resource type="AnimationNodeStateMachine" id=9]
 states/Attack/node = SubResource( 1 )
 states/Attack/position = Vector2( 682, 149 )
 states/Idle/node = SubResource( 2 )
 states/Idle/position = Vector2( 393, 149 )
-states/Walk/node = SubResource( 15 )
+states/Walk/node = SubResource( 3 )
 states/Walk/position = Vector2( 542, 48 )
-transitions = [ "Idle", "Attack", SubResource( 3 ), "Attack", "Idle", SubResource( 4 ), "Idle", "Walk", SubResource( 16 ), "Walk", "Attack", SubResource( 17 ), "Walk", "Idle", SubResource( 18 ) ]
+transitions = [ "Idle", "Attack", SubResource( 4 ), "Attack", "Idle", SubResource( 5 ), "Idle", "Walk", SubResource( 6 ), "Walk", "Attack", SubResource( 7 ), "Walk", "Idle", SubResource( 8 ) ]
 start_node = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Adult"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Elder"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Teen"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
-[sub_resource type="AnimationNodeStateMachine" id=12]
-states/Adult/node = SubResource( 6 )
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/Adult/node = SubResource( 10 )
 states/Adult/position = Vector2( 569, 53 )
-states/Elder/node = SubResource( 7 )
+states/Elder/node = SubResource( 11 )
 states/Elder/position = Vector2( 771, 162 )
-states/Teen/node = SubResource( 8 )
+states/Teen/node = SubResource( 12 )
 states/Teen/position = Vector2( 379, 162 )
-transitions = [ "Teen", "Adult", SubResource( 9 ), "Adult", "Elder", SubResource( 10 ), "Elder", "Teen", SubResource( 11 ) ]
+transitions = [ "Teen", "Adult", SubResource( 13 ), "Adult", "Elder", SubResource( 14 ), "Elder", "Teen", SubResource( 15 ) ]
 start_node = "Teen"
 
-[sub_resource type="AnimationNodeAdd2" id=13]
+[sub_resource type="AnimationNodeAdd2" id=17]
 
-[sub_resource type="AnimationNodeAdd2" id=14]
+[sub_resource type="AnimationNodeAdd2" id=18]
 
 [resource]
-nodes/Action/node = SubResource( 5 )
+nodes/Action/node = SubResource( 9 )
 nodes/Action/position = Vector2( 260, 60 )
-nodes/Age/node = SubResource( 12 )
+nodes/Age/node = SubResource( 16 )
 nodes/Age/position = Vector2( 480, 240 )
-nodes/All/node = SubResource( 13 )
+nodes/All/node = SubResource( 17 )
 nodes/All/position = Vector2( 760, 140 )
 nodes/Direction/node = ExtResource( 1 )
 nodes/Direction/position = Vector2( 260, 200 )
-nodes/DirectionAction/node = SubResource( 14 )
+nodes/DirectionAction/node = SubResource( 18 )
 nodes/DirectionAction/position = Vector2( 480, 40 )
 nodes/output/position = Vector2( 960, 140 )
 node_connections = [ "output", 0, "All", "All", 0, "DirectionAction", "All", 1, "Age", "DirectionAction", 0, "Action", "DirectionAction", 1, "Direction" ]

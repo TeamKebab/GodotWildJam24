@@ -31,7 +31,6 @@ position = Vector2( -0.111362, 5.45676 )
 collision_layer = 4
 collision_mask = 31
 script = ExtResource( 2 )
-facing_direction = "Left"
 age = "Adult"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -51,9 +50,10 @@ region_rect = Rect2( 48, 0, 24, 24 )
 [node name="BabySprite" type="Sprite" parent="."]
 visible = false
 position = Vector2( 0.5, -10 )
+z_index = -1
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 96, 0, 24, 24 )
+region_rect = Rect2( 192, 0, 24, 24 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Adult = ExtResource( 31 )
@@ -69,7 +69,8 @@ anims/Walk = ExtResource( 4 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 
 [node name="DetectionBox" parent="." instance=ExtResource( 3 )]
-position = Vector2( -13, -6 )
+position = Vector2( -1, 2 )
+rotation = 1.5708
 collision_mask = 320
 shape = SubResource( 2 )
 
