@@ -25,8 +25,11 @@ max_hp = 3
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
 hframes = 10
-frame = 2
+frame = 1
 region_rect = Rect2( 0, 0, 320, 32 )
+
+[node name="BabySprite" parent="." index="3"]
+region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = ExtResource( 5 )

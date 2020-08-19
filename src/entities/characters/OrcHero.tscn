@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/entities/characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/orc.png" type="Texture" id=2]
 [ext_resource path="res://src/components/MeleeAttack.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/resources/animations/Hero/Idle.tres" type="Animation" id=4]
 [ext_resource path="res://src/resources/animations/Hero/Orc/Attack.tres" type="Animation" id=5]
 [ext_resource path="res://src/resources/animations/Hero/Orc/ExtraLeft.tres" type="Animation" id=6]
 [ext_resource path="res://src/resources/animations/Hero/Orc/ExtraRight.tres" type="Animation" id=7]
@@ -25,10 +24,12 @@ age = "Teen"
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
-region_rect = Rect2( 336, 0, 24, 24 )
+hframes = 11
+frame = 2
+region_rect = Rect2( 0, 32, 352, 32 )
 
 [node name="BabySprite" parent="." index="3"]
-region_rect = Rect2( 288, 0, 24, 24 )
+region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = ExtResource( 5 )
@@ -36,7 +37,6 @@ anims/ExtraDown = ExtResource( 9 )
 anims/ExtraLeft = ExtResource( 6 )
 anims/ExtraRight = ExtResource( 7 )
 anims/ExtraUp = ExtResource( 8 )
-anims/Idle = ExtResource( 4 )
 
 [node name="AnimationTree" parent="." index="5"]
 tree_root = ExtResource( 10 )
@@ -64,7 +64,7 @@ rotation = 1.5708
 collision_layer = 0
 collision_mask = 128
 shape = SubResource( 3 )
-disabled = true
+disabled = false
 single_hit = true
 area_attack = false
 damage = 2

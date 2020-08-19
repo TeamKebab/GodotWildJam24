@@ -40,7 +40,6 @@ var race = "human"
 
 onready var detection : Area2D = $DetectionBox
 onready var baby_sprite : Sprite = $BabySprite
-onready var sprite: Sprite = $Sprite
 
 onready var animationTree = $AnimationTree
 onready var animationAge = animationTree.get("parameters/Age/playback")
@@ -209,7 +208,9 @@ func _set_facing_direction(new_direction):
 
 	
 func set_sprite_sheet():
-	if find_node("Sprite") == null:
+	var sprite = find_node("Sprite")
+	
+	if sprite == null:
 		return
 		
 	var size = Vector2(sprite_width * total_frames, sprite_height)
@@ -224,11 +225,15 @@ func set_sprite_sheet():
 		
 	var pos = Vector2(0, age_offset + direction_offset)
 	
-	find_node("Sprite").region_rect = Rect2(pos, size)
-
+	sprite.region_rect = Rect2(pos, size)
+	sprite.hframes = total_frames
+	
+	if baby_sprite == null:
+		return 
+		
 	var baby_pos = Vector2(0, direction_offset)
 	var baby_size = Vector2(sprite_width, sprite_height)
 	
-	find_node("BabySprite").region_rect = Rect2(baby_pos, baby_size)
+	baby_sprite.region_rect = Rect2(baby_pos, baby_size)
 
 
