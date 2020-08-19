@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 const RACE_TEXTURES = {
 	"human": preload("res://assets/sprites/hero.png"),
-	"orc": preload("res://assets/sprites/orc.png"),
+	"orc": preload("res://assets/sprites/orc_babies.png"),
 	"elf": preload("res://assets/sprites/elf.png"),
 }
 
