@@ -12,7 +12,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Rect2( 168, 0, 24, 24 ) ]
+"values": [ Rect2( 0, 224, 320, 32 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("DetectionBox:position")
