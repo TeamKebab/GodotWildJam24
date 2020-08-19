@@ -156,7 +156,10 @@ func _end_attack():
 func _move(delta):	
 	var input = _get_input()
 	
-	if input != Vector2.ZERO:
+	if input == Vector2.ZERO:
+		animationState.travel("Idle")
+	else:
+		animationState.travel("Walk")
 		face(input)
 	
 	motion = motion.move_toward(input * max_speed, acceleration * delta)

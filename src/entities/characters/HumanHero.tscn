@@ -19,17 +19,14 @@ radius = 7.7
 height = 10.2
 
 [node name="Player" instance=ExtResource( 1 )]
-facing_direction = "Left"
+age = "Teen"
 max_hp = 3
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
 hframes = 10
-frame = 1
+frame = 2
 region_rect = Rect2( 0, 0, 320, 32 )
-
-[node name="BabySprite" parent="." index="3"]
-region_rect = Rect2( 96, 0, 24, 24 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = ExtResource( 5 )
@@ -55,7 +52,6 @@ parameters/DirectionAction/add_amount = 1.0
 [node name="DetectionBox" parent="." index="6"]
 visible = false
 modulate = Color( 1, 1, 1, 0.419608 )
-position = Vector2( -13, -6 )
 
 [node name="Attack" parent="." index="8" instance=ExtResource( 3 )]
 position = Vector2( -12.8886, -6.45676 )

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=16 format=2]
+[gd_resource type="AnimationNodeBlendTree" load_steps=20 format=2]
 
 [ext_resource path="res://src/resources/animations/Hero/Blend2DSpace.tres" type="AnimationNodeBlendSpace2D" id=1]
 
@@ -8,17 +8,28 @@ animation = "Attack"
 [sub_resource type="AnimationNodeAnimation" id=2]
 animation = "Idle"
 
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Walk"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=3]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=4]
 switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachine" id=5]
 states/Attack/node = SubResource( 1 )
 states/Attack/position = Vector2( 682, 149 )
 states/Idle/node = SubResource( 2 )
 states/Idle/position = Vector2( 393, 149 )
-transitions = [ "Idle", "Attack", SubResource( 3 ), "Attack", "Idle", SubResource( 4 ) ]
+states/Walk/node = SubResource( 15 )
+states/Walk/position = Vector2( 542, 48 )
+transitions = [ "Idle", "Attack", SubResource( 3 ), "Attack", "Idle", SubResource( 4 ), "Idle", "Walk", SubResource( 16 ), "Walk", "Attack", SubResource( 17 ), "Walk", "Idle", SubResource( 18 ) ]
 start_node = "Idle"
 
 [sub_resource type="AnimationNodeAnimation" id=6]
@@ -51,7 +62,6 @@ start_node = "Teen"
 [sub_resource type="AnimationNodeAdd2" id=14]
 
 [resource]
-graph_offset = Vector2( 0, -190.5 )
 nodes/Action/node = SubResource( 5 )
 nodes/Action/position = Vector2( 260, 60 )
 nodes/Age/node = SubResource( 12 )
