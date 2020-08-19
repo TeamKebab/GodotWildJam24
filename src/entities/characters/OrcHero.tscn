@@ -20,15 +20,17 @@ height = 10.2
 
 [node name="Player" instance=ExtResource( 1 )]
 facing_direction = "Up"
+age = "Teen"
 
-[node name="Sprite" parent="." index="2"]
+[node name="BabySprite" parent="." index="2"]
+z_index = 1
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Sprite" parent="." index="3"]
 texture = ExtResource( 2 )
 hframes = 11
 frame = 2
 region_rect = Rect2( 0, 32, 352, 32 )
-
-[node name="BabySprite" parent="." index="3"]
-region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = ExtResource( 5 )
