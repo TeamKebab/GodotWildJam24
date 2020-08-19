@@ -1,5 +1,5 @@
-extends Node
 
+extends Node
 
 onready var entities_container : Node = $YSort
 
@@ -7,7 +7,8 @@ onready var entities_container : Node = $YSort
 func _ready():
 	Game.connect("day_ended", self, "restart")
 	Game.resume_day()
-
+	
+	set_navigation_shape()
 
 func restart():
 	for entity in entities_container.get_children():
@@ -60,5 +61,24 @@ func set_player(player, entry):
 	player.face(Vector2.RIGHT.rotated(entry_node.rotation))
 	
 	find_node("YSort").add_child(player)
+
+
+func set_navigation_shape():
+	var nav_tile_map = $Navigation2D/NavTileMap
+	var ground  = $Navigation2D/Ground
+	var walls = $Navigation2D/Walls
+	
+	var ground_cells = ground.get_used_cells()
+	
+	for cell in ground_cells:
+		nav_tile_map.set_cell(cell.x, cell.y, 0)
+	
+	var wall_cells = walls.get_used_cells()	
+	
+	for cell in wall_cells:
+		nav_tile_map.set_cell(cell.x, cell.y, -1)
+		
+	nav_tile_map.update_dirty_quadrants()	
+
 
 
