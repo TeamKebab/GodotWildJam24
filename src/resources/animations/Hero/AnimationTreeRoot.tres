@@ -51,7 +51,7 @@ start_node = "Teen"
 [sub_resource type="AnimationNodeAdd2" id=14]
 
 [resource]
-graph_offset = Vector2( 0, 127 )
+graph_offset = Vector2( 0, -190.5 )
 nodes/Action/node = SubResource( 5 )
 nodes/Action/position = Vector2( 260, 60 )
 nodes/Age/node = SubResource( 12 )

@@ -3,7 +3,6 @@
 [ext_resource path="res://src/entities/characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/hero.png" type="Texture" id=2]
 [ext_resource path="res://src/components/MeleeAttack.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/resources/animations/Hero/Human/Idle.tres" type="Animation" id=4]
 [ext_resource path="res://src/resources/animations/Hero/Human/Attack.tres" type="Animation" id=5]
 [ext_resource path="res://src/resources/animations/Hero/Human/ExtraLeft.tres" type="Animation" id=6]
 [ext_resource path="res://src/resources/animations/Hero/Human/ExtraRight.tres" type="Animation" id=7]
@@ -25,24 +24,21 @@ max_hp = 3
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
-region_rect = Rect2( 312, 0, 24, 24 )
+hframes = 10
+frame = 1
+region_rect = Rect2( 0, 0, 320, 32 )
 
 [node name="BabySprite" parent="." index="3"]
 region_rect = Rect2( 96, 0, 24, 24 )
 
-[node name="AttackSprite" parent="." index="4"]
-position = Vector2( -13.8886, -12.4568 )
-region_rect = Rect2( 16, 0, 16, 48 )
-
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = ExtResource( 5 )
 anims/ExtraDown = ExtResource( 9 )
 anims/ExtraLeft = ExtResource( 6 )
 anims/ExtraRight = ExtResource( 7 )
 anims/ExtraUp = ExtResource( 8 )
-anims/Idle = ExtResource( 4 )
 
-[node name="AnimationTree" parent="." index="6"]
+[node name="AnimationTree" parent="." index="5"]
 tree_root = ExtResource( 10 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
@@ -56,12 +52,12 @@ parameters/Direction/2/LeftAdd/add_amount = 1.0
 parameters/Direction/3/AddDown/add_amount = 1.0
 parameters/DirectionAction/add_amount = 1.0
 
-[node name="DetectionBox" parent="." index="7"]
+[node name="DetectionBox" parent="." index="6"]
 visible = false
 modulate = Color( 1, 1, 1, 0.419608 )
 position = Vector2( -13, -6 )
 
-[node name="Attack" parent="." index="9" instance=ExtResource( 3 )]
+[node name="Attack" parent="." index="8" instance=ExtResource( 3 )]
 position = Vector2( -12.8886, -6.45676 )
 collision_layer = 0
 collision_mask = 128

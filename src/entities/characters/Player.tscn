@@ -3,8 +3,8 @@
 [ext_resource path="res://assets/sprites/hero.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/components/overlap/DetectionBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/resources/animations/Hero/Walk.tres" type="Animation" id=4]
 [ext_resource path="res://src/components/overlap/HurtBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sprites/hero_attack.png" type="Texture" id=7]
 [ext_resource path="res://src/resources/animations/Hero/Adult.tres" type="Animation" id=31]
 [ext_resource path="res://src/resources/animations/Hero/Down.tres" type="Animation" id=33]
 [ext_resource path="res://src/resources/animations/Hero/Elder.tres" type="Animation" id=34]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/resources/animations/Hero/Right.tres" type="Animation" id=37]
 [ext_resource path="res://src/resources/animations/Hero/Teen.tres" type="Animation" id=38]
 [ext_resource path="res://src/resources/animations/Hero/Up.tres" type="Animation" id=39]
+[ext_resource path="res://src/resources/animations/Hero/Idle.tres" type="Animation" id=40]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
@@ -54,14 +55,6 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 24, 24 )
 
-[node name="AttackSprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( 12.1114, -12.4568 )
-texture = ExtResource( 7 )
-vframes = 3
-region_enabled = true
-region_rect = Rect2( 0, 0, 16, 48 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Adult = ExtResource( 31 )
 anims/Down = ExtResource( 33 )
@@ -70,6 +63,8 @@ anims/Left = ExtResource( 36 )
 anims/Right = ExtResource( 37 )
 anims/Teen = ExtResource( 38 )
 anims/Up = ExtResource( 39 )
+anims/Walk = ExtResource( 4 )
+anims/Idle = ExtResource( 40 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 
@@ -77,11 +72,9 @@ anims/Up = ExtResource( 39 )
 position = Vector2( 8, -6 )
 collision_mask = 320
 shape = SubResource( 2 )
-disabled = false
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0.111362, -6.45676 )
 collision_layer = 32
 collision_mask = 0
 shape = SubResource( 3 )
-disabled = false

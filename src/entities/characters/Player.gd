@@ -10,9 +10,9 @@ const RACE_TEXTURES = {
 const HP = preload("res://src/components/HP.gd")
 
 
-const SPRITE_WIDTH = 24
-const SPRITE_HEIGHT = 24
-const FRAMES = 1
+const SPRITE_WIDTH = 32
+const SPRITE_HEIGHT = 32
+const FRAMES = 10
 
 
 enum State {
@@ -211,17 +211,17 @@ func set_sprite_sheet():
 	if find_node("Sprite") == null:
 		return
 		
-	var size = Vector2(SPRITE_WIDTH, SPRITE_HEIGHT * FRAMES)
+	var size = Vector2(SPRITE_WIDTH * FRAMES, SPRITE_HEIGHT)
 	
-	var ages = ["Baby", "Teen", "Adult", "Elder"]
+	var ages = ["Teen", "Adult", "Elder"]
 	var age_index = ages.find(age)
-	var age_offset = age_index * size.x
+	var age_offset = age_index * size.y
 	
 	var directions = ["Right", "Left", "Down", "Up"]
 	var direction_index = directions.find(facing_direction)
-	var direction_offset = size.x * 4 * direction_index
+	var direction_offset = size.y * 3 * direction_index
 		
-	var pos = Vector2(age_offset + direction_offset, 0)
+	var pos = Vector2(0, age_offset + direction_offset)
 	
 	find_node("Sprite").region_rect = Rect2(pos, size)
 

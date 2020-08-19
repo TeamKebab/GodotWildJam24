@@ -30,12 +30,7 @@ region_rect = Rect2( 336, 0, 24, 24 )
 [node name="BabySprite" parent="." index="3"]
 region_rect = Rect2( 288, 0, 24, 24 )
 
-[node name="AttackSprite" parent="." index="4"]
-position = Vector2( -3.889, -14.457 )
-z_index = -1
-region_rect = Rect2( 48, 0, 16, 48 )
-
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = ExtResource( 5 )
 anims/ExtraDown = ExtResource( 9 )
 anims/ExtraLeft = ExtResource( 6 )
@@ -43,7 +38,7 @@ anims/ExtraRight = ExtResource( 7 )
 anims/ExtraUp = ExtResource( 8 )
 anims/Idle = ExtResource( 4 )
 
-[node name="AnimationTree" parent="." index="6"]
+[node name="AnimationTree" parent="." index="5"]
 tree_root = ExtResource( 10 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
@@ -57,13 +52,13 @@ parameters/Direction/2/LeftAdd/add_amount = 1.0
 parameters/Direction/3/AddDown/add_amount = 1.0
 parameters/DirectionAction/add_amount = 1.0
 
-[node name="DetectionBox" parent="." index="7"]
+[node name="DetectionBox" parent="." index="6"]
 visible = false
 modulate = Color( 1, 1, 1, 0.419608 )
 position = Vector2( 0, -15 )
 rotation = 1.5708
 
-[node name="Attack" parent="." index="9" instance=ExtResource( 3 )]
+[node name="Attack" parent="." index="8" instance=ExtResource( 3 )]
 position = Vector2( 0, -15 )
 rotation = 1.5708
 collision_layer = 0
