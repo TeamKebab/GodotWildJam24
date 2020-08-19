@@ -26,7 +26,7 @@ func player_detected(player):
 		help_label.show()
 
 
-func enter_gateway(player):
+func enter_gateway(_player):
 	Game.go_to_map(map_path, entry_name)
 	
 	

@@ -35,6 +35,10 @@ config/icon="res://icon.png"
 Game="*res://src/globals/Game.tscn"
 Narrator="*res://src/globals/Narrator.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=320

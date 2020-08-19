@@ -34,8 +34,8 @@ func move(delta):
 	position += motion * delta
 	
 
-func shot(target_hurtbox, start_position):
-	self.start_position = start_position
+func shot(target_hurtbox, origin_position):
+	start_position = origin_position
 	
 	var target_collision_layer = target_hurtbox.get_collision_layer()
 	var target_position = target_hurtbox.get_parent().position

@@ -32,7 +32,7 @@ func do_effect():
 	attacked_targets = []
 
 
-func do_target_effect(target_hurtbox):
+func do_target_effect(_target_hurtbox):
 	pass
 	
 

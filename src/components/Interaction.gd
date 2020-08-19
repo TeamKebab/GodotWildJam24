@@ -23,11 +23,11 @@ func _ready():
 	connect("area_exited", self, "_on_area_exited")
 	
 
-func player_detected(player):
+func player_detected(_player):
 	help_label.show()
 	
 
-func player_left(player):
+func player_left(_player):
 	help_label.hide()
 	
 

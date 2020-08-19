@@ -17,7 +17,7 @@ func _ready():
 	hp.max_hp = max_hp
 
 
-func knockback(strength):
+func knockback(_strength):
 	pass
 
 	

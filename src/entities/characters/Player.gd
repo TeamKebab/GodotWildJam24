@@ -164,7 +164,7 @@ func _move(delta):
 	
 	motion = motion.move_toward(input * max_speed, acceleration * delta)
 		
-	move_and_slide(motion)
+	motion = move_and_slide(motion)
 
 
 func _get_input() -> Vector2:
