@@ -20,7 +20,6 @@ height = 10.2
 
 [node name="Player" instance=ExtResource( 1 )]
 facing_direction = "Up"
-age = "Teen"
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
