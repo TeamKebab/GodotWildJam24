@@ -5,7 +5,7 @@
 [ext_resource path="res://src/entities/Shrine.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 36, 13 )
+extents = Vector2( 40, 20 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 10 )
@@ -18,15 +18,24 @@ position = Vector2( 0, -10 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -21 )
+position = Vector2( 0, -38 )
 texture = ExtResource( 2 )
 
 [node name="Gateway" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 7 )
 shape = SubResource( 2 )
+disabled = false
 help = "Press [C] to enter"
+map_path = ""
+entry_name = "Default"
+immediate = true
+question = "ask_next_map"
 
 [node name="CollisionShape2D" parent="Gateway" index="0"]
 position = Vector2( 0, -7 )
 shape = SubResource( 2 )
+
+[node name="Label" parent="Gateway" index="1"]
+text = "Press [C] to enter"
 
 [editable path="Gateway"]
