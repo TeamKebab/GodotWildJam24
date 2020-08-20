@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/maps/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/resources/hill_autotile.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/entities/monsters/ElfArcher.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/entities/Fence.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/entities/monsters/BombGnome.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/entities/monsters/FireMage.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 300 )
@@ -26,11 +27,7 @@ tile_data = PoolIntArray( -131074, 0, 3, -131073, 0, 4, -196608, 0, 4, -196607, 
 position = Vector2( 248, 72 )
 
 [node name="Gateway" parent="YSort/Shrine" index="2"]
-disabled = false
 map_path = "res://src/maps/TestShrine.tscn"
-entry_name = "Default"
-immediate = true
-question = "ask_next_map"
 
 [node name="Gateway" parent="YSort" index="1" instance=ExtResource( 3 )]
 position = Vector2( 1040, 160 )
@@ -56,28 +53,70 @@ question = "ask_next_map"
 
 [node name="SwordSoldier" parent="YSort" index="3" instance=ExtResource( 5 )]
 position = Vector2( 536, 72 )
-max_hp = 1
-acceleration = 50
-speed = 50
+max_hp = 6
 
 [node name="ElfArcher" parent="YSort" index="4" instance=ExtResource( 6 )]
-position = Vector2( 200, 200 )
-max_hp = 1
-acceleration = 50
-min_turn_around_time = 0.5
-max_turn_around_time = 2.0
-speed = 50
+position = Vector2( 192, 296 )
 
 [node name="Fence" parent="YSort" index="5" instance=ExtResource( 7 )]
-position = Vector2( 320, 72 )
+position = Vector2( 208, -64 )
 
-[node name="BombGnome" parent="YSort" index="6" instance=ExtResource( 8 )]
+[node name="Fence2" parent="YSort" index="6" instance=ExtResource( 7 )]
+position = Vector2( 200, -40 )
+
+[node name="Fence3" parent="YSort" index="7" instance=ExtResource( 7 )]
+position = Vector2( 160, -40 )
+
+[node name="Fence4" parent="YSort" index="8" instance=ExtResource( 7 )]
+position = Vector2( 120, -56 )
+
+[node name="Fence5" parent="YSort" index="9" instance=ExtResource( 7 )]
+position = Vector2( 120, -88 )
+
+[node name="Fence6" parent="YSort" index="10" instance=ExtResource( 7 )]
+position = Vector2( 160, -112 )
+
+[node name="Fence7" parent="YSort" index="11" instance=ExtResource( 7 )]
+position = Vector2( 200, -96 )
+
+[node name="Fence8" parent="YSort" index="12" instance=ExtResource( 7 )]
+position = Vector2( 248, -88 )
+
+[node name="Fence9" parent="YSort" index="13" instance=ExtResource( 7 )]
+position = Vector2( 240, -112 )
+
+[node name="Fence10" parent="YSort" index="14" instance=ExtResource( 7 )]
+position = Vector2( 96, -112 )
+
+[node name="Fence11" parent="YSort" index="15" instance=ExtResource( 7 )]
+position = Vector2( 0, 8 )
+
+[node name="Fence12" parent="YSort" index="16" instance=ExtResource( 7 )]
+position = Vector2( 0, -16 )
+
+[node name="Fence13" parent="YSort" index="17" instance=ExtResource( 7 )]
+position = Vector2( 32, -16 )
+
+[node name="Fence14" parent="YSort" index="18" instance=ExtResource( 7 )]
+position = Vector2( 64, -16 )
+
+[node name="Fence15" parent="YSort" index="19" instance=ExtResource( 7 )]
+position = Vector2( 96, -16 )
+
+[node name="Fence16" parent="YSort" index="20" instance=ExtResource( 7 )]
+position = Vector2( 96, 8 )
+
+[node name="Fence17" parent="YSort" index="21" instance=ExtResource( 7 )]
+position = Vector2( 64, 8 )
+
+[node name="Fence18" parent="YSort" index="22" instance=ExtResource( 7 )]
+position = Vector2( 32, 8 )
+
+[node name="BombGnome" parent="YSort" index="23" instance=ExtResource( 8 )]
 position = Vector2( 32, 208 )
-max_hp = 1
-acceleration = 50
-min_turn_around_time = 0.5
-max_turn_around_time = 2.0
-speed = 50
+
+[node name="FireMage" parent="YSort" index="24" instance=ExtResource( 9 )]
+position = Vector2( 160, -72 )
 
 [node name="Default" parent="Entries" index="0"]
 position = Vector2( -72, -80 )

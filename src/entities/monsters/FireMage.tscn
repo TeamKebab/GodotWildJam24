@@ -1,0 +1,96 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://src/components/overlap/HurtBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/entities/monsters/FireMage.gd" type="Script" id=2]
+[ext_resource path="res://src/components/RangedAttack.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/mage.png" type="Texture" id=4]
+[ext_resource path="res://src/resources/animations/FireMage/AnimationTree.tres" type="AnimationNodeBlendTree" id=5]
+[ext_resource path="res://src/resources/animations/FireMage/ActionStateMachine.tres" type="AnimationNodeStateMachinePlayback" id=6]
+[ext_resource path="res://src/resources/animations/FireMage/Attack.tres" type="Animation" id=7]
+[ext_resource path="res://src/resources/animations/FireMage/Down.tres" type="Animation" id=8]
+[ext_resource path="res://src/resources/animations/FireMage/Pursue.tres" type="Animation" id=9]
+[ext_resource path="res://src/resources/animations/FireMage/Left.tres" type="Animation" id=10]
+[ext_resource path="res://src/resources/animations/FireMage/Right.tres" type="Animation" id=11]
+[ext_resource path="res://src/resources/animations/FireMage/Idle.tres" type="Animation" id=12]
+[ext_resource path="res://src/resources/animations/FireMage/Up.tres" type="Animation" id=13]
+[ext_resource path="res://src/entities/Arrow.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/resources/animations/FireMage/Teleport.tres" type="Animation" id=15]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.0
+height = 2.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.0
+height = 13.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 50.0
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 3.0
+height = 2.0
+
+[node name="FireMage" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 31
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 4 )
+hframes = 10
+frame = 2
+region_enabled = true
+region_rect = Rect2( 0, 224, 320, 32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = ExtResource( 7 )
+anims/Down = ExtResource( 8 )
+anims/Idle = ExtResource( 12 )
+anims/Left = ExtResource( 10 )
+anims/Pursue = ExtResource( 9 )
+anims/Right = ExtResource( 11 )
+anims/Teleport = ExtResource( 15 )
+anims/Up = ExtResource( 13 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource( 5 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Action/playback = ExtResource( 6 )
+parameters/Add2/add_amount = 1.0
+parameters/Direction/blend_position = Vector2( 0, 0 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 1 )]
+visible = false
+modulate = Color( 1, 1, 1, 0.329412 )
+position = Vector2( 0, -7 )
+collision_layer = 128
+collision_mask = 0
+shape = SubResource( 2 )
+
+[node name="TeleportTimer" type="Timer" parent="."]
+
+[node name="RangedAttack" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 0, -7 )
+collision_layer = 0
+collision_mask = 32
+shape = SubResource( 3 )
+single_hit = false
+Projectile = ExtResource( 14 )
+
+[node name="TeleportArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportArea"]
+position = Vector2( 0, 1 )
+rotation = 1.5708
+shape = SubResource( 4 )

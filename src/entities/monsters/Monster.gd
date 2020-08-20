@@ -115,9 +115,13 @@ func return_to_start(delta):
 	
 	_move_to_point(start_position, delta)
 	
-		
+
+func start_turn_around_timer():
+	var time = Game.rng.randf_range(min_turn_around_time, max_turn_around_time)
+	turn_around_timer.start(time)
+
 func turn_around():
-	var random_direction = randi() % 2
+	var random_direction = Game.rng.randi() % 2
 	
 	if random_direction == 0:
 		_set_facing_direction(facing_direction.rotated(PI/2))
@@ -129,7 +133,7 @@ func start_idle():
 	if Engine.editor_hint:
 		return
 		
-	turn_around_timer.start(rand_range(min_turn_around_time, max_turn_around_time))
+	start_turn_around_timer()
 	
 	_set_facing_direction(start_direction)
 	animationAction.travel("Idle")
@@ -137,12 +141,12 @@ func start_idle():
 
 func start_pursuing():
 	animationAction.travel("Pursue")
+	turn_around_timer.stop()
 	
 
 func start_returning():
 	target = null
 	animationAction.travel("Return")
-
 
 func _die():
 	queue_free()

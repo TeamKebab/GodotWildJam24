@@ -83,7 +83,5 @@ rotation = 1.5708
 collision_layer = 0
 collision_mask = 32
 shape = SubResource( 6 )
-disabled = false
 single_hit = false
-area_attack = false
 Projectile = ExtResource( 12 )

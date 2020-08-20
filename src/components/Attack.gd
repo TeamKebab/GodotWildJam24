@@ -57,16 +57,15 @@ func _trigger_attack():
 
 
 func _on_area_entered(_area):
-	_trigger_attack()
+	if cooldown_timer.is_stopped():
+		_trigger_attack()
 
 
 func _on_cooldown_timeout():
-	disabled = false
+	_trigger_attack()
 	
 
 func _on_attack_triggered(_targets):
-	disabled = true
-	
 	if not single_hit:
 		cooldown_timer.start(attack_cooldown)		
 

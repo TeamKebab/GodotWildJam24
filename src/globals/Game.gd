@@ -28,13 +28,17 @@ var map_state = {}
 var time_of_day: int = 0
 var hp: int setget , get_hp
 
+var rng = RandomNumberGenerator.new()
+
+
 onready var timer : Timer = $Timer
 onready var scene_loader = $SceneLoader
 
 
 func _ready():
 	timer.connect("timeout", self, "_timer_timeout")
-
+	rng.randomize()
+	
 
 func start():
 	time_of_day = ADULT_AGE - 2
