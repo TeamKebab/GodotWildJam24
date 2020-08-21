@@ -1,5 +1,5 @@
 tool
-extends "res://src/components/overlap/DetectionBox.gd"
+extends Area2D
 
 
 export var damage: int = 1
@@ -18,7 +18,7 @@ var motion : Vector2
 
 func _ready():
 	connect("area_entered", self, "_on_area_entered")
-	
+	connect("body_entered", self, "_on_body_entered")
 
 func _physics_process(delta):
 	if motion == Vector2.ZERO:
@@ -42,7 +42,7 @@ func shot(target_hurtbox, origin_position):
 	
 	var direction = start_position.direction_to(target_position)
 	
-	collision_mask &= target_collision_layer
+	collision_mask |= target_collision_layer
 	position = start_position
 	rotation = direction.angle()
 	motion = direction * speed
@@ -71,3 +71,7 @@ func hit(target):
 			
 func _on_area_entered(area):
 	hit(area.get_parent())
+
+func _on_body_entered(_body):
+	if destroy_on_connect:
+		destroy()	

@@ -1,4 +1,4 @@
-extends "res://src/entities/Projectile.gd"
+extends "res://src/entities/projectiles/Projectile.gd"
 
 
 func hit(_target):

@@ -92,6 +92,7 @@ func pursue(delta):
 	
 
 func start_idle():
+	teleport_timer.stop()
 	start_teleport_timer()
 	
 	_set_facing_direction(start_direction)
@@ -136,7 +137,7 @@ func teleport():
 		find_teleport_position()
 		return
 	
-	position = teleport_area.position
+	position = dest
 	teleport_area.position = Vector2.ZERO
 		
 	start_teleport_timer()

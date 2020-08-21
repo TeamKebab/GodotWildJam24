@@ -2,51 +2,51 @@
 
 [ext_resource path="res://src/resources/Blend2DSpace.tres" type="AnimationNodeBlendSpace2D" id=1]
 
-[sub_resource type="AnimationNodeAnimation" id=3]
+[sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Attack"
 
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=2]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "Pursue"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Teleport"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=6]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=7]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=10]
-switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
-
-[sub_resource type="AnimationNodeStateMachine" id=2]
-states/Attack/node = SubResource( 3 )
+[sub_resource type="AnimationNodeStateMachine" id=11]
+states/Attack/node = SubResource( 1 )
 states/Attack/position = Vector2( 688, 124 )
-states/Idle/node = SubResource( 4 )
+states/Idle/node = SubResource( 2 )
 states/Idle/position = Vector2( 257, 124 )
-states/Pursue/node = SubResource( 5 )
+states/Pursue/node = SubResource( 3 )
 states/Pursue/position = Vector2( 444, 124 )
-states/Teleport/node = SubResource( 9 )
+states/Teleport/node = SubResource( 4 )
 states/Teleport/position = Vector2( 321, 43 )
-transitions = [ "Idle", "Pursue", SubResource( 6 ), "Pursue", "Attack", SubResource( 7 ), "Attack", "Pursue", SubResource( 8 ), "Teleport", "Idle", SubResource( 10 ), "Idle", "Teleport", SubResource( 11 ), "Pursue", "Idle", SubResource( 12 ) ]
+transitions = [ "Idle", "Pursue", SubResource( 5 ), "Pursue", "Attack", SubResource( 6 ), "Attack", "Pursue", SubResource( 7 ), "Teleport", "Idle", SubResource( 8 ), "Idle", "Teleport", SubResource( 9 ), "Pursue", "Idle", SubResource( 10 ) ]
 start_node = "Idle"
 
-[sub_resource type="AnimationNodeAdd2" id=1]
+[sub_resource type="AnimationNodeAdd2" id=12]
 
 [resource]
 graph_offset = Vector2( 0, 343 )
-nodes/Action/node = SubResource( 2 )
+nodes/Action/node = SubResource( 11 )
 nodes/Action/position = Vector2( 341, 397 )
-nodes/Add2/node = SubResource( 1 )
+nodes/Add2/node = SubResource( 12 )
 nodes/Add2/position = Vector2( 600, 180 )
 nodes/Direction/node = ExtResource( 1 )
 nodes/Direction/position = Vector2( 220, 180 )

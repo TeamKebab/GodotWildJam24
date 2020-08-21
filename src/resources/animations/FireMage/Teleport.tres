@@ -10,10 +10,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0958589, 0.2, 0.3, 0.4 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.258824 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.258824 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.258824 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")

@@ -11,7 +11,7 @@
 [ext_resource path="res://src/resources/animations/GnomeBomber/Idle.tres" type="Animation" id=9]
 [ext_resource path="res://src/resources/animations/GnomeBomber/Right.tres" type="Animation" id=10]
 [ext_resource path="res://src/resources/animations/GnomeBomber/Attack.tres" type="Animation" id=11]
-[ext_resource path="res://src/entities/Bomb.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/entities/projectiles/Bomb.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
