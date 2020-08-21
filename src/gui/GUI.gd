@@ -11,6 +11,9 @@ onready var text_label : RichTextLabel = find_node("Narrator")
 onready var narrator_box : Control = find_node("NarratorBox")
 onready var buttons: Container = find_node("Buttons")
 
+onready var tooltip_box : PanelContainer = find_node("BabyTooltips")
+onready var tooltip_text : RichTextLabel = find_node("BabyTooltipsText")
+
 onready var animation_player : AnimationPlayer = find_node("AnimationPlayer")
 
 func _ready():
@@ -21,18 +24,23 @@ func _ready():
 	
 	Narrator.gui = self
 	
+	narrator_box.hide()
+	tooltip_box.hide()
+	
 	hearts.value = Game.hp
 	hp_label.text = str(Game.hp)
 	
 	time_of_day.text = str(Game.time_of_day)
 	age_progress.max_value = Game.END_OF_DAY
 	age_progress.value = Game.time_of_day
-	
+
+
 func close_dialog():
 	narrator_box.hide()		
+	tooltip_box.hide()
 
 
-func show_dialog(text, actions):
+func show_dialog(text, actions, tooltip = null):
 	text_label.text = text
 	
 	for i in buttons.get_children():
@@ -46,9 +54,16 @@ func show_dialog(text, actions):
 	# resize for text (WTF)
 	narrator_box.show()
 	narrator_box.hide()
-
-	narrator_box.show()		
-
+		
+	narrator_box.show()	
+	
+	if tooltip != null:
+		tooltip_text.bbcode_text = tooltip
+		tooltip_box.show()
+		tooltip_box.hide()
+		
+		tooltip_box.show()	
+		
 
 func _on_time_passes(time):
 	time_of_day.text = str(time)

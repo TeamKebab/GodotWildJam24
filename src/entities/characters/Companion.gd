@@ -24,7 +24,7 @@ func start_interaction(player):
 	elif is_baby_parent(player):
 		Narrator.show("is_parent")
 	else:
-		Narrator.ask(want_baby_text)
+		Narrator.ask_with_tooltip(want_baby_text, race)
 		can_have_baby = true
 
 

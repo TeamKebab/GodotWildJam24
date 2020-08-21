@@ -17,6 +17,7 @@
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 9 )
 facing_direction = "Up"
+age = "Teen"
 
 [node name="BabySprite" parent="." index="2"]
 z_index = 1
@@ -24,7 +25,7 @@ z_index = 1
 [node name="Sprite" parent="." index="3"]
 texture = ExtResource( 2 )
 hframes = 10
-frame = 1
+frame = 2
 region_rect = Rect2( 0, 0, 320, 32 )
 
 [node name="AnimationPlayer" parent="." index="4"]

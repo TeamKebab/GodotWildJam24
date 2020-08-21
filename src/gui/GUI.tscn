@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/resources/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/gui/GUI.gd" type="Script" id=2]
 [ext_resource path="res://src/components/RepeatProgressBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/ui/heart.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/age-progress-ui.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Retro5.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -13,6 +14,9 @@ region = Rect2( 0, 0, 128, 16 )
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 16, 128, 16 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 6 )
 
 [sub_resource type="Theme" id=3]
 Label/colors/font_color = Color( 0.698039, 0.580392, 0.462745, 1 )
@@ -58,10 +62,17 @@ tracks/0/keys = {
 pause_mode = 2
 script = ExtResource( 2 )
 
-[node name="Control" type="MarginContainer" parent="."]
+[node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopBar" type="MarginContainer" parent="Control"]
+anchor_right = 1.0
+margin_bottom = 20.0
 custom_constants/margin_right = 2
 custom_constants/margin_top = 2
 custom_constants/margin_left = 2
@@ -70,38 +81,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="TopBar" type="HBoxContainer" parent="Control/TopBar"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 318.0
-margin_bottom = 198.0
-
-[node name="TopAlignedContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
-margin_right = 316.0
-margin_bottom = 196.0
-size_flags_vertical = 3
-
-[node name="TopBar" type="HBoxContainer" parent="Control/VBoxContainer/TopAlignedContainer"]
-margin_right = 316.0
-margin_bottom = 16.0
+margin_bottom = 18.0
 size_flags_horizontal = 3
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftAlignedContainer" type="HBoxContainer" parent="Control/VBoxContainer/TopAlignedContainer/TopBar"]
+[node name="LeftAlignedContainer" type="HBoxContainer" parent="Control/TopBar/TopBar"]
 margin_right = 184.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 
-[node name="HP" type="Label" parent="Control/VBoxContainer/TopAlignedContainer/TopBar/LeftAlignedContainer"]
+[node name="HP" type="Label" parent="Control/TopBar/TopBar/LeftAlignedContainer"]
 visible = false
 margin_right = 106.0
 margin_bottom = 13.0
 text = "PLÑAYER HEALTH HERE"
 
-[node name="Hearts" parent="Control/VBoxContainer/TopAlignedContainer/TopBar/LeftAlignedContainer" instance=ExtResource( 3 )]
+[node name="Hearts" parent="Control/TopBar/TopBar/LeftAlignedContainer" instance=ExtResource( 3 )]
 margin_top = 4.0
 margin_right = 76.0
 margin_bottom = 16.0
@@ -110,7 +112,7 @@ size_flags_vertical = 8
 value = 5
 texture = ExtResource( 4 )
 
-[node name="TimeOfDay" type="Label" parent="Control/VBoxContainer/TopAlignedContainer/TopBar"]
+[node name="TimeOfDay" type="Label" parent="Control/TopBar/TopBar"]
 visible = false
 margin_left = 95.0
 margin_top = 1.0
@@ -118,42 +120,104 @@ margin_right = 184.0
 margin_bottom = 14.0
 text = "TIME OF DAY HERE"
 
-[node name="AgeProgress" type="TextureProgress" parent="Control/VBoxContainer/TopAlignedContainer/TopBar"]
+[node name="AgeProgress" type="TextureProgress" parent="Control/TopBar/TopBar"]
 margin_left = 188.0
 margin_right = 316.0
 margin_bottom = 16.0
 texture_under = SubResource( 1 )
 texture_progress = SubResource( 2 )
 
-[node name="NarratorBox" type="PanelContainer" parent="Control/VBoxContainer"]
-visible = false
-margin_top = 164.0
+[node name="BottomBar" type="MarginContainer" parent="Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -36.0
+grow_vertical = 0
+size_flags_vertical = 2
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/BottomBar"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 318.0
+margin_bottom = 116.0
+grow_vertical = 0
+custom_constants/separation = 10
+alignment = 2
+
+[node name="BabyTooltips" type="PanelContainer" parent="Control/BottomBar/VBoxContainer"]
+margin_right = 188.0
+margin_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="BabyTooltipsText" type="RichTextLabel" parent="Control/BottomBar/VBoxContainer/BabyTooltips"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 184.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 180, 0 )
+custom_fonts/bold_font = SubResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[b][color=#897657]Orc Baby[/color][/b]
+Giant Club: slow, but hurts a lot
+Resistant: higher HP
+Can crush fences"
+text = "Orc Baby
+Giant Club: slow, but hurts a lot
+Resistant: higher HP
+Can crush fences"
+fit_content_height = true
+
+[node name="NarratorBox" type="PanelContainer" parent="Control/BottomBar/VBoxContainer"]
+margin_top = 74.0
 margin_right = 316.0
-margin_bottom = 196.0
+margin_bottom = 114.0
 grow_vertical = 0
 size_flags_vertical = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/NarratorBox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/BottomBar/VBoxContainer/NarratorBox"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 312.0
-margin_bottom = 28.0
+margin_bottom = 36.0
 
-[node name="Narrator" type="RichTextLabel" parent="Control/VBoxContainer/NarratorBox/VBoxContainer"]
+[node name="Narrator" type="RichTextLabel" parent="Control/BottomBar/VBoxContainer/NarratorBox/VBoxContainer"]
 margin_right = 308.0
-margin_bottom = 20.0
+margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
-text = "Test tex"
+text = "What's wrong with you? you can't go having kids with everyone! This is not Game of Thrones."
 fit_content_height = true
 scroll_active = false
 
-[node name="Buttons" type="HBoxContainer" parent="Control/VBoxContainer/NarratorBox/VBoxContainer"]
-margin_top = 24.0
+[node name="Buttons" type="HBoxContainer" parent="Control/BottomBar/VBoxContainer/NarratorBox/VBoxContainer"]
+margin_top = 32.0
 margin_right = 308.0
-margin_bottom = 24.0
+margin_bottom = 32.0
 theme = SubResource( 3 )
 custom_constants/separation = 20
 alignment = 2
+
+[node name="Center" type="MarginContainer" parent="Control"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -41.0
+margin_bottom = 41.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 2
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NightShade" type="ColorRect" parent="."]
 anchor_right = 1.0
