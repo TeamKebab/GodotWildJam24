@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/maps/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/resources/hill_autotile.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/entities/Fence.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/entities/monsters/BombGnome.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/entities/monsters/FireMage.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/entities/monsters/Dragon.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 300 )
@@ -103,7 +104,10 @@ speed = 50
 [node name="FireMage2" parent="YSort" index="15" instance=ExtResource( 9 )]
 position = Vector2( 160, -80 )
 
+[node name="Dragon" parent="YSort" index="16" instance=ExtResource( 10 )]
+position = Vector2( 848, 144 )
+
 [node name="Default" parent="Entries" index="0"]
-position = Vector2( -32, -80 )
+position = Vector2( 720, 192 )
 
 [editable path="YSort/Shrine"]

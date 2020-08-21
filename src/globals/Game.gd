@@ -59,6 +59,11 @@ func game_over():
 	scene_loader.gameover_screen()
 	
 
+func win():
+	Narrator.show("endgame")
+	# todo: return to start screen
+	
+	
 func get_hp():
 	if player == null or player.hp == null:
 		return 0

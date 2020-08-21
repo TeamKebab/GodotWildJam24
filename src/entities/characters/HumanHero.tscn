@@ -19,7 +19,8 @@ radius = 7.7
 height = 10.2
 
 [node name="Player" instance=ExtResource( 1 )]
-max_hp = 3
+age = "Teen"
+max_hp = 5
 
 [node name="BabySprite" parent="." index="2"]
 region_rect = Rect2( 0, 0, 32, 32 )
@@ -63,6 +64,7 @@ shape = SubResource( 3 )
 disabled = false
 single_hit = true
 area_attack = false
+attack_cooldown = 1.0
 damage = 1
 knockback_strength = 150
 attack_type = "Normal"
