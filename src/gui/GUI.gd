@@ -9,6 +9,7 @@ onready var text_label : RichTextLabel = find_node("Narrator")
 onready var narrator_box : Control = find_node("NarratorBox")
 onready var buttons: Container = find_node("Buttons")
 
+onready var animation_player : AnimationPlayer = find_node("AnimationPlayer")
 
 func _ready():
 	Game.connect("time_passes", self, "_on_time_passes")
@@ -51,7 +52,19 @@ func _on_time_passes(time):
 
 
 func _on_day_ended():
-	time_of_day.text = str(0)
+	time_of_day.text = str(0)	
+	get_tree().paused = true
+	
+	animation_player.play("Night")
+	yield(animation_player, "animation_finished")	
+	
+	Game.prepare_day()
+	get_tree().paused = false
+	
+	animation_player.play("Day")
+	yield(animation_player, "animation_finished")
+		
+	Game.start_day()
 
 
 func _on_player_hp_changed(hp):

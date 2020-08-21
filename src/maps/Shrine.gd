@@ -7,7 +7,6 @@ onready var heal_timer: Timer = $HealTimer
 
 
 func _ready():
-	Game.pause_day()
 	heal_timer.connect("timeout", self, "_on_heal_timer_timeout")
 
 

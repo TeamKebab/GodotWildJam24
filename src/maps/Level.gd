@@ -1,15 +1,22 @@
 
 extends Node
 
+
+export var resume_day: bool = true
+
+
 onready var entities_container : Node = $YSort
 
 
 func _ready():
 	Game.connect("day_ended", self, "restart")
-	Game.resume_day()
 	
 	set_navigation_shape()
 
+	if resume_day:
+		Game.resume_day()
+		
+		
 func restart():
 	for entity in entities_container.get_children():
 		if entity.has_method("restart"):

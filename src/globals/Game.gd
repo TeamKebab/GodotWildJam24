@@ -89,16 +89,17 @@ func start_day():
 func end_day():
 	timer.stop()
 	emit_signal("day_ended")
-	
+
+
+func prepare_day():
 	hero_dynasty.append(player.get_info())
 	
 	if player.has_child():
-		grow_baby()		
-		start_day()
+		grow_baby()
 	else:
 		game_over()
-
-
+		
+		
 func grow_baby():
 	var baby = player.baby
 	
@@ -130,13 +131,13 @@ func create_player(parent = "", race = "human"):
 	
 		
 func go_to_map(map_path, entry_name):	
-	timer.stop()
+	pause_day()
 	
 	if (scene_loader.current_scene.has_method("get_state")):
 		map_state[scene_loader.current_scene.filename] = scene_loader.current_scene.get_state()
 		
-	scene_loader.load_level(map_path, player, entry_name, map_state)
-
+	scene_loader.load_level(map_path, player, entry_name, map_state)	
+	
 
 func _timer_timeout():
 	time_of_day += 1

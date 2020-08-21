@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/resources/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/gui/GUI.gd" type="Script" id=2]
@@ -16,8 +16,39 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
+[sub_resource type="Animation" id=3]
+resource_name = "Day"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("NightShade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.109804, 0.113725, 0.156863, 1 ), Color( 0.109804, 0.113725, 0.156863, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Night"
+tracks/0/type = "value"
+tracks/0/path = NodePath("NightShade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.109804, 0.113725, 0.156863, 0 ), Color( 0.109804, 0.113725, 0.156863, 1 ), Color( 0.109804, 0.113725, 0.156863, 1 ) ]
+}
+
 [node name="GUI" type="CanvasLayer"]
-pause_mode = 1
+pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Control" type="MarginContainer" parent="."]
@@ -35,16 +66,16 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 471.0
+margin_right = 318.0
 margin_bottom = 198.0
 
 [node name="TopAlignedContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
-margin_right = 469.0
+margin_right = 316.0
 margin_bottom = 196.0
 size_flags_vertical = 3
 
 [node name="TopBar" type="HBoxContainer" parent="Control/VBoxContainer/TopAlignedContainer"]
-margin_right = 469.0
+margin_right = 316.0
 margin_bottom = 13.0
 size_flags_horizontal = 3
 alignment = 2
@@ -53,7 +84,7 @@ __meta__ = {
 }
 
 [node name="LeftAlignedContainer" type="HBoxContainer" parent="Control/VBoxContainer/TopAlignedContainer/TopBar"]
-margin_right = 376.0
+margin_right = 223.0
 margin_bottom = 13.0
 size_flags_horizontal = 3
 
@@ -64,15 +95,15 @@ margin_bottom = 13.0
 text = "PLÑAYER HEALTH HERE"
 
 [node name="Hearts" parent="Control/VBoxContainer/TopAlignedContainer/TopBar/LeftAlignedContainer" instance=ExtResource( 3 )]
-margin_right = 236.0
+margin_right = 76.0
 margin_bottom = 13.0
 rect_min_size = Vector2( 28, 12 )
 value = 5
 texture = ExtResource( 4 )
 
 [node name="TimeOfDay" type="Label" parent="Control/VBoxContainer/TopAlignedContainer/TopBar"]
-margin_left = 380.0
-margin_right = 469.0
+margin_left = 227.0
+margin_right = 316.0
 margin_bottom = 13.0
 text = "TIME OF DAY HERE"
 
@@ -105,3 +136,15 @@ margin_bottom = 24.0
 theme = SubResource( 1 )
 custom_constants/separation = 20
 alignment = 2
+
+[node name="NightShade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.109804, 0.113725, 0.156863, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Day = SubResource( 3 )
+anims/Night = SubResource( 2 )

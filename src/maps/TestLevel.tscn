@@ -33,10 +33,10 @@ map_path = "res://src/maps/TestShrine.tscn"
 position = Vector2( 1040, 160 )
 shape = SubResource( 1 )
 disabled = false
+automatic = true
 help = "Press [C] to talk"
 map_path = "res://src/maps/TestLevel2.tscn"
 entry_name = "Default"
-automatic = true
 immediate = false
 question = "ask_next_map"
 
@@ -44,18 +44,15 @@ question = "ask_next_map"
 position = Vector2( -160, 152 )
 shape = SubResource( 1 )
 disabled = false
+automatic = true
 help = "Press [C] to talk"
 map_path = "res://src/maps/TestLevel2.tscn"
 entry_name = "Default"
-automatic = true
 immediate = false
 question = "ask_next_map"
 
 [node name="SwordSoldier" parent="YSort" index="3" instance=ExtResource( 5 )]
 position = Vector2( 536, 72 )
-max_hp = 6
-acceleration = 50
-speed = 50
 
 [node name="ElfArcher" parent="YSort" index="4" instance=ExtResource( 6 )]
 position = Vector2( 192, 296 )
