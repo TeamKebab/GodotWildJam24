@@ -20,7 +20,7 @@ func _set_value(new_value):
 		new_value = 0
 	
 	if new_value > value:
-		for i in range(value, new_value):
+		for _i in range(value, new_value):
 			var textRect = TextureRect.new()
 			textRect.texture = texture
 			add_child(textRect)

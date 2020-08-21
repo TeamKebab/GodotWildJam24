@@ -23,6 +23,7 @@ sprite_width = 42
 sprite_height = 42
 total_frames = 11
 facing_direction = "Up"
+age = "Teen"
 
 [node name="BabySprite" parent="." index="2"]
 z_index = 1

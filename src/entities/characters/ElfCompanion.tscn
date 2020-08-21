@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/elf.png" type="Texture" id=1]
+[ext_resource path="res://src/entities/characters/Companion.tscn" type="PackedScene" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 224, 64, 32 )
+
+[node name="ElfCompanion" instance=ExtResource( 2 )]
+id = "elf_companion"
+want_baby_text = "want_baby_elf"
+race = "elf"
+
+[node name="Sprite" parent="." index="1"]
+texture = SubResource( 1 )
+hframes = 2
+
+[node name="Interaction" parent="." index="2"]
+disabled = false
+help = "Press [C] to talk"

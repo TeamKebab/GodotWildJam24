@@ -33,10 +33,10 @@ map_path = "res://src/maps/TestShrine.tscn"
 position = Vector2( 1040, 160 )
 shape = SubResource( 1 )
 disabled = false
-automatic = true
 help = "Press [C] to talk"
 map_path = "res://src/maps/TestLevel2.tscn"
 entry_name = "Default"
+automatic = true
 immediate = false
 question = "ask_next_map"
 
@@ -44,18 +44,26 @@ question = "ask_next_map"
 position = Vector2( -160, 152 )
 shape = SubResource( 1 )
 disabled = false
-automatic = true
 help = "Press [C] to talk"
 map_path = "res://src/maps/TestLevel2.tscn"
 entry_name = "Default"
+automatic = true
 immediate = false
 question = "ask_next_map"
 
 [node name="SwordSoldier" parent="YSort" index="3" instance=ExtResource( 5 )]
 position = Vector2( 536, 72 )
+max_hp = 1
+acceleration = 50
+speed = 50
 
 [node name="ElfArcher" parent="YSort" index="4" instance=ExtResource( 6 )]
 position = Vector2( 192, 296 )
+max_hp = 1
+acceleration = 50
+min_turn_around_time = 0.5
+max_turn_around_time = 2.0
+speed = 50
 
 [node name="Fence9" parent="YSort" index="5" instance=ExtResource( 7 )]
 position = Vector2( 56, -344 )
@@ -86,6 +94,11 @@ position = Vector2( 32, 8 )
 
 [node name="BombGnome" parent="YSort" index="14" instance=ExtResource( 8 )]
 position = Vector2( 32, 208 )
+max_hp = 1
+acceleration = 50
+min_turn_around_time = 0.5
+max_turn_around_time = 2.0
+speed = 50
 
 [node name="FireMage2" parent="YSort" index="15" instance=ExtResource( 9 )]
 position = Vector2( 160, -80 )

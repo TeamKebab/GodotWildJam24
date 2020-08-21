@@ -9,7 +9,7 @@ onready var timer : Timer = $Timer
 
 func _ready():
 	timer.connect("timeout", self, "_on_timer_timeout")
-	timer.start(5)
+	timer.start(1)
 	
 
 func _input(event):

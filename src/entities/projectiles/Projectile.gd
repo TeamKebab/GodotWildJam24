@@ -34,18 +34,22 @@ func move(delta):
 	position += motion * delta
 	
 
-func shot(target_hurtbox, origin_position):
+func shot_in_direction(direction, origin_position, target_collision_layer):
 	start_position = origin_position
-	
-	var target_collision_layer = target_hurtbox.get_collision_layer()
-	var target_position = target_hurtbox.get_parent().position
-	
-	var direction = start_position.direction_to(target_position)
 	
 	collision_mask |= target_collision_layer
 	position = start_position
 	rotation = direction.angle()
 	motion = direction * speed
+
+	
+func shot(target_hurtbox, origin_position):		
+	var target_position = target_hurtbox.get_parent().position
+	var direction = origin_position.direction_to(target_position)
+	
+	var target_collision_layer = target_hurtbox.get_collision_layer()
+	
+	shot_in_direction(direction, origin_position, target_collision_layer)
 	
 	
 func destroy():

@@ -1,0 +1,55 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/entities/characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/elf.png" type="Texture" id=2]
+[ext_resource path="res://src/resources/animations/Hero/AnimationTreeRoot.tres" type="AnimationNodeBlendTree" id=3]
+[ext_resource path="res://src/resources/animations/Hero/Elf/ExtraDown.tres" type="Animation" id=4]
+[ext_resource path="res://src/resources/animations/Hero/Elf/ExtraRight.tres" type="Animation" id=5]
+[ext_resource path="res://src/resources/animations/Hero/Elf/ExtraLeft.tres" type="Animation" id=6]
+[ext_resource path="res://src/resources/animations/Hero/Elf/ExtraUp.tres" type="Animation" id=7]
+[ext_resource path="res://src/resources/animations/Hero/Elf/Attack.tres" type="Animation" id=8]
+[ext_resource path="res://src/entities/characters/ElfHero.gd" type="Script" id=9]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="Player" instance=ExtResource( 1 )]
+script = ExtResource( 9 )
+facing_direction = "Up"
+
+[node name="BabySprite" parent="." index="2"]
+z_index = 1
+
+[node name="Sprite" parent="." index="3"]
+texture = ExtResource( 2 )
+hframes = 10
+frame = 1
+region_rect = Rect2( 0, 0, 320, 32 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/Attack = ExtResource( 8 )
+anims/ExtraDown = ExtResource( 4 )
+anims/ExtraLeft = ExtResource( 6 )
+anims/ExtraRight = ExtResource( 5 )
+anims/ExtraUp = ExtResource( 7 )
+
+[node name="AnimationTree" parent="." index="5"]
+tree_root = ExtResource( 3 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Action/playback = SubResource( 1 )
+parameters/Age/playback = SubResource( 2 )
+parameters/All/add_amount = 1.0
+parameters/Direction/blend_position = Vector2( 0, 0 )
+parameters/Direction/0/UpAdd/add_amount = 0
+parameters/Direction/1/AddDown/add_amount = 0
+parameters/Direction/2/LeftAdd/add_amount = 0
+parameters/Direction/3/AddDown/add_amount = 0
+parameters/DirectionAction/add_amount = 1.0
+
+[node name="DetectionBox" parent="." index="6"]
+position = Vector2( 0, -15 )
+rotation = 1.5708
+
+[node name="Attack" type="Node2D" parent="." index="8"]
