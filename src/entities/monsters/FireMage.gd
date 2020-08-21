@@ -85,7 +85,7 @@ func start_pursuing():
 	teleport_timer.stop()	
 	
 
-func pursue(delta):
+func pursue(_delta):
 	var targets = attack.get_overlapping_areas()
 	if targets.empty():
 		start_idle()

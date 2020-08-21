@@ -33,7 +33,6 @@ func show_dialog(text, actions):
 	for i in actions:
 		var label = Label.new()
 		label.text = i
-		label.add_color_override("font_color", Color(0.6, 0.6, 0.6))
 		buttons.add_child(label)
 	
 	# resize for text (WTF)
