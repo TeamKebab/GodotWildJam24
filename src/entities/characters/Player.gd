@@ -231,8 +231,8 @@ func set_sprite_sheet():
 	if baby_sprite == null:
 		return 
 		
-	var baby_pos = Vector2(0, direction_offset)
-	var baby_size = Vector2(sprite_width, sprite_height)
+	var baby_size = Vector2(32, 32)
+	var baby_pos = Vector2(0, baby_size.y * 3 * direction_index)
 	
 	baby_sprite.region_rect = Rect2(baby_pos, baby_size)
 

@@ -26,13 +26,13 @@ facing_direction = "Up"
 
 [node name="BabySprite" parent="." index="2"]
 z_index = 1
-region_rect = Rect2( 0, 0, 32, 32 )
+region_rect = Rect2( 0, 288, 32, 32 )
 
 [node name="Sprite" parent="." index="3"]
 texture = ExtResource( 2 )
 hframes = 11
-frame = 2
-region_rect = Rect2( 0, 42, 462, 42 )
+frame = 1
+region_rect = Rect2( 0, 420, 462, 42 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = ExtResource( 5 )
@@ -61,6 +61,9 @@ modulate = Color( 1, 1, 1, 0.419608 )
 position = Vector2( 0, -15 )
 rotation = 1.5708
 
+[node name="HurtBox" parent="." index="7"]
+visible = false
+
 [node name="Attack" parent="." index="8" instance=ExtResource( 3 )]
 position = Vector2( 0, -15 )
 rotation = 1.5708
@@ -68,5 +71,9 @@ collision_layer = 0
 collision_mask = 128
 shape = SubResource( 3 )
 disabled = true
+single_hit = true
+area_attack = false
+attack_cooldown = 1.0
 damage = 2
+knockback_strength = 150
 attack_type = "Whomping"
