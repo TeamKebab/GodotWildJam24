@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/resources/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/gui/GUI.gd" type="Script" id=2]
 [ext_resource path="res://src/components/RepeatProgressBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/ui/heart.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/age-progress-ui.png" type="Texture" id=5]
-[ext_resource path="res://assets/fonts/Retro5.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -15,10 +14,7 @@ region = Rect2( 0, 0, 128, 16 )
 atlas = ExtResource( 5 )
 region = Rect2( 0, 16, 128, 16 )
 
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 6 )
-
-[sub_resource type="Theme" id=3]
+[sub_resource type="Theme" id=4]
 Label/colors/font_color = Color( 0.698039, 0.580392, 0.462745, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -29,7 +25,7 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("NightShade:color")
@@ -44,7 +40,7 @@ tracks/0/keys = {
 "values": [ Color( 0.109804, 0.113725, 0.156863, 1 ), Color( 0.109804, 0.113725, 0.156863, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("NightShade:color")
 tracks/0/interp = 1
@@ -163,8 +159,6 @@ margin_top = 4.0
 margin_right = 184.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 180, 0 )
-custom_fonts/bold_font = SubResource( 6 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "[b][color=#897657]Orc Baby[/color][/b]
 Giant Club: slow, but hurts a lot
@@ -201,7 +195,7 @@ scroll_active = false
 margin_top = 32.0
 margin_right = 308.0
 margin_bottom = 32.0
-theme = SubResource( 3 )
+theme = SubResource( 4 )
 custom_constants/separation = 20
 alignment = 2
 
@@ -228,5 +222,5 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Day = SubResource( 4 )
-anims/Night = SubResource( 5 )
+anims/Day = SubResource( 5 )
+anims/Night = SubResource( 6 )

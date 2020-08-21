@@ -80,6 +80,7 @@ position = Vector2( 406, 30 )
 
 [node name="Dragon" parent="YSort" index="9" instance=ExtResource( 8 )]
 position = Vector2( 114, -348 )
+max_hp = 5
 
 [node name="Default" parent="Entries" index="0"]
 position = Vector2( 568, 54 )
