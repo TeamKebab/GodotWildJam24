@@ -12,9 +12,6 @@ func _ready():
 	Game.connect("day_ended", self, "restart")
 	
 	set_navigation_shape()
-
-	if resume_day:
-		Game.resume_day()
 		
 		
 func restart():

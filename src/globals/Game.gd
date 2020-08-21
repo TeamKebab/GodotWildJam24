@@ -78,7 +78,8 @@ func pause_day():
 		
 
 func resume_day():
-	timer.start()
+	if scene_loader.current_scene.get("resume_day") == true:
+		timer.start()
 	
 	
 func start_day():
@@ -137,6 +138,10 @@ func go_to_map(map_path, entry_name):
 		map_state[scene_loader.current_scene.filename] = scene_loader.current_scene.get_state()
 		
 	scene_loader.load_level(map_path, player, entry_name, map_state)	
+	
+	yield(scene_loader, "map_loaded")
+	
+	resume_day()
 	
 
 func _timer_timeout():
