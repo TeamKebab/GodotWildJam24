@@ -1,11 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/resources/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/gui/GUI.gd" type="Script" id=2]
 [ext_resource path="res://src/components/RepeatProgressBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/ui/heart.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/age-progress-ui.png" type="Texture" id=5]
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 128, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 16, 128, 16 )
+
+[sub_resource type="Theme" id=3]
 Label/colors/font_color = Color( 0.698039, 0.580392, 0.462745, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -16,8 +25,7 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
-[sub_resource type="Animation" id=3]
-resource_name = "Day"
+[sub_resource type="Animation" id=4]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("NightShade:color")
@@ -32,8 +40,7 @@ tracks/0/keys = {
 "values": [ Color( 0.109804, 0.113725, 0.156863, 1 ), Color( 0.109804, 0.113725, 0.156863, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Night"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("NightShade:color")
 tracks/0/interp = 1
@@ -76,7 +83,7 @@ size_flags_vertical = 3
 
 [node name="TopBar" type="HBoxContainer" parent="Control/VBoxContainer/TopAlignedContainer"]
 margin_right = 316.0
-margin_bottom = 13.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
 alignment = 2
 __meta__ = {
@@ -84,8 +91,8 @@ __meta__ = {
 }
 
 [node name="LeftAlignedContainer" type="HBoxContainer" parent="Control/VBoxContainer/TopAlignedContainer/TopBar"]
-margin_right = 223.0
-margin_bottom = 13.0
+margin_right = 184.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
 
 [node name="HP" type="Label" parent="Control/VBoxContainer/TopAlignedContainer/TopBar/LeftAlignedContainer"]
@@ -95,17 +102,28 @@ margin_bottom = 13.0
 text = "PLÑAYER HEALTH HERE"
 
 [node name="Hearts" parent="Control/VBoxContainer/TopAlignedContainer/TopBar/LeftAlignedContainer" instance=ExtResource( 3 )]
+margin_top = 4.0
 margin_right = 76.0
-margin_bottom = 13.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 28, 12 )
+size_flags_vertical = 8
 value = 5
 texture = ExtResource( 4 )
 
 [node name="TimeOfDay" type="Label" parent="Control/VBoxContainer/TopAlignedContainer/TopBar"]
-margin_left = 227.0
-margin_right = 316.0
-margin_bottom = 13.0
+visible = false
+margin_left = 95.0
+margin_top = 1.0
+margin_right = 184.0
+margin_bottom = 14.0
 text = "TIME OF DAY HERE"
+
+[node name="AgeProgress" type="TextureProgress" parent="Control/VBoxContainer/TopAlignedContainer/TopBar"]
+margin_left = 188.0
+margin_right = 316.0
+margin_bottom = 16.0
+texture_under = SubResource( 1 )
+texture_progress = SubResource( 2 )
 
 [node name="NarratorBox" type="PanelContainer" parent="Control/VBoxContainer"]
 visible = false
@@ -133,7 +151,7 @@ scroll_active = false
 margin_top = 24.0
 margin_right = 308.0
 margin_bottom = 24.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 custom_constants/separation = 20
 alignment = 2
 
@@ -146,5 +164,5 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Day = SubResource( 3 )
-anims/Night = SubResource( 2 )
+anims/Day = SubResource( 4 )
+anims/Night = SubResource( 5 )

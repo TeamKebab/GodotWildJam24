@@ -6,6 +6,7 @@
 margin_right = 12.0
 margin_bottom = 12.0
 size_flags_horizontal = 5
+size_flags_vertical = 4
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

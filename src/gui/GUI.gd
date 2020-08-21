@@ -3,7 +3,9 @@ extends Node
 
 onready var hp_label : Label = find_node("HP")
 onready var hearts = find_node("Hearts")
+
 onready var time_of_day: Label = find_node("TimeOfDay")
+onready var age_progress: TextureProgress = find_node("AgeProgress")
 
 onready var text_label : RichTextLabel = find_node("Narrator")
 onready var narrator_box : Control = find_node("NarratorBox")
@@ -23,7 +25,8 @@ func _ready():
 	hp_label.text = str(Game.hp)
 	
 	time_of_day.text = str(Game.time_of_day)
-	
+	age_progress.max_value = Game.END_OF_DAY
+	age_progress.value = Game.time_of_day
 	
 func close_dialog():
 	narrator_box.hide()		
@@ -49,10 +52,12 @@ func show_dialog(text, actions):
 
 func _on_time_passes(time):
 	time_of_day.text = str(time)
+	age_progress.value = time
 
 
 func _on_day_ended():
 	time_of_day.text = str(0)	
+	age_progress.value = 0
 	get_tree().paused = true
 	
 	animation_player.play("Night")
