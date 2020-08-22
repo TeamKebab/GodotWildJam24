@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/maps/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/entities/monsters/BombGnome.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/resources/volcano_autotile.tres" type="TileSet" id=6]
 [ext_resource path="res://src/entities/monsters/FireMage.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/entities/monsters/Dragon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/entities/Sign.tscn" type="PackedScene" id=9]
 
 [node name="Level" instance=ExtResource( 1 )]
 
@@ -25,33 +26,80 @@ position = Vector2( 79, 99 )
 [node name="Gateway" parent="YSort/Shrine" index="2"]
 map_path = "res://src/maps/VolcanoShrine.tscn"
 
-[node name="SwordSoldier" parent="YSort" index="1" instance=ExtResource( 4 )]
+[node name="Sign" parent="YSort" index="1" instance=ExtResource( 9 )]
+position = Vector2( 149, 21 )
+disabled = false
+text = "Danger ahead"
+
+[node name="Sign2" parent="YSort" index="2" instance=ExtResource( 9 )]
+position = Vector2( 80, -102 )
+disabled = false
+text = "Turn around now"
+
+[node name="Sign3" parent="YSort" index="3" instance=ExtResource( 9 )]
+position = Vector2( 157, -147 )
+disabled = false
+text = "Here be dragons"
+
+[node name="SwordSoldier" parent="YSort" index="4" instance=ExtResource( 4 )]
 position = Vector2( 482, 19 )
+max_hp = 1
+acceleration = 50
+facing_direction = Vector2( 0, 1 )
+speed = 50
 
-[node name="SwordSoldier2" parent="YSort" index="2" instance=ExtResource( 4 )]
+[node name="SwordSoldier2" parent="YSort" index="5" instance=ExtResource( 4 )]
 position = Vector2( 116, -78 )
+max_hp = 1
+acceleration = 50
+facing_direction = Vector2( 0, 1 )
+speed = 50
 
-[node name="SwordSoldier3" parent="YSort" index="3" instance=ExtResource( 4 )]
+[node name="SwordSoldier3" parent="YSort" index="6" instance=ExtResource( 4 )]
 position = Vector2( 36, -60 )
+max_hp = 1
+acceleration = 50
+facing_direction = Vector2( 0, 1 )
+speed = 50
 
-[node name="ElfArcher" parent="YSort" index="4" instance=ExtResource( 5 )]
+[node name="ElfArcher" parent="YSort" index="7" instance=ExtResource( 5 )]
 position = Vector2( 544, 40 )
+max_hp = 1
+acceleration = 50
+min_turn_around_time = 0.5
+max_turn_around_time = 2.0
+speed = 50
 
-[node name="ElfArcher2" parent="YSort" index="5" instance=ExtResource( 5 )]
+[node name="ElfArcher2" parent="YSort" index="8" instance=ExtResource( 5 )]
 position = Vector2( 153, 148 )
+max_hp = 1
+acceleration = 50
+min_turn_around_time = 0.5
+max_turn_around_time = 2.0
+speed = 50
 
-[node name="ElfArcher3" parent="YSort" index="6" instance=ExtResource( 5 )]
+[node name="ElfArcher3" parent="YSort" index="9" instance=ExtResource( 5 )]
 position = Vector2( 69, 149 )
+max_hp = 1
+acceleration = 50
+min_turn_around_time = 0.5
+max_turn_around_time = 2.0
+speed = 50
 
-[node name="BombGnome" parent="YSort" index="7" instance=ExtResource( 2 )]
+[node name="BombGnome" parent="YSort" index="10" instance=ExtResource( 2 )]
 position = Vector2( 442, 62 )
+max_hp = 1
+acceleration = 50
+facing_direction = Vector2( 0, 1 )
+min_turn_around_time = 0.5
+max_turn_around_time = 2.0
+speed = 50
 
-[node name="FireMage" parent="YSort" index="8" instance=ExtResource( 7 )]
+[node name="FireMage" parent="YSort" index="11" instance=ExtResource( 7 )]
 position = Vector2( 406, 30 )
 
-[node name="Dragon" parent="YSort" index="9" instance=ExtResource( 8 )]
+[node name="Dragon" parent="YSort" index="12" instance=ExtResource( 8 )]
 position = Vector2( 114, -348 )
-max_hp = 5
 
 [node name="Default" parent="Entries" index="0"]
 position = Vector2( 568, 54 )

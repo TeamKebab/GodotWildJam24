@@ -14,7 +14,7 @@ region = Rect2( 0, 0, 128, 16 )
 atlas = ExtResource( 5 )
 region = Rect2( 0, 16, 128, 16 )
 
-[sub_resource type="Theme" id=7]
+[sub_resource type="Theme" id=3]
 Label/colors/font_color = Color( 0.698039, 0.580392, 0.462745, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -25,7 +25,7 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("NightShade:color")
@@ -40,7 +40,7 @@ tracks/0/keys = {
 "values": [ Color( 0.109804, 0.113725, 0.156863, 1 ), Color( 0.109804, 0.113725, 0.156863, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("NightShade:color")
 tracks/0/interp = 1
@@ -61,7 +61,7 @@ script = ExtResource( 2 )
 [node name="NightShade" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.109804, 0.113725, 0.156863, 1 )
+color = Color( 0.109804, 0.113725, 0.156863, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -150,14 +150,16 @@ __meta__ = {
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 318.0
-margin_bottom = 116.0
+margin_bottom = 34.0
 grow_vertical = 0
 custom_constants/separation = 10
 alignment = 2
 
 [node name="BabyTooltips" type="PanelContainer" parent="Control/BottomBar/VBoxContainer"]
+visible = false
+margin_top = 50.0
 margin_right = 188.0
-margin_bottom = 64.0
+margin_bottom = 114.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
@@ -179,6 +181,7 @@ Can crush fences"
 fit_content_height = true
 
 [node name="NarratorBox" type="PanelContainer" parent="Control/BottomBar/VBoxContainer"]
+visible = false
 margin_top = 74.0
 margin_right = 316.0
 margin_bottom = 114.0
@@ -203,7 +206,7 @@ scroll_active = false
 margin_top = 32.0
 margin_right = 308.0
 margin_bottom = 32.0
-theme = SubResource( 7 )
+theme = SubResource( 3 )
 custom_constants/separation = 20
 alignment = 2
 
@@ -223,5 +226,5 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Day"
-anims/Day = SubResource( 8 )
-anims/Night = SubResource( 6 )
+anims/Day = SubResource( 4 )
+anims/Night = SubResource( 5 )
