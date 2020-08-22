@@ -24,13 +24,13 @@ height = 15.0
 [sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 80, 120 )
+extents = Vector2( 80, 100 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 50, 80 )
+extents = Vector2( 50, 60 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 50, 50 )
+extents = Vector2( 40, 40 )
 
 [node name="ElfArcher" instance=ExtResource( 1 )]
 facing_direction = Vector2( 0, -1 )
@@ -78,10 +78,11 @@ rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="RangedAttack" parent="." index="9" instance=ExtResource( 11 )]
-position = Vector2( -50, -10 )
+position = Vector2( -40, -10 )
 rotation = 1.5708
 collision_layer = 0
 collision_mask = 32
 shape = SubResource( 6 )
 single_hit = false
+attack_cooldown = 1.5
 Projectile = ExtResource( 12 )

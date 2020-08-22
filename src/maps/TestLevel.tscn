@@ -54,11 +54,6 @@ speed = 50
 
 [node name="ElfArcher" parent="YSort" index="4" instance=ExtResource( 6 )]
 position = Vector2( 192, 296 )
-max_hp = 1
-acceleration = 50
-min_turn_around_time = 0.5
-max_turn_around_time = 2.0
-speed = 50
 
 [node name="Fence9" parent="YSort" index="5" instance=ExtResource( 7 )]
 position = Vector2( 56, -344 )
@@ -89,11 +84,6 @@ position = Vector2( 32, 8 )
 
 [node name="BombGnome" parent="YSort" index="14" instance=ExtResource( 8 )]
 position = Vector2( 32, 208 )
-max_hp = 1
-acceleration = 50
-min_turn_around_time = 0.5
-max_turn_around_time = 2.0
-speed = 50
 
 [node name="FireMage2" parent="YSort" index="15" instance=ExtResource( 9 )]
 position = Vector2( 160, -80 )

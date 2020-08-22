@@ -25,7 +25,7 @@ radius = 5.0
 height = 13.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 80.0
+radius = 60.0
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 3.0
@@ -84,6 +84,7 @@ collision_layer = 0
 collision_mask = 32
 shape = SubResource( 3 )
 single_hit = false
+attack_cooldown = 3.0
 Projectile = ExtResource( 14 )
 
 [node name="TeleportArea" type="Area2D" parent="."]

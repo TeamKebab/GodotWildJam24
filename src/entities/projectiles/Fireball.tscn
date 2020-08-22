@@ -26,7 +26,7 @@ tracks/0/keys = {
 [node name="Fireball" instance=ExtResource( 2 )]
 collision_mask = 3
 damage = 2
-speed = 70
+speed = 50
 distance = 200.0
 damage_type = "Fire"
 
