@@ -9,36 +9,35 @@ export var max_hp: int = 1
 var target = null
 
 onready var hp = HP.new(max_hp)
-onready var animationPlayer = $AnimationPlayer
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
 onready var attack = $RangedAttack
 
 func _ready():
 	hp.connect("died", self, "_die")	
 	hp.connect("hp_changed", self, "_on_hp_changed")
 	attack.connect("attacked", self, "_on_target_attacked")
-	
-	start_idle()
 
 
 func restart():
-	start_idle()
+	pass
 
 
 func knockback(_strength):
 	pass
 	
 
-func start_idle():
-	animationPlayer.play("Idle")
-
-
-func _die():
+func win():
+	Game.win()
 	queue_free()
 	
+	
+func _die():
+	animationState.travel("Death")
+	attack.disabled = true
+
 
 func _on_target_attacked(targets):
-	animationPlayer.play("Attack")
-	yield(animationPlayer, "animation_finished")
-	start_idle()
+	animationState.travel("Attack")
 
 

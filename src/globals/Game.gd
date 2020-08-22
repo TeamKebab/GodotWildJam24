@@ -67,13 +67,13 @@ func restart():
 	start()
 
 
+func win():
+	yield(Narrator.show_with_interaction(player, "game_end"), "completed")
+	scene_loader.start_screen()
+	
+	
 func game_over():	
 	scene_loader.gameover_screen()
-	
-
-func win():
-	Narrator.show("endgame")
-	# todo: return to start screen
 	
 	
 func get_hp():
