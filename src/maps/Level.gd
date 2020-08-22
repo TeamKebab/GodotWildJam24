@@ -3,7 +3,7 @@ extends Node
 
 
 export var resume_day: bool = true
-
+export(AudioStreamOGGVorbis) var music
 
 var player = null
 
@@ -13,7 +13,7 @@ onready var entities_container : Node = $YSort
 
 func _ready():
 	Game.connect("day_ended", self, "restart")
-	
+	Game.play_music(music)
 	set_navigation_shape()
 		
 		

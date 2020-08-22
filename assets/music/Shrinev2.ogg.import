@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Shrinev2.ogg-8ac987a950778c644ce365532cf83565.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Shrinev2.ogg"
+dest_files=[ "res://.import/Shrinev2.ogg-8ac987a950778c644ce365532cf83565.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

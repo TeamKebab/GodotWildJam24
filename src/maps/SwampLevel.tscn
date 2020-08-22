@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/maps/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/entities/Gateway.tscn" type="PackedScene" id=2]
@@ -9,11 +9,13 @@
 [ext_resource path="res://src/entities/monsters/BombGnome.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/entities/monsters/FireMage.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/entities/Sign.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/music/overworld_3.ogg" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 50 )
 
 [node name="Level" instance=ExtResource( 1 )]
+music = ExtResource( 10 )
 
 [node name="Ground" parent="Navigation2D" index="1"]
 tile_set = ExtResource( 6 )

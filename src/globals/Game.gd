@@ -28,6 +28,7 @@ var first_shrine = true
 var first_multiple_companion_shrine = true
 var first_baby = true
 
+var current_music = null
 
 var time_of_day: int = 0
 var hp: int setget , get_hp
@@ -37,7 +38,8 @@ var rng = RandomNumberGenerator.new()
 
 onready var timer : Timer = $Timer
 onready var scene_loader = $SceneLoader
-
+onready var music_player = $MusicPlayer
+onready var sound_player = $SoundPlayer
 
 func _ready():
 	timer.connect("timeout", self, "_timer_timeout")
@@ -136,7 +138,6 @@ func grow_baby():
 	container.add_child(player)
 	container.move_child(player, position)
 	
-	
 
 func create_player(parent = "", race = "human"):
 	var new_player = PLAYER_RACES[race].instance()
@@ -164,6 +165,15 @@ func go_to_map(map_path, entry_name):
 	
 	resume_day()
 	
+
+func play_music(music):
+	var current_music = music_player.stream
+	
+	if music != current_music:
+		music.set_loop(true)
+		music_player.stream = music
+		music_player.play()
+
 
 func play_sound(key):
 	pass
