@@ -56,6 +56,10 @@ func start():
 	player = create_player()
 	
 	go_to_map(START_MAP, "Default")
+	
+	yield(scene_loader, "map_loaded")
+	
+	Narrator.show_with_interaction(player, "game_start")
 
 
 func restart():

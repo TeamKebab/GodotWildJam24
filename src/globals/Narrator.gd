@@ -4,8 +4,10 @@ extends Node
 const Interaction = preload("res://src/components/Interaction.tscn")
 
 const LINES = {
+	"game_start": "Many generations before our time, a hero fallen from grace reached these shores in search of the promised land. What was the promised land, they knew not, but it sounded pretty cool and they were bored back at home. But they knew they did not have much time left, so they would have to pass on this quest onto the next generation...",
 	"first_shrine": "Inside these walls, the Hero found love... In the form of a beautiful orc! Love is blind <3 And sometimes, it smells weird too <3 <3 <3",
 	"first_multiple_shrine": "IT'S MATING SEASON! The hero chose a partner carefully, thinking on what was to come on their journey and who would make better pancakes in the morning. Breakfast is the most important meal of the day. Stay hydrated.",
+	"first_baby": "Love has given its fruits! And a baby too! Now the hero's quest will continue even when life abandons them...",
 	
 	"too_young": "You are a child!",
 	"has_baby": "What's wrong with you? you can't go having kids with everyone! This is not Game of Thrones.",
@@ -13,7 +15,6 @@ const LINES = {
 	
 	"want_baby_orc": "The Hero could feel the strength of the orcs, and their smell... Do you want to have a baby?",
 	
-	"first_baby": "Love has given its fruits! And a baby too! Now the hero's quest will continue even when life abandons them...",
 	
 	"got_baby_orc": "It's green and smells like wet potatoes... Gotta love it!",
 	"got_baby_elf": "Too cute to be my kid... Why is it aiming that bow at me?",
