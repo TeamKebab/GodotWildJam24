@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/maps/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/tilesets/fields_and_hills.png" type="Texture" id=2]
 [ext_resource path="res://src/gui/GUI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/music/overworld_2.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/sfx/enemy_defeated.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sfx/enter_area.wav" type="AudioStream" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -61,3 +62,6 @@ position = Vector2( 8.52007, 100.086 )
 
 [node name="EnemyDefeatedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="EnterAreaSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

@@ -63,7 +63,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Body" type="Sprite" parent="."]
-position = Vector2( 0, -29.2419 )
+position = Vector2( 0, -31.4015 )
 texture = ExtResource( 1 )
 hframes = 8
 
@@ -74,7 +74,7 @@ hframes = 8
 frame = 1
 
 [node name="Head" type="Sprite" parent="."]
-position = Vector2( 0, -23.8614 )
+position = Vector2( 0, -20.8379 )
 texture = ExtResource( 1 )
 hframes = 8
 frame = 2

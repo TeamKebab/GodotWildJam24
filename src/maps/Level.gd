@@ -10,7 +10,7 @@ var player = null
 
 onready var entities_container : Node = $YSort
 onready var enemy_defeated_sound : AudioStreamPlayer = $EnemyDefeatedSound
-
+onready var enter_area_sound: AudioStreamPlayer = $EnterAreaSound
 
 func _ready():
 	Game.connect("day_ended", self, "restart")
@@ -20,6 +20,10 @@ func _ready():
 	for entity in entities_container.get_children():
 		if entity.get("hp") != null:
 			entity.hp.connect("died", self, "_on_enemy_died")
+	
+	if enter_area_sound.stream != null:
+		enter_area_sound.play()
+		
 		
 func restart():
 	for entity in entities_container.get_children():
