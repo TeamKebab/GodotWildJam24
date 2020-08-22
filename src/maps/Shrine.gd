@@ -11,7 +11,7 @@ func _ready():
 	if Game.first_multiple_companion_shrine:
 		if has_multiple_companions():
 			Game.first_multiple_companion_shrine = false
-			interaction.show_narrator(player, "first_multiple_shrine")
+			Narrator.show_with_interaction(player, "first_multiple_shrine")
 
 
 func has_multiple_companions():

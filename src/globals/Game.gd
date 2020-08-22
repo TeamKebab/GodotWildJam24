@@ -26,6 +26,7 @@ var map_state = {}
 
 var first_shrine = true
 var first_multiple_companion_shrine = true
+var first_baby = true
 
 
 var time_of_day: int = 0
@@ -50,6 +51,7 @@ func start():
 	
 	first_shrine = true
 	first_multiple_companion_shrine = true
+	first_baby = true
 	
 	player = create_player()
 	
@@ -136,6 +138,7 @@ func create_player(parent = "", race = "human"):
 	
 	new_player.hp.connect("hp_changed", self, "_on_player_hp_changed")
 	new_player.hp.connect("died", self, "_on_player_hp_died")
+	new_player.connect("got_baby", self, "_on_player_got_baby")
 	
 	emit_signal("player_hp_changed", new_player.hp.max_hp)
 	
@@ -155,6 +158,10 @@ func go_to_map(map_path, entry_name):
 	resume_day()
 	
 
+func play_sound(key):
+	pass
+	
+	
 func _timer_timeout():
 	time_of_day += 1
 	
@@ -170,3 +177,13 @@ func _on_player_hp_changed(new_hp):
 
 func _on_player_hp_died():
 	end_day()
+
+
+func _on_player_got_baby(race):
+	play_sound("got_baby")
+	var message = "got_baby_" + race
+	if first_baby:
+		first_baby = false
+		message = "first_baby"
+		
+	Narrator.show_with_interaction(player, message)

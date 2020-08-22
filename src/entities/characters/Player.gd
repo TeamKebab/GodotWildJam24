@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal got_baby(race)
+
 
 const RACE_TEXTURES = {
 	"human": preload("res://assets/sprites/hero.png"),
@@ -110,6 +112,9 @@ func have_child(new_baby):
 	baby = new_baby
 	baby_sprite.set_texture(RACE_TEXTURES[baby.race])
 	baby_sprite.show()
+	
+	emit_signal("got_baby", baby.race)
+	
 
 
 func has_child():
@@ -129,7 +134,6 @@ func interact(item):
 func end_interact(answer):
 	state = State.Move
 	interacting_item.end_interaction(self, answer)
-	interacting_item = null
 	
 	
 func knockback(strength):

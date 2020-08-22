@@ -1,6 +1,8 @@
 extends Node
 
 
+const Interaction = preload("res://src/components/Interaction.tscn")
+
 const LINES = {
 	"first_shrine": "Inside these walls, the Hero found love... In the form of a beautiful orc! Love is blind <3 And sometimes, it smells weird too <3 <3 <3",
 	"first_multiple_shrine": "IT'S MATING SEASON! The hero chose a partner carefully, thinking on what was to come on their journey and who would make better pancakes in the morning. Breakfast is the most important meal of the day. Stay hydrated.",
@@ -13,6 +15,8 @@ const LINES = {
 	
 	"first_baby": "Love has given its fruits! And a baby too! Now the hero's quest will continue even when life abandons them...",
 	
+	"got_baby_orc": "It's green and smells like wet potatoes... Gotta love it!",
+	"got_baby_elf": "Too cute to be my kid... Why is it aiming that bow at me?",
 }
 
 const TOOLTIPS = {
@@ -26,13 +30,25 @@ const ASK_BUTTONS = ["Ok [C]", "Nope [X]"]
 
 
 var gui : Node
+var interaction
 
+func _ready():
+	interaction = Interaction.instance()
+	add_child(interaction)
+	
 	
 func show(key):
 	Game.pause_day()
 	gui.show_dialog(LINES.get(key, key), SHOW_BUTTONS)
 	
 
+func show_with_interaction(player, key):
+	show(key)
+	player.interact(interaction)
+	yield(interaction, "interaction_ended")
+	close()
+	
+	
 func ask(key):
 	Game.pause_day()
 	gui.show_dialog(LINES.get(key, key), ASK_BUTTONS)

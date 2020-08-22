@@ -9,7 +9,6 @@ var player = null
 
 
 onready var entities_container : Node = $YSort
-onready var interaction = $Interaction
 
 
 func _ready():

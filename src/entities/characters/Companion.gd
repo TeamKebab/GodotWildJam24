@@ -30,11 +30,11 @@ func start_interaction(player):
 
 
 func end_interaction(player, answer):
+	Narrator.close()	
+	
 	if can_have_baby and answer:
 		player.have_child(get_baby())
-		
-	Narrator.close()	
-
+	
 
 func is_baby_parent(baby):
 	return baby.parent == id
