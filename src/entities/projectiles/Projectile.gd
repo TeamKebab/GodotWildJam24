@@ -76,6 +76,7 @@ func hit(target):
 func _on_area_entered(area):
 	hit(area.get_parent())
 
+
 func _on_body_entered(_body):
 	if destroy_on_connect:
 		destroy()	
