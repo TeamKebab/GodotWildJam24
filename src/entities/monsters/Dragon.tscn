@@ -49,6 +49,7 @@ states/Idle/node = SubResource( 6 )
 states/Idle/position = Vector2( 545, 111 )
 transitions = [ "Idle", "Attack", SubResource( 7 ), "Attack", "Death", SubResource( 8 ), "Idle", "Death", SubResource( 9 ), "Attack", "Idle", SubResource( 10 ) ]
 start_node = "Idle"
+end_node = "Death"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=12]
 
@@ -62,7 +63,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Body" type="Sprite" parent="."]
-position = Vector2( 0, -27.545 )
+position = Vector2( 0, -29.2419 )
 texture = ExtResource( 1 )
 hframes = 8
 
@@ -73,7 +74,7 @@ hframes = 8
 frame = 1
 
 [node name="Head" type="Sprite" parent="."]
-position = Vector2( 0, -26.2369 )
+position = Vector2( 0, -23.8614 )
 texture = ExtResource( 1 )
 hframes = 8
 frame = 2
@@ -89,11 +90,8 @@ visible = false
 collision_layer = 0
 collision_mask = 32
 shape = SubResource( 3 )
-disabled = false
 single_hit = false
-area_attack = false
 attack_cooldown = 1.5
-first_attack_delay = 0.5
 Projectile = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

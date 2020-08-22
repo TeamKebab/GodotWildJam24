@@ -19,6 +19,7 @@ onready var cooldown_timer : Timer = $Cooldown
 func _ready():
 	connect("area_entered", self, "_on_area_entered")
 	connect("attacked", self, "_on_attack_triggered")
+	connect("disabled_changed", self, "_on_disabled_changed")
 	
 	cooldown_timer.connect("timeout", self, "_on_cooldown_timeout")
 		
@@ -72,3 +73,8 @@ func _on_attack_triggered(_targets):
 	if not single_hit:
 		cooldown_timer.start(attack_cooldown)		
 
+
+func _on_disabled_changed(_new_disabled):
+	if _new_disabled:
+		cooldown_timer.stop()
+	

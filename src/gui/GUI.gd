@@ -74,6 +74,7 @@ func _on_day_ended():
 	time_of_day.text = str(0)	
 	age_progress.value = 0
 	
+	
 	animation_player.play("Night")
 	yield(animation_player, "animation_finished")	
 	

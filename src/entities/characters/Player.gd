@@ -132,12 +132,14 @@ func is_in_reproductive_age():
 	
 func interact(item):
 	state = State.Interact	
+	$HurtBox.disabled = true
 	interacting_item = item
 	interacting_item.start_interaction(self)
 
 
 func end_interact(answer):
 	state = State.Move
+	$HurtBox.disabled = false
 	interacting_item.end_interaction(self, answer)
 	
 	

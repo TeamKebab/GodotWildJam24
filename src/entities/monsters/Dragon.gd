@@ -21,7 +21,7 @@ func _ready():
 
 
 func restart():
-	pass
+	animationState.travel("Idle")
 
 
 func knockback(_strength):
@@ -43,6 +43,7 @@ func end_attack():
 func _on_hp_changed(new_hp):
 	print("Dragon HP: " + str(new_hp))
 	hit_sound.play()
+
 	
 func _die():
 	animationState.travel("Death")
