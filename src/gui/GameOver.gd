@@ -1,24 +1,14 @@
 extends Control
 
 
-var accepting_inputs : bool = false
-
-
-onready var timer : Timer = $Timer
-
-
-func _ready():
-	timer.connect("timeout", self, "_on_timer_timeout")
-	timer.start(1)
+export var accepting_inputs : bool = false
 	
 
 func _input(event):
 	if not accepting_inputs:
 		return
-		
-	if event is InputEventKey and event.pressed:
+	
+	if Input.is_action_just_pressed("ui_accept"):
 		Game.restart()
 
 
-func _on_timer_timeout():
-	accepting_inputs = true

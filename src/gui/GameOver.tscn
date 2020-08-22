@@ -1,36 +1,170 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/Retro4.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/gui/GameOver.gd" type="Script" id=2]
+[ext_resource path="res://src/resources/ui_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/sprites/tombstone.png" type="Texture" id=4]
+
+[sub_resource type="Theme" id=4]
+Label/colors/font_color = Color( 0.698039, 0.580392, 0.462745, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
 
 [sub_resource type="DynamicFont" id=1]
-size = 30
+size = 32
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BottomBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:accepting_inputs")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -41.5
-margin_top = -19.0
-margin_right = 41.5
-margin_bottom = 19.0
+[node name="BottomBar" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -44.0
+grow_vertical = 0
+size_flags_vertical = 8
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 76.0
-margin_bottom = 31.0
+[node name="NarratorBox" type="PanelContainer" parent="BottomBar"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 318.0
+margin_bottom = 55.0
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomBar/NarratorBox"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 312.0
+margin_bottom = 49.0
+
+[node name="Narrator" type="RichTextLabel" parent="BottomBar/NarratorBox/VBoxContainer"]
+margin_right = 308.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 20 )
+text = "Hey that wasn't what really happened... Lemme start over and don't give me more blue pills, please!"
+fit_content_height = true
+scroll_active = false
+
+[node name="Buttons" type="HBoxContainer" parent="BottomBar/NarratorBox/VBoxContainer"]
+margin_top = 32.0
+margin_right = 308.0
+margin_bottom = 45.0
+theme = SubResource( 4 )
+custom_constants/separation = 20
+alignment = 2
+
+[node name="Label" type="Label" parent="BottomBar/NarratorBox/VBoxContainer/Buttons"]
+margin_left = 278.0
+margin_right = 308.0
+margin_bottom = 13.0
+text = "Ok [C]"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 318.0
+margin_bottom = 198.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 316.0
+margin_bottom = 196.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_left = 139.0
+margin_top = 58.0
+margin_right = 177.0
+margin_bottom = 108.0
+size_flags_horizontal = 4
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_left = 120.0
+margin_top = 112.0
+margin_right = 196.0
+margin_bottom = 138.0
+size_flags_horizontal = 4
 custom_fonts/font = SubResource( 1 )
 text = "You died"
+align = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Default"
+anims/Default = SubResource( 5 )

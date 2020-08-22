@@ -9,6 +9,8 @@ const LINES = {
 	"first_multiple_shrine": "IT'S MATING SEASON! The hero chose a partner carefully, thinking on what was to come on their journey and who would make better pancakes in the morning. Breakfast is the most important meal of the day. Stay hydrated.",
 	"first_baby": "Love has given its fruits! And a baby too! Now the hero's quest will continue even when life abandons them...",
 	
+	"new_hero": "And the hero's days came to an end... Now the child becomes the hero, and carries the burden their progenitor. Figuratively speaking, we aren't carrying corpses around, we aren't that psycho yet. But let's pick the sword.",
+	
 	"too_young": "You are a child!",
 	"has_baby": "What's wrong with you? you can't go having kids with everyone! This is not Game of Thrones.",
 	"is_parent": "Hey, that's your parent; this is high fantasy, but let's keep it incest-free ok? This is not Game of Thrones.",
@@ -18,6 +20,8 @@ const LINES = {
 	
 	"got_baby_orc": "It's green and smells like wet potatoes... Gotta love it!",
 	"got_baby_elf": "Too cute to be my kid... Why is it aiming that bow at me?",
+	
+	"ask_skip_to_swamp": "The hero paused before the darkly lit passage into the unknown. This could be a shortcut, but it could also lead to untold dangers. Would they be brave enough to continue?",
 }
 
 const TOOLTIPS = {

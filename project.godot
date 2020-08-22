@@ -96,4 +96,5 @@ ui_attack={
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.156863, 0.152941, 0.2, 1 )
 environment/default_environment="res://default_env.tres"

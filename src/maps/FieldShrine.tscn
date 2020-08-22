@@ -6,7 +6,6 @@
 
 [node name="Shrine" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-resume_day = true
 
 [node name="Gateway" parent="YSort" index="0"]
 help = "Press [C] to exit"

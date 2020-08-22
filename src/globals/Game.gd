@@ -112,10 +112,12 @@ func end_day():
 func prepare_day():
 	hero_dynasty.append(player.get_info())
 	
-	if player.has_child():
+	if player.has_child():		
+		yield(Narrator.show_with_interaction(player, "new_hero"), "completed")
 		grow_baby()
 	else:
 		game_over()
+		yield()
 		
 		
 func grow_baby():
@@ -133,6 +135,7 @@ func grow_baby():
 	
 	container.add_child(player)
 	container.move_child(player, position)
+	
 	
 
 func create_player(parent = "", race = "human"):

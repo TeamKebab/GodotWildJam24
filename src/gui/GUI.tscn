@@ -14,7 +14,7 @@ region = Rect2( 0, 0, 128, 16 )
 atlas = ExtResource( 5 )
 region = Rect2( 0, 16, 128, 16 )
 
-[sub_resource type="Theme" id=4]
+[sub_resource type="Theme" id=7]
 Label/colors/font_color = Color( 0.698039, 0.580392, 0.462745, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -25,7 +25,7 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("NightShade:color")
@@ -57,6 +57,14 @@ tracks/0/keys = {
 [node name="GUI" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 2 )
+
+[node name="NightShade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.109804, 0.113725, 0.156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -195,7 +203,7 @@ scroll_active = false
 margin_top = 32.0
 margin_right = 308.0
 margin_bottom = 32.0
-theme = SubResource( 4 )
+theme = SubResource( 7 )
 custom_constants/separation = 20
 alignment = 2
 
@@ -213,14 +221,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NightShade" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.109804, 0.113725, 0.156863, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Day = SubResource( 5 )
+autoplay = "Day"
+anims/Day = SubResource( 8 )
 anims/Night = SubResource( 6 )
