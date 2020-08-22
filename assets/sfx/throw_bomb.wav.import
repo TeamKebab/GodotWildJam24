@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/throw_bomb.wav-254a465e893b51264d6ed77b14b45c5b.sample"
+
+[deps]
+
+source_file="res://assets/sfx/throw_bomb.wav"
+dest_files=[ "res://.import/throw_bomb.wav-254a465e893b51264d6ed77b14b45c5b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

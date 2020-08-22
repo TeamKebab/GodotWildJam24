@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/baby_obtained.wav-050b3a778f284e60f22ce02ccbc7ba14.sample"
+
+[deps]
+
+source_file="res://assets/sfx/baby_obtained.wav"
+dest_files=[ "res://.import/baby_obtained.wav-050b3a778f284e60f22ce02ccbc7ba14.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

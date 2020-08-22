@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dragon_fire.wav-0825389d83b82068aead07a42c5a4ae6.sample"
+
+[deps]
+
+source_file="res://assets/sfx/dragon_fire.wav"
+dest_files=[ "res://.import/dragon_fire.wav-0825389d83b82068aead07a42c5a4ae6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

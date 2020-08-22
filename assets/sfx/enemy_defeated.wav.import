@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemy_defeated.wav-2cf8f983fdf46f5beebf19114e91f36e.sample"
+
+[deps]
+
+source_file="res://assets/sfx/enemy_defeated.wav"
+dest_files=[ "res://.import/enemy_defeated.wav-2cf8f983fdf46f5beebf19114e91f36e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

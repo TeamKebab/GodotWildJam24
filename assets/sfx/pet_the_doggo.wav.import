@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pet_the_doggo.wav-f3e6005359e58a5b8df91d4d5f192f39.sample"
+
+[deps]
+
+source_file="res://assets/sfx/pet_the_doggo.wav"
+dest_files=[ "res://.import/pet_the_doggo.wav-f3e6005359e58a5b8df91d4d5f192f39.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

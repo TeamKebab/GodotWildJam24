@@ -8,6 +8,7 @@ export var max_hp: int = 1
 
 var target = null
 
+onready var hit_sound = $HitSound
 onready var hp = HP.new(max_hp)
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
@@ -29,8 +30,19 @@ func knockback(_strength):
 
 func win():
 	Game.win()
-	queue_free()
 	
+	
+func end_attack():
+	if hp.hp > 0:
+		animationState.travel("Idle")
+	else:
+		animationState.travel("Death")
+		attack.disabled = true
+		
+		
+func _on_hp_changed(new_hp):
+	print("Dragon HP: " + str(new_hp))
+	hit_sound.play()
 	
 func _die():
 	animationState.travel("Death")

@@ -9,6 +9,7 @@ var player = null
 
 
 onready var entities_container : Node = $YSort
+onready var enemy_defeated_sound : AudioStreamPlayer = $EnemyDefeatedSound
 
 
 func _ready():
@@ -16,6 +17,9 @@ func _ready():
 	Game.play_music(music)
 	set_navigation_shape()
 		
+	for entity in entities_container.get_children():
+		if entity.get("hp") != null:
+			entity.hp.connect("died", self, "_on_enemy_died")
 		
 func restart():
 	for entity in entities_container.get_children():
@@ -90,4 +94,6 @@ func set_navigation_shape():
 	nav_tile_map.update_dirty_quadrants()	
 
 
+func _on_enemy_died():
+	enemy_defeated_sound.play()
 

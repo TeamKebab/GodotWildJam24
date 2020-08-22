@@ -17,7 +17,6 @@
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 9 )
 facing_direction = "Up"
-age = "Teen"
 max_hp = 3
 
 [node name="BabySprite" parent="." index="2"]

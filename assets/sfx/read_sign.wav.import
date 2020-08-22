@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/read_sign.wav-85a8a0c9f432bff63ac45f58506423b0.sample"
+
+[deps]
+
+source_file="res://assets/sfx/read_sign.wav"
+dest_files=[ "res://.import/read_sign.wav-85a8a0c9f432bff63ac45f58506423b0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,6 +1,9 @@
 extends "res://src/entities/projectiles/Projectile.gd"
 
 
+onready var sound = $AudioStreamPlayer
+
+
 func hit(_target):
 	if motion != Vector2.ZERO:
 		destroy()
@@ -34,6 +37,7 @@ func destroy():
 		if is_valid_target(target):
 			do_target_effect(target)
 	
+	sound.play()
 	$AnimationPlayer.play("Boom")
 	
 	yield($AnimationPlayer, "animation_finished")

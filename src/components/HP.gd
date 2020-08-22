@@ -36,7 +36,6 @@ func _set_hp(new_hp):
 	
 	emit_signal("hp_changed", hp)
 	
-	
 	if hp == 0:
 		emit_signal("died")
 		

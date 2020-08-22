@@ -43,6 +43,9 @@ var race = "human"
 onready var detection : Area2D = $DetectionBox
 onready var baby_sprite : Sprite = $BabySprite
 
+onready var accept_sound = $AcceptPlayer
+onready var got_baby_sound = $BabyPlayer
+
 onready var animationTree = $AnimationTree
 onready var animationAge = animationTree.get("parameters/Age/playback")
 onready var animationState = animationTree.get("parameters/Action/playback")
@@ -92,6 +95,7 @@ func _physics_process(delta):
 				state = State.Move
 
 			if Input.is_action_just_pressed("ui_accept"):
+				accept_sound.play()
 				end_interact(true)
 				
 			if Input.is_action_just_pressed("ui_cancel"):
@@ -113,6 +117,7 @@ func have_child(new_baby):
 	baby_sprite.set_texture(RACE_TEXTURES[baby.race])
 	baby_sprite.show()
 	
+	got_baby_sound.play()
 	emit_signal("got_baby", baby.race)
 	
 

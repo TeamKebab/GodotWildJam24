@@ -23,7 +23,6 @@ sprite_width = 42
 sprite_height = 42
 total_frames = 11
 facing_direction = "Up"
-age = "Teen"
 
 [node name="BabySprite" parent="." index="2"]
 z_index = 1
@@ -71,7 +70,7 @@ rotation = 1.5708
 collision_layer = 0
 collision_mask = 128
 shape = SubResource( 3 )
-disabled = true
+disabled = false
 single_hit = true
 area_attack = false
 attack_cooldown = 1.0

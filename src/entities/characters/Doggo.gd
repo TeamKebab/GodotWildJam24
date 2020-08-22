@@ -4,6 +4,7 @@ var is_petted = false
 
 onready var animationPlayer = $AnimationPlayer
 onready var interaction = $Interaction
+onready var sound = $AudioStreamPlayer
 
 
 func _ready():
@@ -23,6 +24,7 @@ func set_state(state):
 
 func _on_interaction_started(player):
 	is_petted = true
+	sound.play()
 	animationPlayer.play("Petted")
 	player.end_interact(true)
 	

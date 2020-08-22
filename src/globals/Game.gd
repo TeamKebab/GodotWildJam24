@@ -15,7 +15,7 @@ const PLAYER_RACES = {
 
 const START_MAP = "res://src/maps/FieldLevel.tscn"
 
-const END_OF_DAY = 30
+const END_OF_DAY = 100
 const ADULT_AGE = int(END_OF_DAY * 0.3)
 const ELDER_AGE = int(END_OF_DAY * 0.8)
 
@@ -173,10 +173,6 @@ func play_music(music):
 		music.set_loop(true)
 		music_player.stream = music
 		music_player.play()
-
-
-func play_sound(key):
-	pass
 	
 	
 func _timer_timeout():
@@ -197,7 +193,6 @@ func _on_player_hp_died():
 
 
 func _on_player_got_baby(race):
-	play_sound("got_baby")
 	var message = "got_baby_" + race
 	if first_baby:
 		first_baby = false
