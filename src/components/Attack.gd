@@ -8,6 +8,7 @@ signal attacked(targets)
 export var single_hit: bool = true
 export var area_attack: bool = false
 export var attack_cooldown: float = 1
+export var first_attack_delay: float = 0.5
 
 var attacked_targets = []
 
@@ -36,7 +37,7 @@ func do_target_effect(_target_hurtbox):
 	pass
 	
 
-func _trigger_attack():
+func trigger_attack():
 	var areas = get_overlapping_areas()
 	
 	if areas.empty():
@@ -57,12 +58,14 @@ func _trigger_attack():
 
 
 func _on_area_entered(_area):
-	if cooldown_timer.is_stopped():
-		_trigger_attack()
+	if single_hit:
+		trigger_attack()
+	elif cooldown_timer.is_stopped():
+		cooldown_timer.start(first_attack_delay)
 
 
 func _on_cooldown_timeout():
-	_trigger_attack()
+	trigger_attack()
 	
 
 func _on_attack_triggered(_targets):

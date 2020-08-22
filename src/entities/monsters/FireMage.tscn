@@ -46,7 +46,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -8 )
 texture = ExtResource( 4 )
 hframes = 10
-frame = 1
+frame = 2
 region_enabled = true
 region_rect = Rect2( 0, 224, 320, 32 )
 
@@ -85,6 +85,7 @@ collision_mask = 32
 shape = SubResource( 3 )
 single_hit = false
 attack_cooldown = 3.0
+first_attack_delay = 1.0
 Projectile = ExtResource( 14 )
 
 [node name="TeleportArea" type="Area2D" parent="."]

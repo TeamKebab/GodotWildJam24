@@ -32,7 +32,7 @@ region_rect = Rect2( 0, 288, 32, 32 )
 [node name="Sprite" parent="." index="3"]
 texture = ExtResource( 2 )
 hframes = 11
-frame = 1
+frame = 2
 region_rect = Rect2( 0, 420, 462, 42 )
 
 [node name="AnimationPlayer" parent="." index="4"]
@@ -75,6 +75,7 @@ disabled = true
 single_hit = true
 area_attack = false
 attack_cooldown = 1.0
+first_attack_delay = 0.0
 damage = 2
 knockback_strength = 150
 attack_type = "Whomping"

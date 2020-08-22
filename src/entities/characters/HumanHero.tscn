@@ -19,7 +19,6 @@ radius = 7.7
 height = 10.2
 
 [node name="Player" instance=ExtResource( 1 )]
-age = "Teen"
 max_hp = 5
 
 [node name="BabySprite" parent="." index="2"]
@@ -61,10 +60,11 @@ position = Vector2( -12.8886, -6.45676 )
 collision_layer = 0
 collision_mask = 128
 shape = SubResource( 3 )
-disabled = false
+disabled = true
 single_hit = true
 area_attack = false
 attack_cooldown = 1.0
+first_attack_delay = 0.0
 damage = 1
 knockback_strength = 150
 attack_type = "Normal"

@@ -27,21 +27,12 @@ map_path = "res://src/maps/VolcanoShrine.tscn"
 
 [node name="SwordSoldier" parent="YSort" index="1" instance=ExtResource( 4 )]
 position = Vector2( 482, 19 )
-max_hp = 1
-acceleration = 50
-speed = 50
 
 [node name="SwordSoldier2" parent="YSort" index="2" instance=ExtResource( 4 )]
 position = Vector2( 116, -78 )
-max_hp = 1
-acceleration = 50
-speed = 50
 
 [node name="SwordSoldier3" parent="YSort" index="3" instance=ExtResource( 4 )]
 position = Vector2( 36, -60 )
-max_hp = 1
-acceleration = 50
-speed = 50
 
 [node name="ElfArcher" parent="YSort" index="4" instance=ExtResource( 5 )]
 position = Vector2( 544, 40 )
