@@ -6,4 +6,5 @@
 [node name="Gateway" instance=ExtResource( 1 )]
 collision_layer = 256
 script = ExtResource( 2 )
+help = "Press [C] to leave"
 automatic = false
