@@ -2,10 +2,17 @@ extends Node
 
 
 const LINES = {
+	"first_shrine": "Inside these walls, the Hero found love... In the form of a beautiful orc! Love is blind <3 And sometimes, it smells weird too <3 <3 <3",
+	"first_multiple_shrine": "IT'S MATING SEASON! The hero chose a partner carefully, thinking on what was to come on their journey and who would make better pancakes in the morning. Breakfast is the most important meal of the day. Stay hydrated.",
+	
 	"too_young": "You are a child!",
 	"has_baby": "What's wrong with you? you can't go having kids with everyone! This is not Game of Thrones.",
-	"want_baby": "aaaaaaa",
+	"is_parent": "Hey, that's your parent; this is high fantasy, but let's keep it incest-free ok? This is not Game of Thrones.",
+	
 	"want_baby_orc": "The Hero could feel the strength of the orcs, and their smell... Do you want to have a baby?",
+	
+	"first_baby": "Love has given its fruits! And a baby too! Now the hero's quest will continue even when life abandons them...",
+	
 }
 
 const TOOLTIPS = {

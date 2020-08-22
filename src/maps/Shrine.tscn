@@ -18,12 +18,7 @@ tile_data = PoolIntArray( 131076, 0, 3, 131077, 0, 4, 131078, 0, 4, 131079, 0, 4
 [node name="Gateway" parent="YSort" index="0" instance=ExtResource( 4 )]
 position = Vector2( 160, 144 )
 shape = SubResource( 1 )
-disabled = false
 help = "Press [C] to talk"
-map_path = ""
-entry_name = "Default"
-immediate = true
-question = "ask_next_map"
 
 [node name="Default" parent="Entries" index="0"]
 position = Vector2( 160.864, 121.913 )

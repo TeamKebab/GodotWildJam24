@@ -31,6 +31,15 @@ func player_left(_player):
 	help_label.hide()
 	
 
+func show_narrator(player, text):
+	player.interact(self)
+	Narrator.show(text)
+	
+	yield(self, "interaction_ended")
+	
+	Narrator.close()
+	
+	
 func start_interaction(player):
 	emit_signal("interaction_started", player)
 

@@ -24,6 +24,9 @@ var hero_dynasty = []
 var player =  null
 var map_state = {}
 
+var first_shrine = true
+var first_multiple_companion_shrine = true
+
 
 var time_of_day: int = 0
 var hp: int setget , get_hp
@@ -44,6 +47,9 @@ func start():
 	time_of_day = ADULT_AGE - 2
 	hero_dynasty = []
 	map_state = {}
+	
+	first_shrine = true
+	first_multiple_companion_shrine = true
 	
 	player = create_player()
 	

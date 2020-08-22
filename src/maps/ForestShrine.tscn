@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/maps/Shrine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/entities/characters/ElfCompanion.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/entities/characters/OrcCompanion.tscn" type="PackedScene" id=3]
 
 [node name="Shrine" instance=ExtResource( 1 )]
@@ -11,6 +12,8 @@ map_path = "res://src/maps/ForestLevel.tscn"
 entry_name = "Shrine"
 
 [node name="OrcCompanion" parent="YSort" index="1" instance=ExtResource( 3 )]
-position = Vector2( 159, 85 )
-id = "human_companion"
-race = "human"
+position = Vector2( 196, 85 )
+id = "orc_companion_2"
+
+[node name="ElfCompanion" parent="YSort" index="2" instance=ExtResource( 2 )]
+position = Vector2( 125, 84 )

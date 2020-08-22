@@ -5,7 +5,11 @@ extends Node
 export var resume_day: bool = true
 
 
+var player = null
+
+
 onready var entities_container : Node = $YSort
+onready var interaction = $Interaction
 
 
 func _ready():
@@ -48,7 +52,9 @@ func set_state(entities_state):
 				entity.queue_free()
 
 
-func set_player(player, entry):
+func set_player(new_player, entry):
+	player = new_player
+	
 	var entries_container = find_node("Entries")
 	
 	var entry_node : Node

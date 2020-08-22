@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/maps/Shrine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/maps/FieldShrine.gd" type="Script" id=2]
 [ext_resource path="res://src/entities/characters/OrcCompanion.tscn" type="PackedScene" id=3]
 
 [node name="Shrine" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+resume_day = true
 
 [node name="Gateway" parent="YSort" index="0"]
-disabled = false
 help = "Press [C] to exit"
 map_path = "res://src/maps/FieldLevel.tscn"
 entry_name = "Shrine"
-immediate = true
-question = "ask_next_map"
 
 [node name="OrcCompanion" parent="YSort" index="1" instance=ExtResource( 3 )]
 position = Vector2( 159, 85 )

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/maps/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/tilesets/fields_and_hills.png" type="Texture" id=2]
 [ext_resource path="res://src/gui/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/components/Interaction.tscn" type="PackedScene" id=4]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -55,3 +56,5 @@ format = 1
 
 [node name="Default" type="Node2D" parent="Entries"]
 position = Vector2( 8.52007, 100.086 )
+
+[node name="Interaction" parent="." instance=ExtResource( 4 )]

@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Companion
 
 
 export var id: String = "baby mama"
