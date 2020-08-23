@@ -24,20 +24,12 @@ tile_data = PoolIntArray( -65526, 0, 65549, -65525, 0, 65544, -65524, 0, 65544, 
 [node name="Gateway" parent="YSort" index="0" instance=ExtResource( 2 )]
 position = Vector2( 592, 56 )
 shape = SubResource( 1 )
-disabled = false
 map_path = "res://src/maps/ForestLevel.tscn"
-entry_name = "Default"
-immediate = true
-question = "ask_next_map"
 
 [node name="SecretGateway" parent="YSort" index="1" instance=ExtResource( 2 )]
 position = Vector2( 344, 176 )
 shape = SubResource( 1 )
-disabled = false
 map_path = "res://src/maps/FieldSwampPassage.tscn"
-entry_name = "Default"
-immediate = true
-question = "ask_next_map"
 
 [node name="Fence" parent="YSort" index="2" instance=ExtResource( 7 )]
 position = Vector2( 344, 136 )
@@ -52,7 +44,7 @@ map_path = "res://src/maps/FieldShrine.tscn"
 position = Vector2( 160, 96 )
 
 [node name="SwordSoldier2" parent="YSort" index="5" instance=ExtResource( 4 )]
-position = Vector2( 456, 16 )
+position = Vector2( 352, 56 )
 
 [node name="SwordSoldier3" parent="YSort" index="6" instance=ExtResource( 4 )]
 position = Vector2( 456, 56 )

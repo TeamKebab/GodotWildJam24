@@ -35,6 +35,8 @@ height = 10.0
 
 [node name="SwordSoldier" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+max_hp = 2
+acceleration = 400
 min_turn_around_time = 1.0
 max_turn_around_time = 3.0
 
@@ -69,6 +71,9 @@ anims/Pursue = ExtResource( 10 )
 anims/Right = ExtResource( 11 )
 anims/Up = ExtResource( 12 )
 
+[node name="Label" parent="." index="5"]
+visible = false
+
 [node name="OuterDetectionBox" parent="." index="7"]
 shape = SubResource( 4 )
 
@@ -80,11 +85,5 @@ position = Vector2( 1, 5 )
 collision_layer = 0
 collision_mask = 32
 shape = SubResource( 6 )
-disabled = false
 single_hit = false
-area_attack = false
-attack_cooldown = 1.0
-first_attack_delay = 0.2
-damage = 1
-knockback_strength = 150
-attack_type = "Normal"
+first_attack_delay = 0.4

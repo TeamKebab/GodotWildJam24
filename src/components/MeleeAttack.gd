@@ -11,7 +11,10 @@ export(String, "Normal", "Whomping", "Fire") var attack_type = "Normal"
 func do_target_effect(target_hurtbox):
 	if target_hurtbox == null:
 		return
-		
+	
+	if not overlaps_area(target_hurtbox):
+		return
+			
 	var target = target_hurtbox.get_parent()
 	
 	if target == null:

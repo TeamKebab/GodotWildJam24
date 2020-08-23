@@ -28,12 +28,8 @@ tile_data = PoolIntArray( -2031575, 0, 6, -2031571, 0, 3, -2031570, 0, 5, -19660
 [node name="Gateway" parent="YSort" index="0" instance=ExtResource( 2 )]
 position = Vector2( 12, 94 )
 shape = SubResource( 1 )
-disabled = false
 help = "Press [C] to talk"
 map_path = "res://src/maps/VolcanoLevel.tscn"
-entry_name = "Default"
-immediate = true
-question = "ask_next_map"
 
 [node name="Shrine" parent="YSort" index="1" instance=ExtResource( 3 )]
 position = Vector2( 655, -220 )
