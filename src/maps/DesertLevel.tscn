@@ -21,7 +21,6 @@ extents = Vector2( 50, 50 )
 
 [node name="Level" instance=ExtResource( 1 )]
 script = ExtResource( 12 )
-music = null
 
 [node name="Ground" parent="Navigation2D" index="1"]
 tile_set = ExtResource( 7 )

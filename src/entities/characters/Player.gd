@@ -157,7 +157,8 @@ func _start_attack():
 	
 
 func _end_attack():
-	state = State.Move
+	if state != State.Interact:
+		state = State.Move
 	animationState.travel("Idle")
 	
 		
