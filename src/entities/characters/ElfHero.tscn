@@ -16,6 +16,7 @@
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 9 )
+total_frames = 11
 facing_direction = "Up"
 max_hp = 3
 
@@ -24,9 +25,9 @@ z_index = 1
 
 [node name="Sprite" parent="." index="3"]
 texture = ExtResource( 2 )
-hframes = 10
-frame = 2
-region_rect = Rect2( 0, 0, 320, 32 )
+hframes = 11
+frame = 1
+region_rect = Rect2( 0, 0, 352, 32 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = ExtResource( 8 )

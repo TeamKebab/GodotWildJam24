@@ -43,9 +43,9 @@ shape = SubResource( 1 )
 [node name="Sprite" parent="." index="1"]
 position = Vector2( 0, -6 )
 texture = ExtResource( 7 )
-hframes = 10
+hframes = 11
 frame = 1
-region_rect = Rect2( 0, 128, 320, 32 )
+region_rect = Rect2( 0, 128, 352, 32 )
 
 [node name="HurtBox" parent="." index="2"]
 position = Vector2( 0, -6 )

@@ -4,7 +4,7 @@
 
 [resource]
 resource_name = "Attack"
-length = 0.3
+length = 0.4
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -12,7 +12,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2, 0.3 ),
+"times": PoolRealArray( 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -29,10 +29,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 7, 8, 9 ]
+"values": [ 7, 8, 9, 10 ]
 }
 tracks/2/type = "audio"
 tracks/2/path = NodePath("AudioStreamPlayer")
@@ -42,8 +42,8 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "clips": [ {
-"end_offset": 0.02,
-"start_offset": 0.02,
+"end_offset": 0.0,
+"start_offset": 0.0,
 "stream": ExtResource( 1 )
 } ],
 "times": PoolRealArray( 0 )
