@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/resources/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/entities/monsters/Monster.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/vids_death.wav" type="AudioStream" id=3]
 [ext_resource path="res://src/components/overlap/HurtBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/components/overlap/DetectionBox.tscn" type="PackedScene" id=6]
 
@@ -51,3 +52,6 @@ position = Vector2( 0, 39 )
 collision_mask = 32
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

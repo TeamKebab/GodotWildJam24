@@ -204,5 +204,6 @@ func _on_target_attacked(_targets):
 	
 	
 func _on_hp_changed(new_hp):
+	$HitSound.play()
 	$Label.text = str(new_hp)
 

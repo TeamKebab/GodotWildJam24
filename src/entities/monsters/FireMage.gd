@@ -36,6 +36,7 @@ func _ready():
 	teleport_timer.connect("timeout", self, "_on_TeleportTimer_timeout")
 	
 	hp.connect("died", self, "_die")
+	hp.connect("hp_changed", self, "_on_hp_changed")
 	
 	attack.connect("attacked", self, "_on_target_attacked")
 	
@@ -176,3 +177,7 @@ func _on_target_attacked(targets):
 	_set_facing_direction(position.direction_to(player_position))
 	
 	animationAction.travel("Attack")
+
+
+func _on_hp_changed(new_hp):
+	$HitSound.play()

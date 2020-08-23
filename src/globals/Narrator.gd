@@ -10,7 +10,7 @@ const LINES = {
 	"first_baby": "Love has given its fruits! And a baby too! Now the hero's quest will continue even when life abandons them...",
 	
 	"new_hero": "And the hero's days came to an end... Now the child becomes the hero, and carries the burden their progenitor. Figuratively speaking, we aren't carrying corpses around, we aren't that psycho yet. But let's pick the sword.",
-	"game_end": "And that's how I met your mother",
+	"game_end": "And that's how I met your mother. THE END.",
 	
 	"too_young": "You are a child!",
 	"has_baby": "What's wrong with you? you can't go having kids with everyone! This is not Game of Thrones.",

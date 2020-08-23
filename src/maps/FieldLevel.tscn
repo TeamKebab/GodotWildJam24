@@ -80,19 +80,9 @@ speed = 50
 
 [node name="ElfArcher" parent="YSort" index="9" instance=ExtResource( 5 )]
 position = Vector2( 544, 40 )
-max_hp = 1
-acceleration = 50
-min_turn_around_time = 0.5
-max_turn_around_time = 2.0
-speed = 50
 
 [node name="ElfArcher2" parent="YSort" index="10" instance=ExtResource( 5 )]
 position = Vector2( 544, 88 )
-max_hp = 1
-acceleration = 50
-min_turn_around_time = 0.5
-max_turn_around_time = 2.0
-speed = 50
 
 [node name="Default" parent="Entries" index="0"]
 position = Vector2( 40, 96 )
