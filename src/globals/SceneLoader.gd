@@ -6,6 +6,7 @@ signal map_loaded(path)
 
 const SCREENS = {
 	"start_screen": "res://src/gui/Start.tscn",
+	"tutorial_screen": "res://src/gui/Controls.tscn",
 	"win_screen": "res://src/maps/TestLevel.tscn",
 	"gameover": "res://src/gui/GameOver.tscn",
 }
@@ -22,6 +23,10 @@ func start_screen():
 	call_deferred("_deferred_load_screen", "start_screen")
 
 
+func tutorial_screen():
+	call_deferred("_deferred_load_screen", "tutorial_screen")
+	
+	
 func win_screen():
 	call_deferred("_deferred_load_screen", "win_screen")
 

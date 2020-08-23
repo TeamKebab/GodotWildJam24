@@ -1,11 +1,157 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/gui/Start.gd" type="Script" id=1]
+[ext_resource path="res://src/resources/ui_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/sprites/start_animation.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Retro4.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/sprites/start_background.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Retro5.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 6 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 96, 96 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 4 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.788235, 0.831373, 0.992157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="MarginContainer" parent="."]
+margin_right = 316.0
+margin_bottom = 65.0
+custom_constants/margin_right = 10
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title"]
+margin_left = 30.0
+margin_right = 176.0
+margin_bottom = 59.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+custom_constants/separation = -3
+
+[node name="Journey" type="Label" parent="Title/VBoxContainer"]
+margin_right = 146.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.764706, 0.870588, 0.431373, 1 )
+custom_colors/font_color_shadow = Color( 0.203922, 0.231373, 0.121569, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 1
+text = "Journey"
+valign = 1
+
+[node name="ToThe" type="Label" parent="Title/VBoxContainer"]
+margin_top = 23.0
+margin_right = 146.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.764706, 0.870588, 0.431373, 1 )
+custom_colors/font_color_shadow = Color( 0.203922, 0.231373, 0.121569, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "  to the"
+valign = 1
+
+[node name="PromisedLand" type="Label" parent="Title/VBoxContainer"]
+margin_top = 33.0
+margin_right = 146.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.764706, 0.870588, 0.431373, 1 )
+custom_colors/font_color_shadow = Color( 0.203922, 0.231373, 0.121569, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 1
+text = "Promised Land"
+valign = 1
+
+[node name="Logo" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -49.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Team Kebab" type="Label" parent="Logo"]
+margin_left = 10.0
+margin_top = 17.0
+margin_right = 310.0
+margin_bottom = 43.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+text = "Team Kebab"
+align = 2
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 88, 129 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="PressToStart" type="Label" parent="."]
+margin_left = 189.0
+margin_top = 104.0
+margin_right = 308.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 6 )
+text = "Press [RETURN] to start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
