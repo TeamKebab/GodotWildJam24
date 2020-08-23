@@ -88,9 +88,9 @@ func set_map(map: String, rect: Rect2, value: int):
 	for x in range(rect.position.x, rect.end.x):
 		for y in range(rect.position.y, rect.end.y):
 			tilemap.set_cell(x,y, value)
-		
-	tilemap.update_bitmask_region()	
-	tilemap.update_dirty_quadrants()			
+	
+	tilemap.call_deferred("update_bitmask_region")	
+	tilemap.call_deferred("update_dirty_quadrants")	
 	
 	
 func set_navigation_shape():
