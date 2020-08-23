@@ -16,7 +16,7 @@ const PLAYER_RACES = {
 
 const START_MAP = "res://src/maps/FieldLevel.tscn"
 
-const END_OF_DAY = 100
+const END_OF_DAY = 80
 const ADULT_AGE = int(END_OF_DAY * 0.3)
 const ELDER_AGE = int(END_OF_DAY * 0.8)
 
