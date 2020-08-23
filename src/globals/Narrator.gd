@@ -17,7 +17,7 @@ const LINES = {
 	"is_parent": "Hey, that's your parent; this is high fantasy, but let's keep it incest-free ok? This is not Game of Thrones.",
 	
 	"want_baby_orc": "The Hero could feel the strength of the orcs, and their smell... Do you want to have a baby?",
-	
+	"want_baby_elf": "The hero could feel the silent and boring resolve of the elves... Do you want to have a baby?",
 	"want_baby_gnome": "The hero could feel the crazy and explosive love of the gnomes... Do you want to have a baby?",
 	
 	
