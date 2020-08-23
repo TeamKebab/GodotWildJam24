@@ -16,10 +16,18 @@ var hp = HP.new(1)
 
 func _ready():
 	hp.connect("died", self, "_on_switch_triggered")
+	set_sprite()
 	
 
 func knockback(_strength):
 	pass
+	
+	
+func set_sprite():
+	if on:
+		find_node("Sprite").frame = 0
+	else:
+		find_node("Sprite").frame = 1
 	
 	
 func _on_switch_triggered():
@@ -33,9 +41,6 @@ func _set_on(state):
 		
 	on = state
 	
-	if on:
-		find_node("Sprite").frame = 0
-	else:
-		find_node("Sprite").frame = 1
+	set_sprite()
 		
 	emit_signal("state_changed", on)

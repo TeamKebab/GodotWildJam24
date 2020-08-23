@@ -26,22 +26,13 @@ tile_data = PoolIntArray( -1441760, 0, 6, -1441756, 0, 6, -1376226, 0, 65549, -1
 [node name="Gateway" parent="YSort" index="0" instance=ExtResource( 2 )]
 position = Vector2( 551, 219 )
 shape = SubResource( 1 )
-disabled = false
-help = "Press [C] to talk"
-map_path = ""
-entry_name = "Default"
-immediate = true
-question = "ask_next_map"
+map_path = "res://src/maps/DesertLevel.tscn"
+entry_name = "Fence"
 
 [node name="Gateway2" parent="YSort" index="1" instance=ExtResource( 2 )]
 position = Vector2( 551, -340 )
 shape = SubResource( 1 )
-disabled = false
-help = "Press [C] to talk"
 map_path = "res://src/maps/DesertLevel.tscn"
-entry_name = "Default"
-immediate = true
-question = "ask_next_map"
 
 [node name="Sign" parent="YSort" index="2" instance=ExtResource( 9 )]
 position = Vector2( 309, 134 )
