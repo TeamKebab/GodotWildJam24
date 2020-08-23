@@ -7,6 +7,7 @@ const RACE_TEXTURES = {
 	"human": preload("res://assets/sprites/hero.png"),
 	"orc": preload("res://assets/sprites/orc_babies.png"),
 	"elf": preload("res://assets/sprites/elf.png"),
+	"gnome": preload("res://assets/sprites/gnome.png"),
 }
 
 const HP = preload("res://src/components/HP.gd")
@@ -33,6 +34,8 @@ var motion: Vector2 = Vector2.ZERO
 
 var interacting_item = null
 var state = State.Move
+var attack_enabled = true
+var attack_cooldown = 0
 
 var hp = HP.new(max_hp)
 var baby = null
@@ -152,9 +155,18 @@ func face(direction):
 
 	
 func _start_attack():
+	if not attack_enabled:
+		return
+	
+	attack_enabled = false
+	
 	state = State.Attack
 	animationState.travel("Attack")
+
+	if attack_cooldown > 0:
+		yield(get_tree().create_timer(attack_cooldown), "timeout")
 	
+	attack_enabled = true
 
 func _end_attack():
 	if state != State.Interact:

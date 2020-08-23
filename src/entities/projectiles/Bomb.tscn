@@ -29,7 +29,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "Start"
-length = 0.4
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -37,14 +37,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [ 0, 1, 2, 3, 2, 3 ]
 }
 
 [node name="Bomb" instance=ExtResource( 1 )]
-collision_mask = 47
+collision_mask = 1
 script = ExtResource( 3 )
 damage = 2
 knockback_strength = 200
@@ -58,6 +58,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -1 )
 texture = ExtResource( 2 )
 hframes = 11
+frame = 3
 
 [node name="AreaOfEffect" type="Area2D" parent="." index="2"]
 collision_layer = 0

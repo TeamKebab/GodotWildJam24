@@ -18,9 +18,12 @@ const LINES = {
 	
 	"want_baby_orc": "The Hero could feel the strength of the orcs, and their smell... Do you want to have a baby?",
 	
+	"want_baby_gnome": "The hero could feel the crazy and explosive love of the gnomes... Do you want to have a baby?",
+	
 	
 	"got_baby_orc": "It's green and smells like wet potatoes... Gotta love it!",
 	"got_baby_elf": "Too cute to be my kid... Why is it aiming that bow at me?",
+	"got_baby_gnome": "DA BOMB! It's so small I always think I sat on it.",
 	
 	"ask_skip_to_swamp": "The hero paused before the darkly lit passage into the unknown. This could be a shortcut, but it could also lead to untold dangers. Would they be brave enough to continue?",
 }
@@ -28,6 +31,7 @@ const LINES = {
 const TOOLTIPS = {
 	"orc": "[b][color=#897657]Orc Baby[/color][/b]\nGiant Club: slow, but hurts a lot\nResistant: higher HP\nCan crush fences",
 	"elf": "[b][color=#897657]Elf Baby[/color][/b]\nBow: kill from afar!\nWeakling: reduced HP\nCan hit switches with arrows",
+	"gnome": "[b][color=#897657]Gnome Baby[/color][/b]\nBombs: kill everybody in range!\nCan explode rocks",
 }
 
 

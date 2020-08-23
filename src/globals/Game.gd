@@ -10,6 +10,7 @@ const PLAYER_RACES = {
 	"human": preload("res://src/entities/characters/HumanHero.tscn"),
 	"orc": preload("res://src/entities/characters/OrcHero.tscn"),
 	"elf": preload("res://src/entities/characters/ElfHero.tscn"),
+	"gnome": preload("res://src/entities/characters/GnomeHero.tscn"),
 }
 
 

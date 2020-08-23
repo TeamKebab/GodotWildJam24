@@ -9,12 +9,12 @@ func hit(_target):
 		destroy()
 
 
-func shot(target_hurtbox, start_position):
-	.shot(target_hurtbox, start_position)
+func shot_in_direction(direction, origin_position, target_collision_layer):
+	.shot_in_direction(direction, origin_position, target_collision_layer)
 	
 	rotation = 0
 	
-	$AreaOfEffect.collision_mask = target_hurtbox.get_collision_layer()
+	$AreaOfEffect.collision_mask = target_collision_layer
 
 	
 func do_target_effect(target):
@@ -36,6 +36,7 @@ func destroy():
 		
 		if is_valid_target(target):
 			do_target_effect(target)
+	
 	
 	sound.play()
 	$AnimationPlayer.play("Boom")
