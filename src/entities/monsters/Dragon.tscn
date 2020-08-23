@@ -63,7 +63,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Body" type="Sprite" parent="."]
-position = Vector2( 0, -31.4015 )
+position = Vector2( 0, -31.4328 )
 texture = ExtResource( 1 )
 hframes = 8
 
@@ -74,7 +74,7 @@ hframes = 8
 frame = 1
 
 [node name="Head" type="Sprite" parent="."]
-position = Vector2( 0, -20.8379 )
+position = Vector2( 0, -20.7941 )
 texture = ExtResource( 1 )
 hframes = 8
 frame = 2
@@ -90,8 +90,11 @@ visible = false
 collision_layer = 0
 collision_mask = 32
 shape = SubResource( 3 )
+disabled = false
 single_hit = false
+area_attack = false
 attack_cooldown = 1.5
+first_attack_delay = 0.5
 Projectile = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

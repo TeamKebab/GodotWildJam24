@@ -80,6 +80,19 @@ func set_player(new_player, entry):
 	find_node("YSort").add_child(player)
 
 
+func set_map(map: String, rect: Rect2, value: int):
+	var tilemap = find_node(map)
+	if tilemap == null:
+		return
+	
+	for x in range(rect.position.x, rect.end.x):
+		for y in range(rect.position.y, rect.end.y):
+			tilemap.set_cell(x,y, value)
+		
+	tilemap.update_bitmask_region()	
+	tilemap.update_dirty_quadrants()			
+	
+	
 func set_navigation_shape():
 	var nav_tile_map = $Navigation2D/NavTileMap
 	var ground  = $Navigation2D/Ground

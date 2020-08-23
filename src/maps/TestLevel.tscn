@@ -35,28 +35,31 @@ map_path = "res://src/maps/TestShrine.tscn"
 [node name="Gateway" parent="YSort" index="1" instance=ExtResource( 3 )]
 position = Vector2( 1040, 160 )
 shape = SubResource( 1 )
-disabled = false
 map_path = "res://src/maps/TestLevel2.tscn"
-entry_name = "Default"
 automatic = true
 immediate = false
-question = "ask_next_map"
 
 [node name="Gateway2" parent="YSort" index="2" instance=ExtResource( 3 )]
 position = Vector2( -160, 152 )
 shape = SubResource( 1 )
-disabled = false
 map_path = "res://src/maps/TestLevel2.tscn"
-entry_name = "Default"
 automatic = true
 immediate = false
-question = "ask_next_map"
 
 [node name="SwordSoldier" parent="YSort" index="3" instance=ExtResource( 5 )]
 position = Vector2( 536, 72 )
+max_hp = 1
+acceleration = 50
+facing_direction = Vector2( 0, 1 )
+speed = 50
 
 [node name="ElfArcher" parent="YSort" index="4" instance=ExtResource( 6 )]
 position = Vector2( 192, 296 )
+max_hp = 1
+acceleration = 50
+min_turn_around_time = 0.5
+max_turn_around_time = 2.0
+speed = 50
 
 [node name="Fence9" parent="YSort" index="5" instance=ExtResource( 7 )]
 position = Vector2( 56, -344 )
@@ -87,6 +90,12 @@ position = Vector2( 32, 8 )
 
 [node name="BombGnome" parent="YSort" index="14" instance=ExtResource( 8 )]
 position = Vector2( 32, 208 )
+max_hp = 1
+acceleration = 50
+facing_direction = Vector2( 0, 1 )
+min_turn_around_time = 0.5
+max_turn_around_time = 2.0
+speed = 50
 
 [node name="FireMage2" parent="YSort" index="15" instance=ExtResource( 9 )]
 position = Vector2( 160, -80 )
@@ -97,6 +106,7 @@ max_hp = 3
 
 [node name="Sign" parent="YSort" index="17" instance=ExtResource( 11 )]
 position = Vector2( 688, 160 )
+disabled = false
 text = "WARNING! Here be dragons"
 
 [node name="Doggo" parent="YSort" index="18" instance=ExtResource( 12 )]

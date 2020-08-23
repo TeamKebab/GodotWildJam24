@@ -24,12 +24,7 @@ texture = ExtResource( 2 )
 [node name="Gateway" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 7 )
 shape = SubResource( 2 )
-disabled = false
 help = "Press [C] to enter"
-map_path = ""
-entry_name = "Default"
-immediate = true
-question = "ask_next_map"
 
 [node name="CollisionShape2D" parent="Gateway" index="0"]
 position = Vector2( 0, -7 )

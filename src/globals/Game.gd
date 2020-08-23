@@ -46,6 +46,10 @@ func _ready():
 	rng.randomize()
 	
 
+func tutorial():
+	scene_loader.tutorial_screen()
+	
+	
 func start():
 	time_of_day = ADULT_AGE - 2
 	hero_dynasty = []
@@ -70,7 +74,6 @@ func restart():
 
 
 func win():
-	yield(Narrator.show_with_interaction(player, "game_end"), "completed")
 	scene_loader.start_screen()
 	
 	
@@ -167,6 +170,9 @@ func go_to_map(map_path, entry_name):
 	
 
 func play_music(music):
+	if music == null:
+		return
+		
 	var current_music = music_player.stream
 	
 	if music != current_music:

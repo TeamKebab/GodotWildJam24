@@ -2,7 +2,7 @@
 
 [resource]
 resource_name = "Death"
-length = 3.0
+length = 30.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:frame")
 tracks/0/interp = 1
@@ -62,7 +62,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 2.1 ),
+"times": PoolRealArray( 0.6 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],

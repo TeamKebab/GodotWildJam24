@@ -1,4 +1,8 @@
 extends StaticBody2D
+class_name Dragon
+
+
+signal boss_defeated()
 
 
 const HP = preload("res://src/components/HP.gd")
@@ -29,7 +33,7 @@ func knockback(_strength):
 	
 
 func win():
-	Game.win()
+	emit_signal("boss_defeated")
 	
 	
 func end_attack():
