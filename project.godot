@@ -38,7 +38,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GodotWildJam24"
+config/name="Journey to the Promised Land"
+config/description="Help the hero on their journey through several generations!"
 run/main_scene="res://src/gui/Start.tscn"
 config/icon="res://icon.png"
 
